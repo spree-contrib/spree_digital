@@ -1,0 +1,114 @@
+h2. Spree Digital
+
+This is a spree extension to enable downloadable products. The design goal is to keep it robust. It should survive future spree versions out of the box.
+
+NOTE: This is still under development, but since things were falling into place, I thought I'd publish it.
+
+h3. Introduction
+
+The idea is simple. You attach a file to a Product (or a Variant of this Product) and when people buy it, they will receive a link via email where they can download it once. There are a few assumptions that spree_digital (currently) makes and it's important to be aware of them. These might change, but since I programmed digital_spree over night, this is what you get ;)
+
+* The table structure of spree_core is not touched. Spree_digital lives parallel to spree_core and does not do any changes to your existing database, except adding two new tables.
+* The download links will be sent via email in the order confirmation (or "resend" from the admin section). The links do *not* appear in the order "overview" that the customer sees.
+* There should only be "live" payments. Once the order is checked-out, the download links will immediately be sent (i.e. in the order confirmation).
+* You should define a shipping method called "download" and it should be cost-free. Spree_digital will use that one when all products in the cart are digital
+* One may buy several items of the same digital product in one cart. The customer will simply receive several links by doing so. This allows customer's to legally purchase multiple copies of the same product and maybe give one away to a friend.
+* The links will only work 3 times (but we tell the customer that it works only once). After 24 hours the links are deactivated. This should keep you reasonably free from complaints of people who are not capable of appropriately clicking on a link. They can try a whole day long, 3 times per link. The file should really be downloadable for weird customers. I understand that this is a little bit security by obscurity, but it's better than other solutions that I've seen.
+* The file @views/order_mailer/confirm_email.text.erb@ is the only thing that should need customization. But since I assume you do that anyway, it doesn't hurt to do it when you're using spree_digital. The reason is that the download links are added to the confirmation email to the customer.
+* A purchased product can be downloaded even if you disable the product immediately. You would have to remove the attached file in your admin section to prevent people from downloading purchased products.
+
+h3. Installation
+
+Add something like this to your @Gemfile@ in your brand new Rails 3 application:
+
+<pre>
+  gem 'spree'
+  gem 'spree_social', :git => 'git://github.com/funkensturm/spree_digital.git', :branch => 'master'
+</pre>
+
+If you prefer to use specific versions, feel free to do so. This configuration, for instance, determines some versions manually:
+
+<pre>
+  gem 'rails', '= 3.0.5'
+  gem 'spree', '= 0.50.0'
+  gem 'spree_social', :git => 'git://github.com/funkensturm/spree_digital.git', :branch => 'master'
+</pre>
+
+The following terminal commands are corresponding to the spree README at "github.com/spree/spree":http://github.com/spree/spree and are needed to bring up spree:
+
+<pre>
+  bundle install
+  rails g spree:site
+  rake spree:install
+  rake db:migrate
+</pre>
+
+Of course you may already have a spree application running. But *either way* you will have to run these two commands at this point:
+
+<pre>
+  rake spree_digital:install   # This one will copy the migration file from spree_digital to your rails_root/db/migrate
+  rake db:migrate
+</pre>
+
+This should be it. You might want to populate your store with sample data like so:
+
+<pre>
+  rake spree_sample:install
+  rake db:seed
+  rake db:sample
+</pre>
+
+h4. Important Notice
+
+You should go to the spree admin section and create a shipping method that has the word @download@ somehow in its name (it should be cost-free, but it doesn't have to). It will be detected by spree_digital. Otherwise your customer will be forced to choose something like "UPS" even if they purchase only downloadable products.
+
+h3. Usage
+
+...
+
+
+h1. Developer Section
+
+h3. Table Diagram
+
+<img src="http://github.com/funkensturm/spree_digital/raw/master/doc/tables.png">
+
+h3. Installation (for Developers)
+
+Get the spree framework and spree_digital extension for it:
+
+<pre>
+  git clone git://github.com/spree/spree.git
+  git clone git://github.com/funkensturm/spree_digital
+</pre>
+
+Go into the spree directory and run the bundle command:
+
+<pre>
+  cd spree
+  bundle install
+</pre>
+
+Go into the spree_digital directory and do the same:
+
+NOTE: At this point you may need to uncomment the stuff in the @Gemfile@  before you can start developing and testing!
+
+<pre>
+  cd spree_digital
+  bundle install
+</pre>
+
+Bring up the test application (you only need to do this whenever you fiddle around with the migrations) and then you can run the tests as you please.
+
+<pre>
+  rake test_app
+  rake spec
+</pre>
+
+This link may be very helpful to you: "http://github.com/spree/spree":http://github.com/spree/spree
+
+h3. License
+
+Copyright (c) 2011 funkensturm.
+Released under the MIT License
+See "LICENSE":LICENSE

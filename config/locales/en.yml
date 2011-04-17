@@ -1,0 +1,12 @@
+en:
+  digital_versions: Digital Versions
+
+  current_file: Current File
+  new_file: New File
+  upload: Upload
+  delete_file: Delete this file
+  broken_file: Warning! this file is broken
+  delete_file_cofirmation: Are you sure you want to delete the file %{filename}?
+
+  digital_shipping: Delivery per email to <strong>%{email}</strong>
+  

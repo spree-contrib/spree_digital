@@ -1,0 +1,11 @@
+\#*
+*~
+.#*
+.DS_Store
+.idea
+.project
+tmp
+nbproject
+*.swp
+spec/test_app
+.tmproj

@@ -1,0 +1,20 @@
+<%= render :partial => 'admin/shared/product_sub_menu' %>
+<%= render :partial => 'admin/shared/product_tabs', :locals => {:current => "Digital Versions"} %>
+
+<% if @product.has_variants? %>
+
+  <% for variant in @product.variants do %>
+    <%= render 'form', :variant => variant %>
+  <% end %>
+
+<% else %>
+  This product has no variants.
+
+  <% if @product.master.digital? %>
+    A digital version of this product currently exists:
+    <%= render @product.master.digital %>
+  <% end %>
+
+  <%= render 'form', :variant => @product.master %>
+
+<% end %>
