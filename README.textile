@@ -19,44 +19,22 @@ The idea is simple. You attach a file to a Product (or a Variant of this Product
 
 h3. Installation
 
-Add something like this to your @Gemfile@ in your brand new Rails 3 application:
+I assume that you already have a Rails 3 Spree application up and running. If you don't, the "Spree Documentation":http://spreecommerce.com/documentation will help you getting started.
+
+To make use of @digital_spree@, you need to add this line to your @Gemfile@:
 
 <pre>
-  gem 'spree'
   gem 'spree_social', :git => 'git://github.com/funkensturm/spree_digital.git', :branch => 'master'
 </pre>
 
-If you prefer to use specific versions, feel free to do so. This configuration, for instance, determines some versions manually:
-
-<pre>
-  gem 'rails', '= 3.0.5'
-  gem 'spree', '= 0.50.0'
-  gem 'spree_social', :git => 'git://github.com/funkensturm/spree_digital.git', :branch => 'master'
-</pre>
-
-The following terminal commands are corresponding to the spree README at "github.com/spree/spree":http://github.com/spree/spree and are needed to bring up spree:
-
-<pre>
-  bundle install
-  rails g spree:site
-  rake spree:install
-  rake db:migrate
-</pre>
-
-Of course you may already have a spree application running. But *either way* you will have to run these two commands at this point:
+The following terminal commands will copy the file "spree_digital/db/migration/20110410134726_create_digitals.rb"http://github.com/funkensturm/spree_digital/blob/master/db/migrate/20110410134726_create_digitals.rb to the corresponding directory in your Rails application and apply the migration to your database.
 
 <pre>
   rake spree_digital:install   # This one will copy the migration file from spree_digital to your rails_root/db/migrate
   rake db:migrate
 </pre>
 
-This should be it. You might want to populate your store with sample data like so:
-
-<pre>
-  rake spree_sample:install
-  rake db:seed
-  rake db:sample
-</pre>
+This should be all there is to do.
 
 h4. Important Notice
 
