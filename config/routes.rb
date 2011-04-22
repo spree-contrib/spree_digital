@@ -7,5 +7,5 @@ Rails.application.routes.draw do
   end
   
   get '/digital/:secret', :to => 'digitals#show', :via => :get, :as => 'digital', :constraints => { :secret => /[a-zA-Z0-9]{30}/ }
-    
+
 end

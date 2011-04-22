@@ -14,6 +14,8 @@ The idea is simple. You attach a file to a Product (or a Variant of this Product
 * The links will only work 3 times (but we tell the customer that it works only once). After 24 hours the links are deactivated. This should keep you reasonably free from complaints of people who are not capable of appropriately clicking on a link. They can try a whole day long, 3 times per link. The file should really be downloadable for weird customers. I understand that this is a little bit security by obscurity, but it's better than other solutions that I've seen.
 * The file @views/order_mailer/confirm_email.text.erb@ is the only thing that should need customization. But since I assume you do that anyway, it doesn't hurt to do it when you're using spree_digital. The reason is that the download links are added to the confirmation email to the customer.
 * A purchased product can be downloaded even if you disable the product immediately. You would have to remove the attached file in your admin section to prevent people from downloading purchased products.
+* File are uploaded to @rails_root/private@. Make sure it's symlinked in case you're using Capistrano.
+* We use send_file to send the files on download. Yes, it goes through the entire stack right now.
 
 h2. Installation
 
@@ -22,7 +24,7 @@ I assume that you already have a Rails 3 Spree application up and running. If no
 To make use of @digital_spree@, you need to add this line to your @Gemfile@:
 
 <pre>
-  gem 'spree_social', :git => 'git://github.com/funkensturm/spree_digital.git', :branch => 'master'
+  gem 'spree_digital', :git => 'git://github.com/funkensturm/spree_digital.git', :branch => 'master'
 </pre>
 
 The following terminal commands will copy the file "spree_digital/db/migration/20110410134726_create_digitals.rb":http://github.com/funkensturm/spree_digital/blob/master/db/migrate/20110410134726_create_digitals.rb to the corresponding directory in your Rails application and apply the migration to your database.
@@ -87,4 +89,4 @@ h3. License
 
 Copyright (c) 2011 funkensturm.
 Released under the MIT License
-See "LICENSE":LICENSE
+See "http://github.com/funkensturm/spree_digital/blob/master/LICENSE":LICENSE

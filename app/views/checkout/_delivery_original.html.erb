@@ -10,7 +10,7 @@
     <div id="methods">
       <p class="field radios">
         <% @order.rate_hash.each do |shipping_method| %>
-          <% next if shipping_method[:id] == @order.digital_shipping_method[:id] %>
+          <% next if @order.digital_shipping_method && shipping_method[:id] == @order.digital_shipping_method[:id] %>
           <label>
             <%= radio_button(:order, :shipping_method_id, shipping_method[:id]) %>
             <%= shipping_method[:name] %> <%= number_to_currency shipping_method[:cost] %>
