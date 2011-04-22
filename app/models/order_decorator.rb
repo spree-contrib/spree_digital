@@ -6,6 +6,12 @@ Order.class_eval do
     true
   end
   
+  # Is at least one product/variant digital?
+  def some_digital?
+    line_items.map { |item| return true if item.digital? }
+    false
+  end
+  
   # Determine which method to use for shipping of digital products.
   def digital_shipping_method
     rates = rate_hash
