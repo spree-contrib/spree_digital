@@ -2,7 +2,7 @@
   <div class="yui-u first">
   <%= form_for(:digital, :url => { :controller => 'digitals', :action => 'create' }, :html => { :multipart => true }) do |f| %>
     <fieldset>
-      <legend><%= Variant.human_name %> "<%= variant.options_text %>"</legend>
+      <legend><%= Variant.model_name.human %> "<%= variant.options_text %>"</legend>
       
         <%= f.field_container :current_file do %>
           <strong><%=t 'current_file' %>:</strong><br/>
