@@ -1,11 +1,10 @@
 class SpreeDigitalHooks < Spree::ThemeSupport::HookListener
-
-  insert_after :admin_product_tabs do
-    <<-END
-    <li<%== ' class="active"' if current == "Digital Versions" %>>
-      <%= link_to t("digital_versions"), admin_product_digitals_path(@product) %>
+  Deface::Override.new(:virtual_path => "admin/shared/_product_tabs",
+                     :name => "converted_admin_product_tabs_986577829",
+                     :insert_bottom => "[data-hook='admin_product_tabs'], #admin_product_tabs[data-hook]",
+                     :text => "    <li<%== ' class=\"active\"' if current == \"Digital Versions\" %>>
+      <%= link_to t(\"digital_versions\"), admin_product_digitals_path(@product) %>
     </li>
-    END
-  end
-
+",
+                     :disabled => false)
 end
