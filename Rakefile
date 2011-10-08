@@ -1,8 +1,10 @@
-require 'rubygems'
 require 'rake'
 require 'rake/testtask'
 require 'rake/packagetask'
-require 'rake/gempackagetask'
+require 'rubygems/package_task'
+require 'rspec/core/rake_task'
+require 'cucumber/rake/task'
+require 'spree_core/testing_support/common_rake'
 
 gemfile = File.expand_path('../spec/test_app/Gemfile', __FILE__)
 if File.exists?(gemfile) && (%w(spec cucumber).include?(ARGV.first.to_s) || ARGV.size == 0)

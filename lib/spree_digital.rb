@@ -1,4 +1,5 @@
 require 'spree_core'
+<<<<<<< HEAD
 
 module SpreeDigital
   class Engine < Rails::Engine
@@ -14,3 +15,6 @@ module SpreeDigital
     config.to_prepare &method(:activate).to_proc
   end
 end
+=======
+require 'spree_digital/engine'
+>>>>>>> 9b919de... Modified to fit spree 0.70 extension
