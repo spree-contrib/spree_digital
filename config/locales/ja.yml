@@ -1,0 +1,12 @@
+ja:
+  digital_versions: デジタル版
+
+  current_file: 現在のバージョン
+  new_file: 新しいファイル
+  upload: アップロード
+  delete_file: このファイルを削除
+  broken_file: 注意! このファイルが壊れている!
+  delete_file_cofirmation: 本当に「%{filename}」を削除しても宜しいですか?
+
+  digital_shipping: ダウンロードリンクを<strong>%{email}</strong>に送ります
+
