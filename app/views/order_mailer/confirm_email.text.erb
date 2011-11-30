@@ -25,8 +25,7 @@ ATTENTION! Each link will only work a SINGLE TIME!
 
 <% for item in @order.line_items %>
 <% if item.digital? %>
-<%= item.variant.name %>:
-<%= item.digital_links.inspect %>
+<%= raw item.variant.name %>:
 <% for link in item.digital_links %>
 <%= digital_url :host => Spree::Config.get(:site_url), :secret => link.secret %>
 <% end %>
