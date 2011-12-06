@@ -1,4 +1,4 @@
-Order.class_eval do
+Spree::Order.class_eval do
   
   # Are all products/variants of this Order to be downloaded by the customer?
   def digital?
