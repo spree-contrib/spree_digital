@@ -1,4 +1,4 @@
-Variant.class_eval do
+Spree::Variant.class_eval do
   
   has_one :digital, :dependent => :destroy
   after_save :destroy_digital, :if => :deleted?
