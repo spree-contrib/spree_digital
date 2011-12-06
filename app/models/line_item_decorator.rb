@@ -1,4 +1,4 @@
-LineItem.class_eval do
+Spree::LineItem.class_eval do
   
   has_many :digital_links
   
