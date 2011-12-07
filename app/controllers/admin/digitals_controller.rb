@@ -1,6 +1,4 @@
-class Admin::DigitalsController < Spree::Admin::BaseController
-  
-  resource_controller
+class Admin::DigitalsController < Spree::Admin::ResourceController
   
   index.before do
     @product = Product.find_by_permalink(params[:product_id])
