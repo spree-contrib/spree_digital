@@ -1,4 +1,4 @@
-class Admin::DigitalsController < Admin::BaseController
+class Admin::DigitalsController < Spree::Admin::BaseController
   
   resource_controller
   
