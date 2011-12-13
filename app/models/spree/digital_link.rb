@@ -8,7 +8,7 @@ module Spree
     
     # Can this link stil be used? It is valid if it's less than 24 hours old and was not accessed more than 3 times
     def authorizable?
-      self.created_at > 1.day.ago and self.access_counter < 3
+      self.created_at > 3.days.ago and self.access_counter < 3
     end
     
     # This method should be called when a download is initiated.
