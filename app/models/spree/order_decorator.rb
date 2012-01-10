@@ -1,5 +1,7 @@
 Spree::Order.class_eval do
   
+  after_save :check_shipping_method
+  
   # Are all products/variants of this Order to be downloaded by the customer?
   def digital?
     line_items.map { |item| return false unless item.digital? }
@@ -22,5 +24,16 @@ Spree::Order.class_eval do
     # Well, at this point we have a problem. No shipping method is cost-free or called "download".
     nil
   end
-
+  
+  private
+  
+  def check_shipping_method
+    self.reload
+    if digital?
+      if shipment.present?
+        shipment.update_attributes(:shipping_method_id => digital_shipping_method[:id])
+      end
+    end
+  end
+  
 end
