@@ -1,5 +1,4 @@
 require 'spree_core'
-require 'spree_digital_hooks'
 
 module SpreeDigital
   class Engine < Rails::Engine
