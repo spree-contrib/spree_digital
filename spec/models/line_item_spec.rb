@@ -1,6 +1,6 @@
 require File.dirname(__FILE__) + '/../spec_helper'
 
-describe LineItem do
+describe Spree::LineItem do
 
   context "#save" do
     it "should create one link for a single digital Variant" do
@@ -17,6 +17,7 @@ describe LineItem do
       links = digital_variant.digital.digital_links
       links.all.size.should == 5
       links.each { |link| link.line_item.should == line_item }
+      
       # quantity update
       line_item.quantity = 8
       line_item.save
