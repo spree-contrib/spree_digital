@@ -3,7 +3,10 @@ module Spree
     
     belongs_to :digital
     belongs_to :line_item
-  
+    
+    validates_length_of :secret, :is => 30
+    validates :digital, :presence => true
+    
     before_validation :set_defaults, :on => :create
     
     # Can this link stil be used? It is valid if it's less than 24 hours old and was not accessed more than 3 times
