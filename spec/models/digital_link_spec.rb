@@ -1,6 +1,6 @@
 require File.dirname(__FILE__) + '/../spec_helper'
 
-describe DigitalLink do
+describe Spree::DigitalLink do
 
   context 'validation' do
     it { should belong_to(:digital) }
