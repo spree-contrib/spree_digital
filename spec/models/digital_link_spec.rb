@@ -38,61 +38,39 @@ describe Spree::DigitalLink do
     end
   end
   
-  #context "authorization" do
-  #  it "should increment the counter using #authorize!" do
-  #    link = Factory(:digital_link)
-  #    link.authorize!
-  #    link.access_counter.should == 1
-  #  end
-  #  
-  #  it "should not be #authorized? when the access_counter is too high" do
-  #    link = Factory(:digital_link)
-  #    link.stub(:access_counter => 2)
-  #    link.authorized?.should be_true
-  #    link.stub(:access_counter => 3)
-  #    link.authorized?.should be_false
-  #  end
-  #  
-  #  it "should not be #authorize! when the access_counter is too high" do
-  #    link = Factory(:digital_link)
-  #    link.stub(:access_counter => 2)
-  #    link.authorize!.should be_true
-  #    link.stub(:access_counter => 3)
-  #    link.authorize!.should be_false
-  #  end
-  #  
-  #  it "should not be #authorized? when the created_at date is too far in the past" do
-  #    link = Factory(:digital_link)
-  #    link.authorized?.should be_true
-  #    link.stub(:created_at => 23.hours.ago)
-  #    link.authorized?.should be_true
-  #    link.stub(:created_at => 25.hours.ago)
-  #    link.authorized?.should be_false
-  #  end
-  #  
-  #  it "should not be #authorize! when the created_at date is too far in the past" do
-  #    link = Factory(:digital_link)
-  #    link.authorize!.should be_true
-  #    link.stub(:created_at => 23.hours.ago)
-  #    link.authorize!.should be_true
-  #    link.stub(:created_at => 25.hours.ago)
-  #    link.authorize!.should be_false
-  #  end
-  #  
-  #  it "should not be #authorized? when both access_counter and created_at are invalid" do
-  #    link = Factory(:digital_link)
-  #    link.authorized?.should be_true
-  #    link.stub(:access_counter => 3, :created_at => 25.hours.ago)
-  #    link.authorized?.should be_false
-  #  end
-  #  
-  #  it "should not be #authorize! when both access_counter and created_at are invalid" do
-  #    link = Factory(:digital_link)
-  #    link.authorize!.should be_true
-  #    link.stub(:access_counter => 3, :created_at => 25.hours.ago)
-  #    link.authorize!.should be_false
-  #  end
-  #end
+  context "authorization" do
+   it "should increment the counter using #authorize!" do
+     link = Factory(:digital_link)
+     link.access_counter.should == 0
+     link.authorize!
+     link.access_counter.should == 1
+   end
+   
+   it "should not be #authorized? when the access_counter is too high" do
+     link = Factory(:digital_link)
+     link.stub(:access_counter => Spree::DigitalConfiguration[:authorized_clicks] - 1)
+     link.authorizable?.should be_true
+     link.stub(:access_counter => Spree::DigitalConfiguration[:authorized_clicks])
+     link.authorizable?.should be_false
+   end
+      
+   it "should not be #authorize! when the created_at date is too far in the past" do
+     link = Factory(:digital_link)
+     link.authorize!.should be_true
+     link.stub(:created_at => (Spree::DigitalConfiguration[:authorized_days] * 24 - 1).hours.ago)
+     link.authorize!.should be_true
+     link.stub(:created_at => (Spree::DigitalConfiguration[:authorized_days] * 24 + 1).hours.ago)
+     link.authorize!.should be_false
+   end
+   
+   it "should not be #authorized? when both access_counter and created_at are invalid" do
+     link = Factory(:digital_link)
+     link.authorizable?.should be_true
+     link.stub(:access_counter => Spree::DigitalConfiguration[:authorized_clicks], :created_at => (Spree::DigitalConfiguration[:authorized_days] * 24 + 1).hours.ago)
+     link.authorizable?.should be_false
+   end
+   
+  end
   
 end
 
