@@ -1,9 +1,12 @@
 <fieldset id='shipping_method'>
   <legend><%= t("shipping_method") %></legend>
-  
-    <%= radio_button :order, :shipping_method_id, @order.digital_shipping_method[:id] %>
-    <%==t 'digital_shipping', :email => current_user.email %> (<%= number_to_currency @order.digital_shipping_method[:cost] %>)
-    
+  <div class="inner" data-hook="shipping_method_inner">
+    <div id="methods">
+      <p class="field radios">
+	    <%= radio_button :order, :shipping_method_id, @order.digital_shipping_method[:id] %>
+	    <%==t 'digital_shipping', :email => current_user.email %> (<%= number_to_currency @order.digital_shipping_method[:cost] %>)
+      </p>
+    </div>
   </div>
 </fieldset>
 
