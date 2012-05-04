@@ -1,5 +1,0 @@
-<%#
-  This is basically a switch that will render the appropriate "delivery choice" partial.
-  When there are no physical items at all, there should be no different shipping methods to choose.
-%>
-<%= render @order.digital? && @order.digital_shipping_method.present? ? 'delivery_digital' : 'delivery_original' %>
