@@ -28,7 +28,7 @@ module Spree
       self.access_counter = 0
     end
 
-    attr_accessible :digital_id, :line_item_id, :secret
+    attr_accessible :digital, :line_item, :secret
 
   end
 end
