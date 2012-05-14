@@ -27,6 +27,8 @@ module Spree
       self.secret = SecureRandom.hex(15)
       self.access_counter = 0
     end
-  
+
+    attr_accessible :digital_id, :line_item_id, :secret
+
   end
 end
