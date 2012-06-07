@@ -4,16 +4,16 @@ describe Spree::LineItem do
 
   context "#save" do
     it "should create one link for a single digital Variant" do
-      digital_variant = Factory(:variant, :digital => Factory(:digital))
-      line_item = Factory(:line_item, :variant => digital_variant)
+      digital_variant = FactoryGirl.create(:variant, :digital => FactoryGirl.create(:digital))
+      line_item = FactoryGirl.create(:line_item, :variant => digital_variant)
       links = digital_variant.digital.digital_links
       links.all.size.should == 1
       links.first.line_item.should == line_item
     end
 
     it "should create a link for each quantity of a digital Variant, even when quantity changes later" do
-      digital_variant = Factory(:variant, :digital => Factory(:digital))
-      line_item = Factory(:line_item, :variant => digital_variant, :quantity => 5)
+      digital_variant = FactoryGirl.create(:variant, :digital => FactoryGirl.create(:digital))
+      line_item = FactoryGirl.create(:line_item, :variant => digital_variant, :quantity => 5)
       links = digital_variant.digital.digital_links
       links.all.size.should == 5
       links.each { |link| link.line_item.should == line_item }

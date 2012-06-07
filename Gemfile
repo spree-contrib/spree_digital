@@ -1,8 +1,6 @@
 source 'http://rubygems.org'
 
 group :test do
-  # without ffaker in test it wont init
-  # https://github.com/spree/spree/pull/833
   gem 'ffaker'
   gem 'shoulda-matchers'
   gem 'guard-rspec'
@@ -12,5 +10,7 @@ group :test do
     gem 'growl'
   end
 end
+
+gem 'spree', '~> 1.1.1'
 
 gemspec
