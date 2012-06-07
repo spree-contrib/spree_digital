@@ -13,8 +13,8 @@ describe Spree::Digital do
   
   context "#destroy" do
     #it "should destroy associated digital_links" do
-    #  digital = Factory(:digital)
-    #  3.times { digital.digital_links.create! :order => Factory(:order) }
+    #  digital = FactoryGirl.create(:digital)
+    #  3.times { digital.digital_links.create! :order => FactoryGirl.create(:order) }
     #  DigitalLink.count.should == 3      
     #  digital.destroy
     #  DigitalLink.count.should == 0      

@@ -31,11 +31,11 @@ RSpec.configure do |config|
   config.use_transactional_fixtures = true
 end
 
-require File.expand_path("../factories", __FILE__)
+Dir[File.join(File.dirname(__FILE__), "factories/*.rb")].each {|f| require f }
 
 # not sure if this really adds anything, but this existed in the intial version of the spree_digital rspec testing
 RSpec::Matchers.define :have_valid_factory do |factory_name|
   match do |model|
-    Factory(factory_name).new_record?.should be_false
+    FactoryGirl.create(:factory_name).new_record?.should be_false
   end
 end
