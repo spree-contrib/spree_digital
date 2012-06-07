@@ -4,6 +4,8 @@ This is a spree extension to enable downloadable products. The design goal is to
 
 NOTE: This is still under development, but since things were falling into place, I thought I'd publish it.
 
+The master branch may work with spree 1.0, but the latest confirmed working version if referenced in the Versionfile.
+
 The idea is simple. You attach a file to a Product (or a Variant of this Product) and when people buy it, they will receive a link via email where they can download it once. There are a few assumptions that spree_digital (currently) makes and it's important to be aware of them. These might change, but since I programmed digital_spree over night, this is what you get ;)
 
 * The table structure of spree_core is not touched. Spree_digital lives parallel to spree_core and does not do any changes to your existing database, except adding two new tables.
