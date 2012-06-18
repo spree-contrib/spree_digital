@@ -1,11 +1,11 @@
 Spree::Variant.class_eval do
   
-  has_one :digital, :dependent => :destroy
+  has_many :digitals, :dependent => :destroy
   after_save :destroy_digital, :if => :deleted?
   
   # Is this variant to be downloaded by the customer?
   def digital?
-    digital.present?
+    digitals.present?
   end
   
   private
