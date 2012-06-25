@@ -29,10 +29,10 @@ To make use of @digital_spree@, you need to add this line to your @Gemfile@:
   gem 'spree_digital', :git => 'git://github.com/funkensturm/spree_digital.git', :branch => 'master'
 </pre>
 
-The following terminal commands will copy the file "spree_digital/db/migration/20110410134726_create_digitals.rb":http://github.com/funkensturm/spree_digital/blob/master/db/migrate/20110410134726_create_digitals.rb to the corresponding directory in your Rails application and apply the migration to your database.
+The following terminal commands will copy the migration files to the corresponding directory in your Rails application and apply the migrations to your database.
 
 <pre>
-  rake spree_digital:install
+  rake spree_digital:install:migrations
   rake db:migrate
 </pre>
 
