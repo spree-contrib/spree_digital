@@ -5,7 +5,12 @@ en:
   delete_file: Delete this file
   broken_file: Warning! this file is broken
   delete_file_cofirmation: Are you sure you want to delete the file %{filename}?
-  digital_shipping: Delivery per email to <strong>%{email}</strong>
-
+  digital_delivery: Digital Delivery
+  digital_download: Download %{type} ↓
+  digital_download_links: Digital Download Links
+  digital_format:
+    mp3: Audio MP3
+    mobi: Kindle eBook
+    epub: ePub eBook
   spree_digital:
     upload: Upload
