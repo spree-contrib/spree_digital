@@ -49,6 +49,20 @@ describe Spree::Order do
       order.digital?.should be_false
     end
   end
+
+  context "digital shipping" do
+    before do
+      # TODO create digital shipping factory
+    end
+
+    it "should only offer digital shipping if all items are digital" do
+      
+    end
+
+    it "should not offer digital shipping if only some items are digital" do
+      
+    end
+  end
   
 end
 
