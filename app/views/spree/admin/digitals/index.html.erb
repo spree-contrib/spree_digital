@@ -12,7 +12,7 @@
 
   <% if @product.master.digital? %>
     A digital version of this product currently exists:
-    <%= render @product.master.digital %>
+    <%= render @product.master.digitals %>
   <% end %>
 
   <%= render 'form', :variant => @product.master %>
