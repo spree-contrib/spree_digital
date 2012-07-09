@@ -52,15 +52,37 @@ describe Spree::Order do
 
   context "digital shipping" do
     before do
-      # TODO create digital shipping factory
+      @order = FactoryGirl.create(:order)
+      # need shipp_address for rate_hash.count != 0
+      @order.ship_address = FactoryGirl.create :address
+      @order.bill_address = FactoryGirl.create :address
+      @order.save!
+
+      3.times { @order.add_variant FactoryGirl.create(:variant, :digitals => [FactoryGirl.create(:digital)]) }
+
+      FactoryGirl.create :digital_shipping_method
+      s = FactoryGirl.create :shipping_method
+      s.calculator.set_preference(:amount, 10)
     end
 
+    let(:order) { @order }
+
     it "should only offer digital shipping if all items are digital" do
-      
+      order.digital?.should be_true
+      order.rate_hash.count.should == 1
+      order.rate_hash.first.shipping_method.calculator.class.should == Spree::Calculator::DigitalDelivery
+      order.rate_hash.first.cost.should == 0.0
     end
 
     it "should not offer digital shipping if only some items are digital" do
-      
+      order.digital?.should be_true
+      order.add_variant FactoryGirl.create(:variant) # this is the analog product
+      order.digital?.should be_false
+
+      order.rate_hash.count.should == 1
+      order.rate_hash.first.shipping_method.calculator.class.should_not == Spree::Calculator::DigitalDelivery
+      puts "SHIPP #{order.rate_hash.first}"
+      order.rate_hash.first.cost.should == 10.0
     end
   end
   
