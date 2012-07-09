@@ -1,6 +1,6 @@
 module Spree
   class Admin::DigitalsController < Spree::Admin::ResourceController
-    belongs_to "spree/product", find_by: :permalink
+    belongs_to "spree/product", :find_by => :permalink
     
     protected
       def location_after_save
