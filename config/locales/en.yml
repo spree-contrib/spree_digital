@@ -13,6 +13,5 @@ en:
     mobi: Kindle eBook
     epub: ePub eBook
     pdf: pdf eBook
-    iba: iBooks eBook
   spree_digital:
     upload: Upload
