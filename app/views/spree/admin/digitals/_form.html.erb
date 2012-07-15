@@ -5,13 +5,18 @@
       <legend><%= Spree::Variant.model_name.human %> "<%= variant.options_text %>"</legend>
       
       <%= f.field_container :current_file do %>
-      <strong><%=t 'files' %>:</strong>
+      <strong><%=t 'Product Files' %>:</strong>
       <% if variant.digital? %>
       <ul>
         <% variant.digitals.each do |digital| %>
         <li>
-         <%= render digital %>&nbsp;&nbsp;
-         <%= link_to t("delete_file"), admin_product_digital_url(:id => variant.digitals.first.id), :confirm => t('delete_file_cofirmation', :filename => variant.digitals.first.attachment_file_name), :method => :delete %>
+			<% if digital.attachment_file_name.present? %>
+			  <%= digital.attachment_file_name %>&nbsp;&nbsp;(<%= number_to_human_size(digital.attachment_file_size) %>)
+			<% else %>
+			  <%=t 'broken_file' %>
+			<% end %>
+        
+         <%= link_to t("delete_file"), admin_product_digital_url(:id => digital.id), :confirm => t('delete_file_confirmation', :filename => digital.attachment_file_name), :method => :delete %>
        </li>
        <% end %>
      </ul>

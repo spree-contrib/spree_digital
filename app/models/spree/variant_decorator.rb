@@ -2,10 +2,15 @@ Spree::Variant.class_eval do
   
   has_many :digitals, :dependent => :destroy
   after_save :destroy_digital, :if => :deleted?
+  has_many :digital_samples, :dependent => :destroy
   
   # Is this variant to be downloaded by the customer?
   def digital?
     digitals.present?
+  end
+  
+  def digital_sample?
+    digital_samples.present?
   end
   
   private
@@ -15,6 +20,9 @@ Spree::Variant.class_eval do
   # Otherwise you'll have orphan Digitals (and their attached files!) associated with unused Variants. 
   def destroy_digital
     digitals.map &:destroy
+    digital_samples.map &:destroy
   end
+  
+
 
 end

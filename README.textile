@@ -4,7 +4,7 @@ This is a spree extension to enable downloadable products. The design goal is to
 
 The master branch is compatible with Spree 1.1.x, <= 1.0 versions are referenced in the Versionfile.
 
-The idea is simple. You attach a file to a Product (or a Variant of this Product) and when people buy it, they will receive a link via email where they can download it once. There are a few assumptions that spree_digital (currently) makes and it's important to be aware of them. 
+The idea is simple. You attach a file to a Product (or a Variant of this Product) and when people buy it, they will receive a link via email where they can download it once.  It also allows the option of free sample files that are visible in the product display (and freely downloadable). There are a few assumptions that spree_digital (currently) makes and it's important to be aware of them. 
 
 * The table structure of spree_core is not touched. Spree_digital lives parallel to spree_core and does not do any changes to your existing database, except adding two new tables.
 * The download links will be sent via email in the order confirmation (or "resend" from the admin section). The links also appear in the order "overview" that the customer sees.
@@ -26,6 +26,10 @@ The idea is simple. You attach a file to a Product (or a Variant of this Product
 * You can add multiple files (e.g eBooks in ePub, Mobi, and PDF) and after checkout the customer will get links for all three in the completed cart as well as an email with the links.
 * Additional digital file types can be specified in "config/locales/*.yml".  Spree_digital currently recognizes .mp3, .epub, .mobi, .pdf, and .iba
 * We use send_file to send the files on download. Yes, it goes through the entire stack right now.  This avoids making a direct link to the file visible (and abusable)
+
+Free Samples
+* The free samples use a separate table 'spree_digital_samples' and the files are stored in the 'public/digital_sample' directory. Putting them in the public directory lets the front end server handle them directly rather than having to go through the whole rails stack.
+ 
 
 h2. Installation
 
