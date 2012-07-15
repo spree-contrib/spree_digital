@@ -12,5 +12,6 @@ en:
     mp3: Audio MP3
     mobi: Kindle eBook
     epub: ePub eBook
+    pdf: pdf eBook
   spree_digital:
     upload: Upload
