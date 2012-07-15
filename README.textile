@@ -16,6 +16,7 @@ The idea is simple. You attach a file to a Product (or a Variant of this Product
 * A purchased product can be downloaded even if you disable the product immediately. You would have to remove the attached file in your admin section to prevent people from downloading purchased products.
 * File are uploaded to @rails_root/private@. Make sure it's symlinked in case you're using Capistrano.
 * You can add multiple files (e.g eBooks in ePub, Mobi, and PDF) and after checkout the customer will get links for all three in the completed cart as well as an email with the links.
+* Additional digital file types can be specified in "config/locales/*.yml".  Spree_digital currently recognizes .mp3, .epub, .mobi, .pdf, and .iba
 * We use send_file to send the files on download. Yes, it goes through the entire stack right now.
 
 h2. Installation
