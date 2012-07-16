@@ -1,5 +1,6 @@
 FactoryGirl.define do
   factory :digital, :class => Spree::Digital do |f|
-    f.variant { |p| p.association(:variant) }
+    # TODO good to assign variant association if no association is manually defined
+    # f.variant { |p| p.association(:variant) }
   end
 end
