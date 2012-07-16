@@ -14,7 +14,7 @@ Spree::Variant.class_eval do
   # We need to delete the Digital manually here as soon as the Variant is nullified.
   # Otherwise you'll have orphan Digitals (and their attached files!) associated with unused Variants. 
   def destroy_digital
-    digital.destroy
+    digitals.map &:destroy
   end
 
 end
