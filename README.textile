@@ -22,10 +22,7 @@ The idea is simple. You attach a file to a Product (or a Variant of this Product
 * The file @views/order_mailer/confirm_email.text.erb@ is the only thing that should need customization. But since I assume you do that anyway, it doesn't hurt to do it when you're using spree_digital. The reason is that the download links are added to the confirmation email to the customer. "http://github.com/iloveitaly/spree-html-email":http://github.com/iloveitaly/spree-html-email also supports spree_digital.
 * A purchased product can be downloaded even if you disable the product immediately. You would have to remove the attached file in your admin section to prevent people from downloading purchased products.
 * File are uploaded to @rails_root/private@. Make sure it's symlinked in case you're using Capistrano.
-<<<<<<< HEAD
 * You must add a views/spree/digitals/unauthorized.html.erb file to present an error message to the user if they exceed the download / days limit
-=======
->>>>>>> 845d6e4790f1f19fb1f60430f95a555d4f2d3d92
 * You can add multiple files (e.g eBooks in ePub, Mobi, and PDF) and after checkout the customer will get links for all three in the completed cart as well as an email with the links.
 * Additional digital file types can be specified in "config/locales/*.yml".  Spree_digital currently recognizes .mp3, .epub, .mobi, .pdf, and .iba
 * We use send_file to send the files on download. Yes, it goes through the entire stack right now.  This avoids making a direct link to the file visible (and abusable)
