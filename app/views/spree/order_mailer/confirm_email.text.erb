@@ -20,18 +20,22 @@ Order Total: <%= number_to_currency @order.total %>
 Download links for digital products
 ============================================================
 
-ATTENTION! Each link will only work a SINGLE TIME!
-           Also, they will only work WITHIN 24 HOURS!
+Each of the links below will work for 24 hours or 1 download,
+whichever occurs first. After that, you may still download 
+the file by logging into your account and selecting the order.
 
 <% for item in @order.line_items %>
 <% if item.digital? %>
 <%= raw item.variant.name %>:
 <% for link in item.digital_links %>
+<% format = File.extname(link.digital.attachment.path).downcase %>
+<%= t(:digital_download, :type => t("digital_format#{format}"))%>
 <%= digital_url :host => Spree::Config.get(:site_url), :secret => link.secret %>
 <% end %>
+<% end %>
+<% end %>
 
-<% end %>
-<% end %>
 ============================================================
 <% end %>
 Thank you for your business.
+
