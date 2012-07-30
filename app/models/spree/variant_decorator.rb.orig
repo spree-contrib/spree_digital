@@ -18,7 +18,7 @@ Spree::Variant.class_eval do
     digitals.map &:destroy
 =======
     digitals.destroy
->>>>>>> 845d6e4790f1f19fb1f60430f95a555d4f2d3d92
+>>>>>>> update destroy inflection
   end
 
 end
