@@ -1,5 +1,5 @@
 <% if digital_sample.attachment_file_name.present? %>
-  <%= digital_sample.attachment_file_name %> (<%= number_to_human_size(digital_sample.attachment_file_size) %>)
+  <%= link_to digital_sample.attachment.original_filename, digital_sample.attachment.url %>
 <% else %>
   <%=t 'broken_file' %>
 <% end %>

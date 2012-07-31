@@ -3,6 +3,7 @@ module Spree
     belongs_to "spree/product", find_by: :permalink
   
     def index
+      # we don't want to display these separately-- they're part of the digitals admin index
       redirect_to :controller =>:digitals, :action=>:index
     end
     

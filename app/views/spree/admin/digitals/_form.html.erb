@@ -10,7 +10,12 @@
       <ul>
         <% variant.digitals.each do |digital| %>
         <li>
-         <%= render digital %>&nbsp;&nbsp;
+			<% if digital.attachment_file_name.present? %>
+			  <%= digital.attachment_file_name %>&nbsp;&nbsp;(<%= number_to_human_size(digital.attachment_file_size) %>)
+			<% else %>
+			  <%=t 'broken_file' %>
+			<% end %>
+        
          <%= link_to t("delete_file"), admin_product_digital_url(:id => digital.id), :confirm => t('delete_file_confirmation', :filename => digital.attachment_file_name), :method => :delete %>
        </li>
        <% end %>

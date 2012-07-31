@@ -22,22 +22,14 @@ Deface::Override.new(:virtual_path => "spree/products/show",
    <% else %>
 
      <% if @product.master.digital? %>
-       This product is available in the following formats:
+       This product is available in the following formats:<br/>
        <%= render @product.master.digitals %>
      <% end %>
 
      <% if @product.master.digital_sample? %>
-       <br/><br/>This product has the following Free Downloads:
-        <ul>
-          <% @product.master.digital_samples.each do |digital_sample| %>
-            <li>
-            <%= link_to digital_sample.attachment.original_filename, digital_sample.attachment.url %>
-            </li>
-         <% end %>
+       <br/>This product has the following Free Downloads: 
+            <%= render @product.master.digital_samples %>
      <% end %>
-
-
-
    <% end %>
    
  <% end %>
