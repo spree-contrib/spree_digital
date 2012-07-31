@@ -4,7 +4,7 @@ en:
   new_file: New File
   delete_file: Delete this file
   broken_file: Warning! this file is broken
-  delete_file_cofirmation: Are you sure you want to delete the file %{filename}?
+  delete_file_confirmation: Are you sure you want to delete the file %{filename}?
   digital_delivery: Digital Delivery
   digital_download: Download %{type} ↓
   digital_download_links: Digital Download Links
@@ -15,4 +15,6 @@ en:
     pdf: pdf eBook
     iba: iBooks eBook
   spree_digital:
+    upload: Upload
+  spree_digital_sample:
     upload: Upload

@@ -5,16 +5,27 @@
 
   <% for variant in @product.variants do %>
     <%= render 'form', :variant => variant %>
+	<%= render 'sample_form', :variant => variant %>
   <% end %>
 
 <% else %>
-  This product has no variants.
+  This product has no variants.<br/><br/>
 
   <% if @product.master.digital? %>
-    A digital version of this product currently exists:
-    <%= render @product.master.digitals %>
+    <strong>A digital version of this product currently exists:</strong>
+    
   <% end %>
 
   <%= render 'form', :variant => @product.master %>
+
+  
+
+  <% if @product.master.digital_sample? %>
+    <strong>This product has Free Samples:</strong>
+   
+  <% end %>
+
+  
+  <%= render 'sample_form', :variant => @product.master %>
 
 <% end %>

@@ -11,7 +11,7 @@
         <% variant.digitals.each do |digital| %>
         <li>
          <%= render digital %>&nbsp;&nbsp;
-         <%= link_to t("delete_file"), admin_product_digital_url(:id => digital.id), :confirm => t('delete_file_cofirmation', :filename => digital.attachment_file_name), :method => :delete %>
+         <%= link_to t("delete_file"), admin_product_digital_url(:id => digital.id), :confirm => t('delete_file_confirmation', :filename => digital.attachment_file_name), :method => :delete %>
        </li>
        <% end %>
      </ul>

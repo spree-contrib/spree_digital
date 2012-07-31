@@ -9,6 +9,10 @@ Spree::Variant.class_eval do
     digitals.present?
   end
   
+  def digital_sample?
+    digital_samples.present?
+  end
+  
   private
   
   # Spree never deleted Digitals, that's why ":dependent => :destroy" won't work on Digital.
