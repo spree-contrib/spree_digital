@@ -10,7 +10,7 @@
 <% else %>
   This product has no variants.
 
- <% if @product.master.digital? %>
+  <% if @product.master.digital? %>
     A digital version of this product currently exists:
     <%= render @product.master.digitals %>
   <% end %>
