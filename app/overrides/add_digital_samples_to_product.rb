@@ -7,12 +7,12 @@ Deface::Override.new(:virtual_path => "spree/products/show",
    <% if @product.has_variants? %>
      
        <% @product.variants.each do |variant| %>
-         <% if variant.has_digitals? %>
+         <% if variant.digital? %>
            This product is available in the following formats:
            <%= render variant.digitals %>
          <% end %>
          
-         <% if variant.has_digital_sampless? %>
+         <% if variant.digital_sample? %>
             <br/><br/>This product has the following Free Downloads:
             <%= render variant.digital_samples %>
          <% end %>
