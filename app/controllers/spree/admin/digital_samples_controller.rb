@@ -8,7 +8,7 @@ module Spree
     
     protected
       def location_after_save
-        admin_product_digitals_sample_url(@product)
+        admin_product_digital_samples_url(@product)
       end
   end
 end
