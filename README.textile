@@ -4,19 +4,32 @@ This is a spree extension to enable downloadable products. The design goal is to
 
 The master branch is compatible with Spree 1.1.x, <= 1.0 versions are referenced in the Versionfile.
 
-The idea is simple. You attach a file to a Product (or a Variant of this Product) and when people buy it, they will receive a link via email where they can download it once. There are a few assumptions that spree_digital (currently) makes and it's important to be aware of them. 
+The idea is simple. You attach a file to a Product (or a Variant of this Product) and when people buy it, they will receive a link via email where they can download it once.  It also allows the option of free sample files that are visible in the product display (and freely downloadable). There are a few assumptions that spree_digital (currently) makes and it's important to be aware of them. 
 
 * The table structure of spree_core is not touched. Spree_digital lives parallel to spree_core and does not do any changes to your existing database, except adding two new tables.
-* The download links will be sent via email in the order confirmation (or "resend" from the admin section). The links do *not* appear in the order "overview" that the customer sees.
+* The download links will be sent via email in the order confirmation (or "resend" from the admin section). The links also appear in the order "overview" that the customer sees.
+	* they can be removed from the order overview by editing "app/overrides/add_digital_downloads_to_invoice.rb" and setting ":disabled=>true"
+	* if they are displayed in the order overview, the ability to download them for extended period/number of times for a logged in user can be extended 
+	  by setting ":extended_download=>true" in 'lib/spree/spree_digital_configuration.rb'.  
+	* A download limit for logged-in users can also be set. Set it to a very large number to be effectively unlimited, or a smaller number to prevent abuse.
 * There should only be "live" payments. Once the order is checked-out, the download links will immediately be sent (i.e. in the order confirmation).
 * You should create a ShippingMethod based on the Digital Delivery calculator type. The default cost for digital delivery is 0, but you can define a flat rate (creating a per-item digital delivery fee would be possible as well).
 * One may buy several items of the same digital product in one cart. The customer will simply receive several links by doing so. This allows customer's to legally purchase multiple copies of the same product and maybe give one away to a friend.
-* The links will only work 3 times (but we tell the customer that it works only once). After 24 hours the links are deactivated. This should keep you reasonably free from complaints of people who are not capable of appropriately clicking on a link. They can try a whole day long, 3 times per link. The file should really be downloadable for weird customers. I understand that this is a little bit security by obscurity, but it's better than other solutions that I've seen. The number of clicks and days the links are valid for is customizable via preferences.
+* The links will only work 3 times (but we tell the customer that it works only once). After 24 hours the links are deactivated. This should keep you reasonably free from complaints of people who are not capable of appropriately clicking on a link. They can try a whole day long, 3 times per link. The file should really be downloadable for weird customers. I understand that this is a little bit security by obscurity, but it's better than other solutions that I've seen. 
+	*The number of clicks and days the links are valid for is customizable via preferences in the file 'lib/spree/spree_digital_configuration.rb'.  
+	*The download limit is per-file rather than per-purchase (e.g. if there's an ePub and a mobi, each can be downloaded 3 times)
+	*This is not changeable in the admin panel, and is set at run-time.
 * The file @views/order_mailer/confirm_email.text.erb@ is the only thing that should need customization. But since I assume you do that anyway, it doesn't hurt to do it when you're using spree_digital. The reason is that the download links are added to the confirmation email to the customer. "http://github.com/iloveitaly/spree-html-email":http://github.com/iloveitaly/spree-html-email also supports spree_digital.
 * A purchased product can be downloaded even if you disable the product immediately. You would have to remove the attached file in your admin section to prevent people from downloading purchased products.
 * File are uploaded to @rails_root/private@. Make sure it's symlinked in case you're using Capistrano.
 * You must add a views/spree/digitals/unauthorized.html.erb file to present an error message to the user if they exceed the download / days limit
-* We use send_file to send the files on download. Yes, it goes through the entire stack right now.
+* You can add multiple files (e.g eBooks in ePub, Mobi, and PDF) and after checkout the customer will get links for all three in the completed cart as well as an email with the links.
+* Additional digital file types can be specified in "config/locales/*.yml".  Spree_digital currently recognizes .mp3, .epub, .mobi, .pdf, and .iba
+* We use send_file to send the files on download. Yes, it goes through the entire stack right now.  This avoids making a direct link to the file visible (and abusable)
+
+Free Samples
+* The free samples use a separate table 'spree_digital_samples' and the files are stored in the 'public/digital_sample' directory. Putting them in the public directory lets the front end server handle them directly rather than having to go through the whole rails stack.
+ 
 
 h2. Installation
 

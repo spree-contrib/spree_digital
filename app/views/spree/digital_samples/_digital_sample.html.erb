@@ -1,0 +1,5 @@
+<% if digital_sample.attachment_file_name.present? %>
+  <%= link_to digital_sample.attachment.original_filename, digital_sample.attachment.url %>
+<% else %>
+  <%=t 'broken_file' %>
+<% end %>
