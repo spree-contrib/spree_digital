@@ -1,6 +1,6 @@
 <div>
   <div>
-    <%= form_for(:digital, :url => { :controller => 'digitals', :action => 'create' }, :html => { :multipart => true }) do |f| %>
+    <%= form_for(:digital, :url => admin_product_digitals_path(@product), :method => :create, :multipart => true ) do |f| %>
     <fieldset>
       <legend><%= Spree::Variant.model_name.human %> "<%= variant.options_text %>"</legend>
       
@@ -11,7 +11,7 @@
         <% variant.digitals.each do |digital| %>
         <li>
          <%= render digital %>&nbsp;&nbsp;
-         <%= link_to t("delete_file"), admin_product_digital_url(:id => variant.digitals.first.id), :confirm => t('delete_file_cofirmation', :filename => variant.digitals.first.attachment_file_name), :method => :delete %>
+         <%= link_to t("delete_file"), admin_product_digital_url(@product, digital), :confirm => t('delete_file_cofirmation', :filename => digital.attachment_file_name), :method => :delete %>
        </li>
        <% end %>
      </ul>

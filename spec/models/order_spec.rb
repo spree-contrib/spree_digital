@@ -81,7 +81,6 @@ describe Spree::Order do
 
       order.rate_hash.count.should == 1
       order.rate_hash.first.shipping_method.calculator.class.should_not == Spree::Calculator::DigitalDelivery
-      puts "SHIPP #{order.rate_hash.first}"
       order.rate_hash.first.cost.should == 10.0
     end
   end
