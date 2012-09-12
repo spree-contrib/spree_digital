@@ -1,0 +1,18 @@
+it:
+  digital_versions: Versioni Digitali
+  current_file: File Corrente
+  new_file: Nuovo File
+  delete_file: Elimina questo file
+  broken_file: Attenzione! questo file sembra essere rotto
+  delete_file_cofirmation: Sei sicuro di voler eliminare il file %{filename}?
+  digital_delivery: Consegna Digitale
+  digital_download: Download %{type} ↓
+  digital_download_links: Link al Download Digitale
+  digital_format:
+    mp3: Audio MP3
+    mobi: Kindle eBook
+    epub: ePub eBook
+    pdf: pdf eBook
+  spree_digital:
+    upload: Upload
+
