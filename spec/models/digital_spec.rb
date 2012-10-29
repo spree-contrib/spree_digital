@@ -20,6 +20,5 @@ describe Spree::Digital do
      Spree::DigitalLink.count.should == 0      
     end
   end
-  
 end
 

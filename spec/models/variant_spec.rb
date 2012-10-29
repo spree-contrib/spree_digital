@@ -1,18 +1,38 @@
-require 'spec_helper'
+require File.dirname(__FILE__) + '/../spec_helper'
 
 describe Spree::Variant do
-  before do
-    @product = FactoryGirl.create :product
-    @digital = FactoryGirl.create :digital, :variant => @product.master
-  end
+  context "#destroy" do
+    before do
+      @variant = FactoryGirl.create :variant
+      @digital = FactoryGirl.create :digital, :variant => @variant
+    end
 
-  let(:variant) { @product.master }
+    let(:variant) { @variant }
+    let(:digital) { @digital }
 
-  it "should delete all digitals on variant#destroy" do
-    digital_id = variant.digitals.first.id
-    Spree::Digital.find(digital_id).should_not be_nil
-    variant.digitals.count.should == 1
-    variant.destroy
-    expect { Spree::Digital.find(digital_id) }.to raise_error(ActiveRecord::RecordNotFound)
+    it "should destroy associated digitals by default" do
+      # default is false
+      Spree::DigitalConfiguration[:keep_digitals] = false
+
+      Spree::Digital.count.should == 1
+      variant.digitals.present?.should be_true
+      variant.deleted_at = Time.now
+      variant.deleted?.should be_true
+      variant.save!
+      expect { digital.reload.present? }.to raise_error
+      Spree::Digital.count.should == 0
+    end
+
+    it "should conditionally keep associated digitals" do
+      Spree::DigitalConfiguration[:keep_digitals] = true
+
+      Spree::Digital.count.should == 1
+      variant.digitals.present?.should be_true
+      variant.deleted_at = Time.now
+      variant.save!
+      variant.deleted?.should be_true
+      expect { digital.reload.present? }.to_not raise_error
+      Spree::Digital.count.should == 1
+    end
   end
 end
