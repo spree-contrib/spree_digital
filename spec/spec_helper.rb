@@ -21,7 +21,6 @@ RSpec.configure do |config|
   config.include FactoryGirl::Syntax::Methods
   config.include Spree::Core::UrlHelpers
   config.include Spree::Core::TestingSupport::ControllerRequests
-  config.include Devise::TestHelpers, :type => :controller
   config.use_transactional_fixtures = false
 
   config.before(:each) do

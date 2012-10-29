@@ -10,7 +10,8 @@ Spree::Order.class_eval do
     false
   end
 
-  # UPGRADE_CHECK this works as of spree 1.1.1; make sure to check the original function on upgrade
+  # UPGRADE_CHECK this works as of spree 1.2.0
+  # check function for changes on upgrade
 
   def available_shipping_methods(display_on = nil)
     return [] unless ship_address
