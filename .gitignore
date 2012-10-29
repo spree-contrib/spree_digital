@@ -10,3 +10,5 @@ nbproject
 spec/dummy
 *.tmproj
 Gemfile.lock
+Guardfile
+

@@ -1,11 +1,6 @@
-require File.dirname(__FILE__) + '/../spec_helper'
+require 'spec_helper'
 
 describe Spree::Order do
-
-  context 'validation' do
-    it { should have_valid_factory(:order) }
-  end
-  
   context "#add_variant" do
     it "should add digital Variants of quantity 1 to an order" do
       order = FactoryGirl.create(:order)

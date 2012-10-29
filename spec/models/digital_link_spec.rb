@@ -1,11 +1,10 @@
-require File.dirname(__FILE__) + '/../spec_helper'
+require 'spec_helper'
 
 describe Spree::DigitalLink do
 
   context 'validation' do
     it { should belong_to(:digital) }
     it { should belong_to(:line_item) }
-    it { should have_valid_factory(:digital_link) }
   end
 
   context "#create" do

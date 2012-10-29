@@ -4,7 +4,6 @@ describe Spree::Digital do
 
   context 'validation' do
     it { should belong_to(:variant) }
-    it { should have_valid_factory(:digital) }
   end
 
   context "#create" do
