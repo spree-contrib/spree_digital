@@ -1,5 +1,7 @@
 en:
   digital_versions: Digital Versions
+  reset_downloads: Reset Digital Downloads
+  downloads_reset: Digital Downloads Reset
   current_file: Current File
   new_file: New File
   delete_file: Delete this file
