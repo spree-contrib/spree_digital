@@ -9,7 +9,7 @@ Spree::LineItem.class_eval do
   
   private
   
-  # Create the download link for this item if it is digital.
+  # TODO there is no reason to create the digital links until the order is complete
   def create_digital_links
     digital_links.delete_all
 
