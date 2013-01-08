@@ -9,4 +9,4 @@ group :test do
   end
 end
 
-gem 'spree', '~> 1.2'
+gem 'spree', '~> 1.2.3'
