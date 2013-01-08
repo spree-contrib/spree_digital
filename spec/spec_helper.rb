@@ -1,16 +1,14 @@
 ENV["RAILS_ENV"] = "test"
 require File.expand_path("../dummy/config/environment.rb",  __FILE__)
+
 require 'rspec/rails'
 require 'database_cleaner'
 require 'ffaker'
 require 'shoulda-matchers'
 
-# Requires supporting ruby files with custom matchers and macros, etc,
-# in spec/support/ and its subdirectories.
 Dir[File.join(File.dirname(__FILE__), "support/**/*.rb")].each {|f| require f }
 
 require 'spree/core/testing_support/factories'
-require 'spree/core/testing_support/env'
 require 'spree/core/testing_support/controller_requests'
 require 'spree/core/url_helpers'
 

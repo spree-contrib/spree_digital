@@ -3,7 +3,7 @@ Gem::Specification.new do |s|
   s.name         = 'spree_digital'
   s.version      = '1.1.1'
   s.summary      = ''
-  s.description  = 'Add digital download functionality to spree'
+  s.description  = 'Digital download functionality for spree'
   s.authors      = ['funkensturm', 'Michael Bianco']
   s.email        = ['info@cliffsidedev.com']
   s.homepage     = 'http://www.funkensturm.com'
@@ -12,7 +12,7 @@ Gem::Specification.new do |s|
   s.require_path = 'lib'
   s.requirements << 'none'
   s.required_ruby_version = '>= 1.8.7'
-  s.add_dependency 'spree_core', '>= 1.1.0'
+  s.add_dependency 'spree_core', '~> 1.1'
 
   # test suite
   s.add_development_dependency 'shoulda-matchers'
