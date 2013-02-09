@@ -24,13 +24,13 @@ The idea is simple. You attach a file to a Product (or a Variant of this Product
 
 Add this line to your gemfile:
 
-```
+```shell
 gem 'spree_digital', :git => 'git://github.com/halo/spree_digital.git', :branch => 'master'
 ```
 
 The following terminal commands will copy the migration files to the corresponding directory in your Rails application and apply the migrations to your database.
 
-```
+```shell
 bundle exec rails g spree_digital:install
 bundle exec rake db:migrate
 ```
@@ -104,14 +104,14 @@ References:
 
 Get the spree framework and spree_digital extension for it:
 
-```
+```shell
 git clone git://github.com/spree/spree.git
 git clone git://github.com/halo/spree_digital.git
 ```
 
 Go into the spree directory and run the bundle command:
 
-```
+```shell
 cd spree
 bundle install
 ```
@@ -120,19 +120,19 @@ Go into the spree_digital directory and do the same:
 
 NOTE: At this point you may need to uncomment the stuff in the `Gemfile`  before you can start developing and testing!
 
-```
+```shell
 cd spree_digital
 bundle install
 ```
 
 Bring up the test application (you only need to do this whenever you fiddle around with the migrations) and then you can run the tests as you please.
 
-```
+```shell
 rake test_app
 rake spec
 ```
 
-This link may be very helpful to you: "http://github.com/spree/spree":http://github.com/spree/spree
+This link may be very helpful to you: [http://github.com/spree/spree](http://github.com/spree/spree)
 
 ### Authors
 
