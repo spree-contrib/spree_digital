@@ -1,7 +1,7 @@
 module Spree
-  class DigitalsController < Spree::BaseController
+  class DigitalsController < Spree::StoreController
     ssl_required :show
-  
+
     def show
       link = DigitalLink.find_by_secret(params[:secret])
 
@@ -19,9 +19,9 @@ module Spree
           Rails.logger.error "Missing Digital Item: #{attachment.path}"
         end
       end
-      
+
       render :unauthorized
     end
-    
+
   end
 end

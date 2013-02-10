@@ -17,7 +17,7 @@ The idea is simple. You attach a file to a Product (or a Variant of this Product
 * The file `views/order_mailer/confirm_email.text.erb` is the only thing that should need customization. If you are looking for HTML emails, [this branch of spree-html-email](http://github.com/iloveitaly/spree-html-email) supports spree_digital
 * A purchased product can be downloaded even if you disable the product immediately. You would have to remove the attached file in your admin section to prevent people from downloading purchased products.
 * File are uploaded to `rails_root/private`. Make sure it's symlinked in case you're using Capistrano. If you want to change the upload path, [check out this gist](https://gist.github.com/3187793#file_spree_digital_path_change_decorator.rb)
-* You must add a `views/spree/digitals/unauthorized.html.erb` file to present an error message to the user if they exceed the download / days limit
+* You must add a `views/spree/digitals/unauthorized.html.erb` file to customize an error message to the user if they exceed the download / days limit
 * We use send_file to send the files on download. See below for instructions on how to push file downloading off to nginx.
 
 ## Installation

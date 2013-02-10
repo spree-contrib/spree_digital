@@ -1,9 +1,7 @@
 it:
-  digital_versions: Versioni Digitali
-  current_file: File Corrente
-  new_file: Nuovo File
-  delete_file: Elimina questo file
   broken_file: Attenzione! questo file sembra essere rotto
+  current_file: File Corrente
+  delete_file: Elimina questo file
   delete_file_cofirmation: Sei sicuro di voler eliminare il file %{filename}?
   digital_delivery: Consegna Digitale
   digital_download: Download %{type} ↓
@@ -13,6 +11,12 @@ it:
     mobi: Kindle eBook
     epub: ePub eBook
     pdf: pdf eBook
+  digital_versions: Versioni Digitali
+  new_file: Nuovo File
+  spree:
+    digitals:
+      unauthorized:
+        explained: This download link has expired.
+        unauthorized: Unauthorized
   spree_digital:
     upload: Upload
-
