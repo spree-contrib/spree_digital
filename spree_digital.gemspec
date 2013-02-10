@@ -12,7 +12,8 @@ Gem::Specification.new do |s|
   s.require_path = 'lib'
   s.requirements << 'none'
   s.required_ruby_version = '>= 1.8.7'
-  s.add_dependency 'spree_core', '~> 1.1'
+
+  s.add_dependency 'spree_core', '~> 1.3.0'
 
   # test suite
   s.add_development_dependency 'shoulda-matchers'

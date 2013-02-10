@@ -1,0 +1,9 @@
+<% if defined?(SpreeFancy) %>
+  <% content_for :subheader do %>
+    <h1><%= t('.unauthorized') %></h1>
+  <% end %>
+<% else %>
+  <h1><%= t('.unauthorized') %></h1>
+<% end %>
+
+<%= t('.explained') %>

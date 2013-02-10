@@ -1,11 +1,7 @@
 en:
-  digital_versions: Digital Versions
-  reset_downloads: Reset Digital Downloads
-  downloads_reset: Digital Downloads Reset
-  current_file: Current File
-  new_file: New File
-  delete_file: Delete this file
   broken_file: Warning! this file is broken
+  current_file: Current File
+  delete_file: Delete this file
   delete_file_cofirmation: Are you sure you want to delete the file %{filename}?
   digital_delivery: Digital Delivery
   digital_download: Download %{type} ↓
@@ -15,5 +11,14 @@ en:
     mobi: Kindle eBook
     epub: ePub eBook
     pdf: pdf eBook
+  digital_versions: Digital Versions
+  downloads_reset: Digital Downloads Reset
+  new_file: New File
+  reset_downloads: Reset Digital Downloads
+  spree:
+    digitals:
+      unauthorized:
+        explained: This download link has expired.
+        unauthorized: Unauthorized
   spree_digital:
     upload: Upload
