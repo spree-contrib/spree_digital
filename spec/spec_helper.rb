@@ -10,7 +10,6 @@ require 'shoulda-matchers'
 Dir[File.join(File.dirname(__FILE__), "support/**/*.rb")].each {|f| require f }
 
 require 'spree/core/testing_support/factories'
-require 'spree/core/testing_support/env'
 require 'spree/core/testing_support/controller_requests'
 require 'spree/core/url_helpers'
 
