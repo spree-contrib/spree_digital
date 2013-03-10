@@ -1,5 +1,5 @@
 module Spree
-  class DigitalsController < Spree::BaseController
+  class DigitalsController < Spree::StoreController
     ssl_required :show
   
     def show
