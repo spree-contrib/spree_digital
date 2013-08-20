@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/halo/spree_digital.png?branch=master)](https://travis-ci.org/halo/spree_digital)
+
 # Spree Digital
 
 This is a spree extension to enable downloadable products (ebooks, MP3s, videos, etc).
