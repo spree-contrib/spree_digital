@@ -13,14 +13,17 @@ Gem::Specification.new do |s|
   s.requirements << 'none'
   s.required_ruby_version = '>= 1.8.7'
 
-  s.add_dependency 'spree_core', '~> 1.3.0'
+  s.add_dependency 'spree_api'
+  s.add_dependency 'spree_backend'
+  s.add_dependency 'spree_core', '~> 2.0.1'
+  s.add_dependency 'spree_frontend'
 
   # test suite
   s.add_development_dependency 'shoulda-matchers'
   s.add_development_dependency 'capybara'
-  s.add_development_dependency 'factory_girl_rails', '~> 1.7.0'
-  s.add_development_dependency 'rspec-rails', '~> 2.8'
+  s.add_development_dependency 'factory_girl_rails', '~> 4.2.0'
+  s.add_development_dependency 'rspec-rails', '~> 2.13'
   s.add_development_dependency 'sqlite3'
   s.add_development_dependency 'ffaker'
-  s.add_development_dependency 'database_cleaner'
+  s.add_development_dependency 'database_cleaner', '1.0.1'
 end
