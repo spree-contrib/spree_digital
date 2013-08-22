@@ -1,4 +1,4 @@
-source 'http://rubygems.org'
+source 'https://rubygems.org'
 gemspec
 
 group :test do
@@ -8,5 +8,3 @@ group :test do
     gem 'growl'
   end
 end
-
-gem 'spree', '~> 1.3.2'
