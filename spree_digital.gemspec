@@ -11,11 +11,11 @@ Gem::Specification.new do |s|
   s.test_files   = `git ls-files -- {test,spec,features}/*`.split("\n")
   s.require_path = 'lib'
   s.requirements << 'none'
-  s.required_ruby_version = '>= 1.8.7'
+  s.required_ruby_version = '>= 1.9.3'
 
   s.add_dependency 'spree_api'
   s.add_dependency 'spree_backend'
-  s.add_dependency 'spree_core', '~> 2.0.1'
+  s.add_dependency 'spree_core', '~> 2.1.0.beta'
   s.add_dependency 'spree_frontend'
 
   # test suite
@@ -26,4 +26,5 @@ Gem::Specification.new do |s|
   s.add_development_dependency 'sqlite3'
   s.add_development_dependency 'ffaker'
   s.add_development_dependency 'database_cleaner', '1.0.1'
+  s.add_development_dependency 'simplecov'
 end
