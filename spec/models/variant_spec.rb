@@ -2,13 +2,8 @@ require 'spec_helper'
 
 describe Spree::Variant do
   context "#destroy" do
-    before do
-      @variant = FactoryGirl.create :variant
-      @digital = FactoryGirl.create :digital, :variant => @variant
-    end
-
-    let(:variant) { @variant }
-    let(:digital) { @digital }
+    let(:variant) { create(:variant) }
+    let!(:digital) { create(:digital, variant: variant) }
 
     it "should destroy associated digitals by default" do
       # default is false

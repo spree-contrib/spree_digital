@@ -2,7 +2,7 @@ ja:
   broken_file: 注意! このファイルが壊れている!
   current_file: 現在のバージョン
   delete_file: このファイルを削除
-  delete_file_cofirmation: 本当に「%{filename}」を削除しても宜しいですか?
+  delete_file_confirmation: 本当に「%{filename}」を削除しても宜しいですか?
   digital_shipping: ダウンロードリンクを<strong>%{email}</strong>に送ります
   digital_versions: デジタル版
   new_file: 新しいファイル
