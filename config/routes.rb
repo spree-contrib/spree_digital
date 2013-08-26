@@ -11,5 +11,5 @@ Spree::Core::Engine.routes.draw do
     end
   end
   
-  get '/digital/:secret', :to => 'digitals#show', :via => :get, :as => 'digital', :constraints => { :secret => /[a-zA-Z0-9]{30}/ }
+  get '/digital/:secret', :to => 'digitals#show', :as => 'digital', :constraints => { :secret => /[a-zA-Z0-9]{30}/ }
 end

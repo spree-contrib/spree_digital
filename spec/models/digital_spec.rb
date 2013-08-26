@@ -12,11 +12,12 @@ describe Spree::Digital do
   
   context "#destroy" do
     it "should destroy associated digital_links" do
-     digital = FactoryGirl.create(:digital)
-     3.times { digital.digital_links.create!({ :line_item => FactoryGirl.create(:line_item) }, :without_protection => true) }
-     Spree::DigitalLink.count.should == 3      
-     digital.destroy
-     Spree::DigitalLink.count.should == 0      
+      digital = create(:digital)
+      3.times { digital.digital_links.create!({ :line_item => create(:line_item) }) }
+      Spree::DigitalLink.count.should == 3
+      lambda {
+        digital.destroy
+      }.should change(Spree::DigitalLink, :count).by(-3)
     end
   end
 end
