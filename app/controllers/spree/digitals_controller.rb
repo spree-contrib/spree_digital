@@ -4,18 +4,18 @@ module Spree
     rescue_from ActiveRecord::RecordNotFound, with: :resource_not_found
 
     def show
-      if attachment.present?
+      link = DigitalLink.find_by_secret(params[:secret])
+
+      if attachment.present? 
         # don't authorize the link unless the file exists
         # the logger error will help track down customer issues easier
-
-        # TODO: PMG - We should probably be a little more sophisticated here, and support
-        # remote files (e.g. S3)
-        if attachment_is_file?
+        if attachment_is_file? 
           if digital_link.authorize!
-            file_sent = send_file attachment.path, 
-                                  :filename => attachment.original_filename, 
-                                  :type => attachment.content_type
-            return if file_sent
+            if Spree::Config[:use_s3]
+              redirect_to attachment.expiring_url(Spree::DigitalConfiguration[:s3_expiration_seconds]) and return
+            else
+              send_file attachment.path, :filename => attachment.original_filename, :type => attachment.content_type and return
+            end
           end
         else
           Rails.logger.error "Missing Digital Item: #{attachment.path}"
@@ -43,6 +43,27 @@ module Spree
       def resource_not_found
         head status: 404
       end
+
+
+    private
+
+    def attachment_is_file?
+      return attachment.exists?
+    end
+
+    def digital_link
+      @link ||= DigitalLink.find_by_secret(params[:secret])
+      raise ActiveRecord::RecordNotFound if @link.nil?
+      @link
+    end
+
+    def attachment
+      @attachment ||= digital_link.digital.try(:attachment) if digital_link.present?
+    end
+
+    def resource_not_found
+      head status: 404
+    end
 
   end
 end

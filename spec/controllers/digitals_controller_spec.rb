@@ -29,5 +29,13 @@ describe Spree::DigitalsController do
       response.code.should eq('200')
       response.header['Content-Type'].should match digital.attachment.content_type
     end
+
+    it 'redirects to s3 for an authorized link when using s3' do
+      Spree::Config[:use_s3] = true
+      controller.should_receive(:redirect_to)
+      controller.should_receive(:attachment_is_file?).and_return(true)
+      controller.should_not_receive(:send_file)
+      spree_get :show, secret: authorized_digital_link.secret
+    end
   end
 end
