@@ -4,7 +4,15 @@ module Spree
     
     protected
       def location_after_save
-        admin_product_digitals_url(@product)
+        spree.admin_product_digitals_path(@product)
+      end
+
+      def permitted_resource_params
+        params.require(:digital).permit(permitted_digital_attributes)
+      end
+
+      def permitted_digital_attributes
+        [:variant_id, :attachment] 
       end
   end
 end

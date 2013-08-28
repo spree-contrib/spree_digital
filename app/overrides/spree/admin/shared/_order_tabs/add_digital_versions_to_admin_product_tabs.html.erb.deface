@@ -1,0 +1,8 @@
+<!-- insert_bottom "[data-hook='admin_order_tabs']" -->
+<% if can?(:update, @order) && @order.digital? %>
+  <li>
+  <%= button_link_to(t(:reset_downloads), reset_digitals_admin_order_url(@order)) %>
+  </li>
+<% end %>
+
+<!-- enabled -->

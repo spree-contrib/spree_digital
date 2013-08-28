@@ -8,12 +8,17 @@ module Spree
       if link.present? and link.digital.attachment.present?
         attachment = link.digital.attachment
 
+
+
         # don't authorize the link unless the file exists
         # the logger error will help track down customer issues easier
-
-        if File.file?(attachment.path)
+        if attachment.exists?
           if link.authorize!
-            send_file attachment.path, :filename => attachment.original_filename, :type => attachment.content_type and return
+            if Spree::Config[:use_s3]
+              redirect_to attachment.expiring_url(Spree::DigitalConfiguration[:s3_expiration_seconds]) and return
+            else
+              send_file attachment.path, :filename => attachment.original_filename, :type => attachment.content_type and return
+            end
           end
         else
           Rails.logger.error "Missing Digital Item: #{attachment.path}"
