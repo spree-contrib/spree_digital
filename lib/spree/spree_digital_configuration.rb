@@ -8,5 +8,8 @@ module Spree
 
     # should digitals be kept around after the associated product is destroyed
     preference :keep_digitals,      :boolean, :default => false
+
+    #number of seconds before an s3 link expires
+    preference :s3_expiration_seconds,    :integer, :default => 10
   end
 end

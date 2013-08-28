@@ -4,7 +4,7 @@ module Spree
     
     protected
       def location_after_save
-        admin_product_digitals_url(@product)
+        spree.admin_product_digitals_path(@product)
       end
   end
 end
