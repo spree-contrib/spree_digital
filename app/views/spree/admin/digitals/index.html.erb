@@ -3,7 +3,7 @@
 
 <% if @product.has_variants? %>
 
-  <% for variant in @product.variants do %>
+  <% for variant in @product.variants_including_master do %>
     <%= render 'form', :variant => variant %>
   <% end %>
 
