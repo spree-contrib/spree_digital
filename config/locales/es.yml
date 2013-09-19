@@ -1,0 +1,24 @@
+es:
+  broken_file: ¡Atención! Este archivo está corrupto
+  current_file: Archivo actual
+  delete_file: Borrar este archivo
+  delete_file_confirmation: ¿Está seguro de que quiere borrar este fichero %{filename}?
+  digital_delivery: Entrega digital
+  digital_download: Descarga %{type} ↓
+  digital_download_links: Enlaces para la descaga digital
+  digital_format:
+    mp3: Audio MP3
+    mobi: Kindle eBook
+    epub: ePub eBook
+    pdf: pdf eBook
+  digital_versions: Versiones digitales
+  downloads_reset: Reset de descargas digitales
+  new_file: Nuevo Archivo
+  reset_downloads: Resetear descargas digitales
+  spree:
+    digitals:
+      unauthorized:
+        explained: El enlace para la descarga ha expirado
+        unauthorized: No estás autorizado
+  spree_digital:
+    upload: Subir
