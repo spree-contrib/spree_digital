@@ -11,7 +11,11 @@ module SpreeDigital
     initializer "spree.register.digital_shipping", :after => 'spree.register.calculators' do |app|
       app.config.spree.calculators.shipping_methods << Spree::Calculator::DigitalDelivery
     end
-   
+
+    initializer 'spree_digital.custom_spree_splitters', :after => 'spree.register.stock_splitters' do |app|
+      app.config.spree.stock_splitters << Spree::Stock::Splitter::Digital
+    end
+
     def self.activate
       Dir.glob(File.join(File.dirname(__FILE__), "../../app/**/*_decorator*.rb")) do |c|
         Rails.application.config.cache_classes ? require(c) : load(c)
