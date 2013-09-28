@@ -25,23 +25,35 @@ describe Spree::Calculator::DigitalDelivery do
     let(:digital_order) {
       order = create(:order)
       variants = 3.times.map { create(:variant, :digitals => [FactoryGirl.create(:digital)]) }
-      variants.each { |v| order.contents.add(v, 1) }
-      order
+      package = Spree::Stock::Package.new(create(:stock_location), order)
+      variants.each { |v|
+        order.contents.add(v, 1)
+        package.add(v, 1)
+      }
+      package
     }
 
     let(:mixed_order) {
       order = create(:order)
       variants = 2.times.map { create(:variant, :digitals => [FactoryGirl.create(:digital)]) }
       variants << create(:variant)
-      variants.each { |v| order.contents.add(v, 1) }
-      order
+      package = Spree::Stock::Package.new(create(:stock_location), order)
+      variants.each { |v|
+        order.contents.add(v, 1)
+        package.add(v, 1)
+      }
+      package
     }
 
     let(:non_digital_order) {
       order = create(:order)
       variants = 3.times.map { create(:variant) }
-      variants.each { |v| order.contents.add(v, 1) }
-      order
+      package = Spree::Stock::Package.new(create(:stock_location), order)
+      variants.each { |v|
+        order.contents.add(v, 1)
+        package.add(v, 1)
+      }
+      package
     }
 
     it 'should return true for a digital order' do
