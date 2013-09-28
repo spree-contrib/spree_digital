@@ -11,8 +11,8 @@ module Spree
       self.preferred_amount
     end
 
-    def available?(order)
-      order.digital?
+    def available?(package)
+      package.contents.all? { |content| content.variant.digital? }
     end
   end
 end
