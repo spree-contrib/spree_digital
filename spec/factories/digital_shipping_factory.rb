@@ -1,7 +1,7 @@
 FactoryGirl.define do
   # https://github.com/thoughtbot/factory_girl/blob/master/GETTING_STARTED.md#modifying-factories
 
-  factory :digital_shipping_calculator, class: Spree::Calculator::DigitalDelivery do
+  factory :digital_shipping_calculator, class: Spree::Calculator::Shipping::DigitalDelivery do
     after :create do |c|
       c.set_preference(:amount, 0)
     end

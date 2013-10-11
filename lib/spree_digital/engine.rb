@@ -9,7 +9,7 @@ module SpreeDigital
     end
 
     initializer "spree.register.digital_shipping", :after => 'spree.register.calculators' do |app|
-      app.config.spree.calculators.shipping_methods << Spree::Calculator::DigitalDelivery
+      app.config.spree.calculators.shipping_methods << Spree::Calculator::Shipping::DigitalDelivery
     end
 
     initializer 'spree_digital.custom_spree_splitters', :after => 'spree.register.stock_splitters' do |app|
