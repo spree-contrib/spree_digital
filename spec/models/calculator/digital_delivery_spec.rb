@@ -1,10 +1,10 @@
 require 'spec_helper'
 
-describe Spree::Calculator::DigitalDelivery do
-  subject { Spree::Calculator::DigitalDelivery.new }
+describe Spree::Calculator::Shipping::DigitalDelivery do
+  subject { Spree::Calculator::Shipping::DigitalDelivery.new }
 
   it 'has a description for the class' do 
-    Spree::Calculator::DigitalDelivery.should respond_to(:description)
+    Spree::Calculator::Shipping::DigitalDelivery.should respond_to(:description)
   end
 
   context '#compute' do
