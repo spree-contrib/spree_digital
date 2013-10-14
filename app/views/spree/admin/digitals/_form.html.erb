@@ -2,7 +2,7 @@
   <div>
     <%= form_for(:digital, :url => admin_product_digitals_path(@product), :method => :create, :multipart => true ) do |f| %>
     <fieldset>
-      <legend><%= Spree::Variant.model_name.human %> "<%= variant.options_text %>"</legend>
+      <legend><%= Spree::Variant.model_name.human %> "<%= variant.is_master ? "Master" : variant.options_text %>"</legend>
       
       <%= f.field_container :current_file do %>
       <strong><%=t 'files' %>:</strong>
