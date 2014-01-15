@@ -47,8 +47,6 @@ RSpec.configure do |config|
 
   config.before(:each) do
     DatabaseCleaner.start
-    Spree::Config[:use_s3] = false #reset spree preferences
-
   end
 
   config.after(:each) do
