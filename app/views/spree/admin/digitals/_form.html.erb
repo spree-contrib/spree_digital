@@ -1,36 +1,33 @@
 <div>
-  <div>
-    <%= form_for(:digital, :url => admin_product_digitals_path(@product), :method => :create, :multipart => true ) do |f| %>
+  <%= form_for(:digital, :url => admin_product_digitals_path(@product), :method => :create, :multipart => true ) do |f| %>
     <fieldset>
       <legend><%= Spree::Variant.model_name.human %> "<%= variant.is_master ? "Master" : variant.options_text %>"</legend>
-      
       <%= f.field_container :current_file do %>
-      <strong><%=t 'files' %>:</strong>
-      <% if variant.digital? %>
-      <ul>
-        <% variant.digitals.each do |digital| %>
-        <li>
-         <%= render digital %>&nbsp;&nbsp;
-         <%= link_to t("delete_file"), admin_product_digital_url(@product, digital), :confirm => t('delete_file_cofirmation', :filename => digital.attachment_file_name), :method => :delete %>
-       </li>
-       <% end %>
-     </ul>
-     <% else %>
-     <%=t 'none' %>
-     <% end %>
-     <% end %>
-
-     <p class="form-buttons">
-      <%= f.field_container :file do %>
-      <%= f.label :file, t("new_file") %> <span class="required">*</span><br/>
-      <%= f.file_field :attachment %>
+        <strong><%=t 'files' %>:</strong>
+        <% if variant.digital? %>
+          <ul>
+            <% variant.digitals.each do |digital| %>
+              <li>
+                <%= render digital %>&nbsp;&nbsp;
+                <%= link_to t("delete_file"), admin_product_digital_url(@product, digital), :confirm => t('delete_file_cofirmation', :filename => digital.attachment_file_name), :method => :delete %>
+              </li>
+            <% end %>
+          </ul>
+        <% else %>
+          <%=t 'none' %>
+        <% end %>
       <% end %>
 
-      <%= hidden_field_tag 'digital[variant_id]', variant.id %>
+      <p class="form-buttons">
+        <%= f.field_container :file do %>
+          <%= f.label :file, t("new_file") %> <span class="required">*</span><br/>
+          <%= f.file_field :attachment %>
+        <% end %>
 
-      <%= button t('spree_digital.upload') %>
-    </p>
+        <%= hidden_field_tag 'digital[variant_id]', variant.id %>
 
-  </fieldset>
+        <%= button t('spree_digital.upload') %>
+      </p>
+    </fieldset>
   <% end %>
 </div>
