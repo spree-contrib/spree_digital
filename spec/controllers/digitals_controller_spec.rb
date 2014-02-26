@@ -31,7 +31,7 @@ describe Spree::DigitalsController do
     end
 
     it 'redirects to s3 for an authorized link when using s3' do
-      Spree::Config[:use_s3] = true
+      Paperclip::Attachment.default_options[:storage] = :s3
       controller.should_receive(:redirect_to)
       controller.should_receive(:attachment_is_file?).and_return(true)
       controller.should_not_receive(:send_file)
