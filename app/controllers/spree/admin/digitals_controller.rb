@@ -15,5 +15,6 @@ module Spree
       def permitted_digital_attributes
         [:variant_id, :attachment]
       end
+    end
   end
 end
