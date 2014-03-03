@@ -26,7 +26,7 @@ module Spree
     private
 
       def attachment_is_file?
-        if Paperclip::Attachment.default_options[:storage] = :s3
+        if Paperclip::Attachment.default_options[:storage] == :s3
           attachment.exists?
         else
           File.file?(attachment.path)

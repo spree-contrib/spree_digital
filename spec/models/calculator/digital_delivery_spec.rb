@@ -28,7 +28,7 @@ describe Spree::Calculator::Shipping::DigitalDelivery do
       package = Spree::Stock::Package.new(create(:stock_location), order)
       variants.each { |v|
         order.contents.add(v, 1)
-        package.add(v, 1)
+        package.add(order.line_items.where(variant_id: v.id).first, 1)
       }
       package
     }
@@ -40,7 +40,7 @@ describe Spree::Calculator::Shipping::DigitalDelivery do
       package = Spree::Stock::Package.new(create(:stock_location), order)
       variants.each { |v|
         order.contents.add(v, 1)
-        package.add(v, 1)
+        package.add(order.line_items.where(variant_id: v.id).first, 1)
       }
       package
     }
@@ -51,7 +51,7 @@ describe Spree::Calculator::Shipping::DigitalDelivery do
       package = Spree::Stock::Package.new(create(:stock_location), order)
       variants.each { |v|
         order.contents.add(v, 1)
-        package.add(v, 1)
+        package.add(order.line_items.where(variant_id: v.id).first, 1)
       }
       package
     }
