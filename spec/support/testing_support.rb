@@ -6,7 +6,7 @@ module SpreeDigital
       end
 
       def upload_image(filename)
-        fixture_file_upload(image(filename).path)
+        fixture_file_upload(image(filename).path, 'image/jpeg')
       end
     end
   end
