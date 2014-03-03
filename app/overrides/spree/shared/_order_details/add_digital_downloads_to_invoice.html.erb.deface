@@ -3,7 +3,7 @@
   <%= content_tag(:p, class: 'download_links') do %>
     <% item.digital_links.each do |digital_link| %>
     <% format = File.extname(digital_link.digital.attachment.path).downcase %>
-      <%= link_to Spree.t(:digital_download, scope: 'digitals', type: Spree.t("digitals.digital_format#{format}")), digital_url(secret: digital_link.secret), class: "btn #{format}" %>
+      <%= link_to Spree.t(:digital_download, scope: 'digitals', filename: raw(digital_link.digital.attachment_file_name)), digital_url(secret: digital_link.secret), class: "#{format}" %>
     <% end %>
   <% end %>
 <% end %>

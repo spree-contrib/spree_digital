@@ -9,7 +9,7 @@ en:
       delete_file_confirmation: Are you sure you want to delete the file %{filename}?
       digitals: Digitals
       digital_delivery: Digital Delivery
-      digital_download: Download %{type} ↓
+      digital_download: Download %{filename} ↓
       digital_download_links: Digital Download Links
       digital_format:
         mp3: Audio MP3
