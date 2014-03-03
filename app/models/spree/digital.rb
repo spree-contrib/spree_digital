@@ -4,7 +4,7 @@ module Spree
     has_many :digital_links, :dependent => :destroy
 
     has_attached_file :attachment, :path => ":rails_root/private/digitals/:id/:basename.:extension"
-    validates_attachment_content_type :attachment, :content_type => %w(audio/mpeg application/x-mobipocket-ebook application/epub+zip application/pdf application/zip image/jpeg)
+    validates_attachment_content_type :attachment, :content_type => %w(audio/mpeg application/x-mobipocket-ebook application/epub+zip application/octet-stream application/pdf application/zip image/gif image/jpeg image/png)
 
     if Paperclip::Attachment.default_options[:storage] == :s3
       attachment_definitions[:attachment][:s3_permissions] = :private
