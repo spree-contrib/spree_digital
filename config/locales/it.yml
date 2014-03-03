@@ -4,7 +4,7 @@ it:
   delete_file: Elimina questo file
   delete_file_confirmation: Sei sicuro di voler eliminare il file %{filename}?
   digital_delivery: Consegna Digitale
-  digital_download: Download %{type} ↓
+  digital_download: Download %{filename} ↓
   digital_download_links: Link al Download Digitale
   digital_format:
     mp3: Audio MP3

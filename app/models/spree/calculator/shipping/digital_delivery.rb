@@ -5,7 +5,7 @@ module Spree
   module Calculator::Shipping
     class DigitalDelivery < Spree::Calculator::Shipping::FlatRate
       def self.description
-        I18n.t(:digital_delivery)
+        Spree.t(:digital_delivery, scope: 'digital')
       end
 
       def compute(object=nil)
