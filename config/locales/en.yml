@@ -1,24 +1,28 @@
 en:
-  broken_file: Warning! this file is broken
-  current_file: Current File
-  delete_file: Delete this file
-  delete_file_confirmation: Are you sure you want to delete the file %{filename}?
-  digital_delivery: Digital Delivery
-  digital_download: Download %{type} ↓
-  digital_download_links: Digital Download Links
-  digital_format:
-    mp3: Audio MP3
-    mobi: Kindle eBook
-    epub: ePub eBook
-    pdf: pdf eBook
-  digital_versions: Digital Versions
-  downloads_reset: Digital Downloads Reset
-  new_file: New File
-  reset_downloads: Reset Digital Downloads
   spree:
+    controller:
+      controller_name: Digitals
     digitals:
+      broken_file: Warning! this file is broken
+      current_file: Current File
+      delete_file: Delete this file
+      delete_file_confirmation: Are you sure you want to delete the file %{filename}?
+      digitals: Digitals
+      digital_delivery: Digital Delivery
+      digital_download: Download %{type} ↓
+      digital_download_links: Digital Download Links
+      digital_format:
+        mp3: Audio MP3
+        mobi: Kindle eBook
+        epub: ePub eBook
+        pdf: pdf eBook
+        zip: ZIP file
+      digital_versions: Digital Versions
+      downloads_reset: Digital Downloads Reset
+      files: Files
+      new_file: New File
+      reset_downloads: Reset Digital Downloads
       unauthorized:
         explained: This download link has expired.
         unauthorized: Unauthorized
-  spree_digital:
-    upload: Upload
+      upload: Upload
