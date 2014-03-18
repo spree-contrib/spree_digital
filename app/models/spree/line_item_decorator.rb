@@ -19,7 +19,7 @@ Spree::LineItem.class_eval do
     if(master.digital?)
       create_digital_links_for_variant(master)
     end
-    create_digital_links_for_variant(variant)
+    create_digital_links_for_variant(variant) unless variant.is_master
   end
 
   def create_digital_links_for_variant(variant)
