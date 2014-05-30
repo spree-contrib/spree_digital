@@ -4,6 +4,9 @@ require_dependency 'spree/shipping_calculator'
 module Spree
   module Calculator::Shipping
     class DigitalDelivery < ShippingCalculator
+      preference :amount, :decimal, default: 0
+      preference :currency, :string, default: ->{ Spree::Config[:currency] }
+
       def self.description
         Spree.t(:digital_delivery, scope: 'digital')
       end
