@@ -7,17 +7,17 @@ describe Spree::Calculator::Shipping::DigitalDelivery do
     Spree::Calculator::Shipping::DigitalDelivery.should respond_to(:description)
   end
 
-  context '#compute' do
+  context '#compute_package' do
     it 'should ignore the passed in object' do
       lambda {
-        subject.compute(double)
+        subject.compute_package(double)
       }.should_not raise_error
     end
 
     it 'should always return the preferred_amount' do
       amount_double = double
       subject.should_receive(:preferred_amount).and_return(amount_double)
-      subject.compute(double).should eq(amount_double)
+      subject.compute_package(double).should eq(amount_double)
     end
   end
 
