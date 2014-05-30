@@ -3,12 +3,12 @@ require_dependency 'spree/shipping_calculator'
 
 module Spree
   module Calculator::Shipping
-    class DigitalDelivery < Spree::Calculator::Shipping::FlatRate
+    class DigitalDelivery < ShippingCalculator
       def self.description
         Spree.t(:digital_delivery, scope: 'digital')
       end
 
-      def compute(object=nil)
+      def compute_package(package=nil)
         self.preferred_amount
       end
 
@@ -18,3 +18,5 @@ module Spree
     end
   end
 end
+
+
