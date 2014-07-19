@@ -27,9 +27,9 @@ describe Spree::Order do
       3.times do
         order.contents.add create(:variant, :digitals => [create(:digital)]), 1
       end
-      order.digital?.should be_true
+      order.digital?.should be true
       order.contents.add create(:variant, :digitals => [create(:digital)]), 4
-      order.digital?.should be_true
+      order.digital?.should be true
     end
     
     it "should understand that not all products are digital" do
@@ -38,9 +38,9 @@ describe Spree::Order do
         order.contents.add create(:variant, :digitals => [create(:digital)]), 1
       end
       order.contents.add create(:variant), 1 # this is the analog product
-      order.digital?.should be_false
+      order.digital?.should be false
       order.contents.add create(:variant, :digitals => [create(:digital)]), 4
-      order.digital?.should be_false
+      order.digital?.should be false
     end
   end
 

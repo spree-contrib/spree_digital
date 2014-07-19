@@ -32,7 +32,7 @@ describe Spree::DigitalsController do
     end
 
     it 'redirects to s3 for an authorized link when using s3' do
-      pending 'TODO: needs a way to test without having a bucket'
+      skip 'TODO: needs a way to test without having a bucket'
       Paperclip::Attachment.default_options[:storage] = :s3
       controller.should_receive(:redirect_to)
       controller.should_receive(:attachment_is_file?).and_return(true)

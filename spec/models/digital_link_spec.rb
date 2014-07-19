@@ -49,25 +49,25 @@ describe Spree::DigitalLink do
    it "should not be #authorized? when the access_counter is too high" do
      link = create(:digital_link)
      link.stub(:access_counter => Spree::DigitalConfiguration[:authorized_clicks] - 1)
-     link.authorizable?.should be_true
+     link.authorizable?.should be true
      link.stub(:access_counter => Spree::DigitalConfiguration[:authorized_clicks])
-     link.authorizable?.should be_false
+     link.authorizable?.should be false
    end
       
    it "should not be #authorize! when the created_at date is too far in the past" do
      link = create(:digital_link)
-     link.authorize!.should be_true
+     link.authorize!.should be true
      link.stub(:created_at => (Spree::DigitalConfiguration[:authorized_days] * 24 - 1).hours.ago)
-     link.authorize!.should be_true
+     link.authorize!.should be true
      link.stub(:created_at => (Spree::DigitalConfiguration[:authorized_days] * 24 + 1).hours.ago)
-     link.authorize!.should be_false
+     link.authorize!.should be false
    end
    
    it "should not be #authorized? when both access_counter and created_at are invalid" do
      link = create(:digital_link)
-     link.authorizable?.should be_true
+     link.authorizable?.should be true
      link.stub(:access_counter => Spree::DigitalConfiguration[:authorized_clicks], :created_at => (Spree::DigitalConfiguration[:authorized_days] * 24 + 1).hours.ago)
-     link.authorizable?.should be_false
+     link.authorizable?.should be false
    end
    
   end

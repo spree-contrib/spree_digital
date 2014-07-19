@@ -29,6 +29,7 @@ require 'spree/testing_support/authorization_helpers'
 Dir[File.join(File.dirname(__FILE__), "factories/*.rb")].each {|f| require f }
 
 RSpec.configure do |config|
+  config.infer_spec_type_from_file_location!
   config.mock_with :rspec
   config.include FactoryGirl::Syntax::Methods
   config.include Spree::TestingSupport::UrlHelpers
@@ -38,7 +39,7 @@ RSpec.configure do |config|
   config.use_transactional_fixtures = false
 
   config.before(:each) do
-    if example.metadata[:js]
+    if RSpec.current_example.metadata[:js]
       DatabaseCleaner.strategy = :truncation, { :except => ['spree_countries', 'spree_zones', 'spree_zone_members', 'spree_states', 'spree_roles'] }
     else
       DatabaseCleaner.strategy = :transaction

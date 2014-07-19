@@ -57,15 +57,15 @@ describe Spree::Calculator::Shipping::DigitalDelivery do
     }
 
     it 'should return true for a digital order' do
-      subject.available?(digital_order).should be_true
+      subject.available?(digital_order).should be true
     end
 
     it 'should return false for a mixed order' do
-      subject.available?(mixed_order).should be_false
+      subject.available?(mixed_order).should be false
     end
 
     it 'should return false for an exclusively non-digital order' do
-      subject.available?(non_digital_order).should be_false
+      subject.available?(non_digital_order).should be false
     end
   end
 end

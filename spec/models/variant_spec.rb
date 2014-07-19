@@ -11,9 +11,9 @@ describe Spree::Variant do
       Spree::DigitalConfiguration[:keep_digitals] = false
 
       Spree::Digital.count.should == 1
-      variant.digitals.present?.should be_true
+      variant.digitals.present?.should be true
       variant.deleted_at = Time.now
-      variant.deleted?.should be_true
+      variant.deleted?.should be true
       variant.save!
       expect { digital.reload.present? }.to raise_error
       Spree::Digital.count.should == 0
@@ -23,10 +23,10 @@ describe Spree::Variant do
       Spree::DigitalConfiguration[:keep_digitals] = true
 
       Spree::Digital.count.should == 1
-      variant.digitals.present?.should be_true
+      variant.digitals.present?.should be true
       variant.deleted_at = Time.now
       variant.save!
-      variant.deleted?.should be_true
+      variant.deleted?.should be true
       expect { digital.reload.present? }.to_not raise_error
       Spree::Digital.count.should == 1
     end
