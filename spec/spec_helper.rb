@@ -40,7 +40,7 @@ RSpec.configure do |config|
 
   config.before(:each) do
     if RSpec.current_example.metadata[:js]
-      DatabaseCleaner.strategy = :truncation, { :except => ['spree_countries', 'spree_zones', 'spree_zone_members', 'spree_states', 'spree_roles'] }
+      DatabaseCleaner.strategy = :truncation, { except: ['spree_countries', 'spree_zones', 'spree_zone_members', 'spree_states', 'spree_roles'] }
     else
       DatabaseCleaner.strategy = :transaction
     end
