@@ -18,6 +18,8 @@ module Spree
         else
           Rails.logger.error "Missing Digital Item: #{attachment.path}"
         end
+      elsif digital_link.digital.try(:resource_url) && digital_link.authorize!
+        return redirect_to digital_link.digital.resource_url
       end
 
       render :unauthorized
