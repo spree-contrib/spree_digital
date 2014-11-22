@@ -100,7 +100,7 @@ References:
 
 ### Table Diagram
 
-<img src="http://github.com/halo/spree_digital/raw/master/doc/tables.png">
+<img src="https://cdn.rawgit.com/halo/spree_digital/master/doc/tables.png">
 
 ### Installation
 
