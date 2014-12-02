@@ -1,6 +1,7 @@
 [![Build Status](https://travis-ci.org/halo/spree_digital.png?branch=master)](https://travis-ci.org/halo/spree_digital)
 
 # Spree Digital
+[![Gitter](https://badges.gitter.im/Join Chat.svg)](https://gitter.im/halo/spree_digital?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 
 This is a spree extension to enable downloadable products (ebooks, MP3s, videos, etc).
 
