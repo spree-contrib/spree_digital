@@ -1,6 +1,6 @@
-[![Build Status](https://travis-ci.org/halo/spree_digital.png?branch=master)](https://travis-ci.org/halo/spree_digital)
-
 # Spree Digital
+
+[![Build Status](https://travis-ci.org/halo/spree_digital.png?branch=master)](https://travis-ci.org/halo/spree_digital)
 [![Gitter](https://badges.gitter.im/Join Chat.svg)](https://gitter.im/halo/spree_digital?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 
 This is a spree extension to enable downloadable products (ebooks, MP3s, videos, etc).
@@ -9,7 +9,7 @@ The master branch is compatible with Spree 1.2.x. 1.0.x - 1.1.x versions are ava
 
 This documentation is not complete and possibly out of date in some cases. There are features that have been implemented that are not documented here, please look at the source for complete documentation.
 
-The idea is simple. You attach a file to a Product (or a Variant of this Product) and when people buy it, they will receive a link via email where they can download it once. There are a few assumptions that spree_digital (currently) makes and it's important to be aware of them. 
+The idea is simple. You attach a file to a Product (or a Variant of this Product) and when people buy it, they will receive a link via email where they can download it once. There are a few assumptions that spree_digital (currently) makes and it's important to be aware of them.
 
 * The table structure of spree_core is not touched. Spree digital lives parallel to spree_core and does change the existing database, except adding two new tables.
 * The download links will be sent via email in the order confirmation (or "resend" from the admin section). The links do *not* appear in the order "overview" that the customer sees. Adding download buttons to `OrdersController#show` is easy, [check out this gist](https://gist.github.com/3187793#file_add_spree_digital_buttons_to_invoice.rb).
@@ -71,11 +71,11 @@ server {
 
   location / {
     proxy_set_header X_FORWARDED_PROTO https;
-    ... 
+    ...
 
     proxy_set_header X-Sendfile-Type  X-Accel-Redirect;
     proxy_set_header X-Accel-Mapping  /data/spree/shared/uploaded-files/digitals/=/digitals/;
-    
+
     ...
   }
 
@@ -83,7 +83,7 @@ server {
     internal;
     root /data/spree/shared/uploaded-files/;
   }
-  
+
   ...
 
 }
@@ -132,18 +132,17 @@ Bring up the test application (you only need to do this whenever you fiddle arou
 
 ```shell
 rake test_app
-rake spec
+rake rspec
 ```
 
 This link may be very helpful to you: [http://github.com/spree/spree](http://github.com/spree/spree)
 
-### Authors
+### Contributors
 
-* [iloveitaly](http://github.com/iloveitaly/)
-* [halo](http://github.com/halo)
+See https://github.com/halo/spree_digital/graphs/contributors
 
 ### License
 
-Copyright (c) 2011 funkensturm.
+Copyright (c) 2011-2015 halo
 Released under the MIT License
-See [LICENSE](http://github.com/funkensturm/spree_digital/blob/master/LICENSE)
+See [LICENSE](http://github.com/halo/spree_digital/blob/master/LICENSE)
