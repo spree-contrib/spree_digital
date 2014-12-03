@@ -1,6 +1,6 @@
 # Spree Digital
 
-[![Build Status](https://travis-ci.org/halo/spree_digital.png?branch=master)](https://travis-ci.org/halo/spree_digital)
+[![Build Status](https://travis-ci.org/halo/spree_digital.png?branch=2-4-stable)](https://travis-ci.org/halo/spree_digital)
 [![License](http://img.shields.io/badge/license-MIT-blue.svg)](http://github.com/halo/spree_digital/blob/master/LICENSE)
 [![Gitter](https://badges.gitter.im/Join Chat.svg)](https://gitter.im/halo/spree_digital?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 
