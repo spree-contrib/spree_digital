@@ -10,7 +10,7 @@ describe Spree::Product do
   context 'digitals' do
     it 'returns the digitals from the variants' do
       product_digitals = product.digitals
-      digitals.each { |d| product_digitals.should include(d) }
+      digitals.each { |d| expect(product_digitals).to include(d) }
     end 
   end
 end

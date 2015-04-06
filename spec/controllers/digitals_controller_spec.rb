@@ -8,35 +8,34 @@ describe Spree::DigitalsController do
 
     it 'returns a 404 for a non-existent secret' do
       spree_get :show, secret: 'not_real'
-      response.code.should eq('404')
+      expect(response.code).to eq('404')
     end
 
     it 'returns a 200 and calls send_file for link that is not a file' do
-      controller.should_receive(:attachment_is_file?).and_return(false)
-      controller.should_not_receive(:send_file)
+      expect(controller).to receive(:attachment_is_file?).and_return(false)
+      expect(controller).not_to receive(:send_file)
       spree_get :show, secret: authorized_digital_link.secret
-      response.code.should eq('200')
-      response.should render_template(:unauthorized)
+      expect(response.code).to eq('200')
+      expect(response).to render_template(:unauthorized)
     end
 
     it 'returns a 200 and calls send_file for an authorized link that is a file' do
-      controller.should_receive(:attachment_is_file?).and_return(true)
-      controller.should_receive(:send_file).with(digital.attachment.path,
+      expect(controller).to receive(:attachment_is_file?).and_return(true)
+      expect(controller).to receive(:send_file).with(digital.attachment.path,
                                                  :filename => digital.attachment.original_filename,
-                                                 :type => digital.attachment.content_type).
-                                            and_return{controller.render :nothing => true,
+                                                 :type => digital.attachment.content_type){controller.render :nothing => true,
                                                                          :content_type => digital.attachment.content_type }
       spree_get :show, secret: authorized_digital_link.secret
-      response.code.should eq('200')
-      response.header['Content-Type'].should match digital.attachment.content_type
+      expect(response.code).to eq('200')
+      expect(response.header['Content-Type']).to match digital.attachment.content_type
     end
 
     it 'redirects to s3 for an authorized link when using s3' do
       skip 'TODO: needs a way to test without having a bucket'
       Paperclip::Attachment.default_options[:storage] = :s3
-      controller.should_receive(:redirect_to)
-      controller.should_receive(:attachment_is_file?).and_return(true)
-      controller.should_not_receive(:send_file)
+      expect(controller).to receive(:redirect_to)
+      expect(controller).to receive(:attachment_is_file?).and_return(true)
+      expect(controller).not_to receive(:send_file)
       spree_get :show, secret: authorized_digital_link.secret
     end
   end

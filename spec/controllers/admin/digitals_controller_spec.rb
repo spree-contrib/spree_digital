@@ -29,16 +29,16 @@ describe Spree::Admin::DigitalsController do
 
       it "should display an empty page when the master variant is not digital" do
         spree_get :index, product_id: product.slug
-        response.code.should == "200"
-        response.body.should include("This product has no variants")
-        response.body.should_not include('A digital version of this product currently exists')
+        expect(response.code).to eq("200")
+        expect(response.body).to include("This product has no variants")
+        expect(response.body).not_to include('A digital version of this product currently exists')
       end
 
       it "should display the variant details when the master is digital" do
         @digital = create :digital, :variant => product.master
         spree_get :index, product_id: product.slug
-        response.code.should == "200"
-        response.body.should include('A digital version of this product currently exists')
+        expect(response.code).to eq("200")
+        expect(response.body).to include('A digital version of this product currently exists')
       end
       
     end
@@ -49,12 +49,12 @@ describe Spree::Admin::DigitalsController do
       let!(:variant) { create(:variant, product: product) }
 
       it 'creates a digital associated with the variant and product' do
-        lambda {
+        expect {
           spree_post :create, product_id: product.slug, 
                               digital: { variant_id: variant.id, 
                                          attachment: upload_image('thinking-cat.jpg') }
-          response.should redirect_to(spree.admin_product_digitals_path(product))
-        }.should change(Spree::Digital, :count).by(1)
+          expect(response).to redirect_to(spree.admin_product_digitals_path(product))
+        }.to change(Spree::Digital, :count).by(1)
       end
     end
   end
@@ -65,10 +65,10 @@ describe Spree::Admin::DigitalsController do
 
     context 'for a digital and product that exist' do
       it 'deletes the associated digital' do
-        lambda {
+        expect {
           spree_delete :destroy, product_id: product.slug, id: digital.id
-          response.should redirect_to(spree.admin_product_digitals_path(product))
-        }.should change(Spree::Digital, :count).by(-1)
+          expect(response).to redirect_to(spree.admin_product_digitals_path(product))
+        }.to change(Spree::Digital, :count).by(-1)
       end
     end
   end
