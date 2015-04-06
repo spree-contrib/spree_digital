@@ -14,8 +14,8 @@ Gem::Specification.new do |s|
   s.required_ruby_version = '>= 2.1.0'
 
   s.add_dependency 'spree_api'
-  s.add_dependency 'spree_backend'
-  s.add_dependency 'spree_core', '~> 3.0.0.beta'
+  s.add_dependency 'spree_backend', '~> 3.0.0'
+  s.add_dependency 'spree_core', '~> 3.0.0'
   s.add_dependency 'spree_frontend'
 
   # test suite
