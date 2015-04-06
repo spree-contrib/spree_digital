@@ -33,7 +33,7 @@ RSpec.configure do |config|
   config.mock_with :rspec
   config.include FactoryGirl::Syntax::Methods
   config.include Spree::TestingSupport::UrlHelpers
-  config.include Spree::TestingSupport::ControllerRequests
+  config.include Spree::TestingSupport::ControllerRequests, :type => :controller
   config.extend Spree::TestingSupport::AuthorizationHelpers::Controller, :type => :controller
   config.include SpreeDigital::TestingSupport::Helpers, :type => :controller
   config.use_transactional_fixtures = false
