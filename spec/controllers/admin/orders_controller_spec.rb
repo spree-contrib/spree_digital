@@ -14,7 +14,7 @@ describe Spree::Admin::OrdersController do
     end
 
     let(:order) { mock_model(Spree::Order, :complete? => true, :total => 100, :number => 'R123456789') }
-    before { Spree::Order.stub :find_by_number! => order }
+    before { allow(Spree::Order).to receive_messages :find_by_number! => order }
 
     context '#reset_digitals' do
       it 'should reset digitals for an order' do

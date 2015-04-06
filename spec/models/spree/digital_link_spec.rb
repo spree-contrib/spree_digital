@@ -48,25 +48,25 @@ describe Spree::DigitalLink do
    
    it "should not be #authorized? when the access_counter is too high" do
      link = create(:digital_link)
-     link.stub(:access_counter => Spree::DigitalConfiguration[:authorized_clicks] - 1)
+     allow(link).to receive_messages(:access_counter => Spree::DigitalConfiguration[:authorized_clicks] - 1)
      expect(link.authorizable?).to be true
-     link.stub(:access_counter => Spree::DigitalConfiguration[:authorized_clicks])
+     allow(link).to receive_messages(:access_counter => Spree::DigitalConfiguration[:authorized_clicks])
      expect(link.authorizable?).to be false
    end
       
    it "should not be #authorize! when the created_at date is too far in the past" do
      link = create(:digital_link)
      expect(link.authorize!).to be true
-     link.stub(:created_at => (Spree::DigitalConfiguration[:authorized_days] * 24 - 1).hours.ago)
+     allow(link).to receive_messages(:created_at => (Spree::DigitalConfiguration[:authorized_days] * 24 - 1).hours.ago)
      expect(link.authorize!).to be true
-     link.stub(:created_at => (Spree::DigitalConfiguration[:authorized_days] * 24 + 1).hours.ago)
+     allow(link).to receive_messages(:created_at => (Spree::DigitalConfiguration[:authorized_days] * 24 + 1).hours.ago)
      expect(link.authorize!).to be false
    end
    
    it "should not be #authorized? when both access_counter and created_at are invalid" do
      link = create(:digital_link)
      expect(link.authorizable?).to be true
-     link.stub(:access_counter => Spree::DigitalConfiguration[:authorized_clicks], :created_at => (Spree::DigitalConfiguration[:authorized_days] * 24 + 1).hours.ago)
+     allow(link).to receive_messages(:access_counter => Spree::DigitalConfiguration[:authorized_clicks], :created_at => (Spree::DigitalConfiguration[:authorized_days] * 24 + 1).hours.ago)
      expect(link.authorizable?).to be false
    end
    
