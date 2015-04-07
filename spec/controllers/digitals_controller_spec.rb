@@ -1,21 +1,21 @@
 require 'spec_helper'
 
-describe Spree::DigitalsController do
+describe Spree::DigitalsController, :type => :controller do
 
   context '#show' do
     let(:digital) { create(:digital) }
     let(:authorized_digital_link) { create(:digital_link, digital: digital) }
 
     it 'returns a 404 for a non-existent secret' do
-      spree_get :show, secret: 'not_real'
-      expect(response.code).to eq('404')
+      spree_get :show, secret: 'NotReal00000000000000000000000'
+      expect(response.status).to eq(404)
     end
 
     it 'returns a 200 and calls send_file for link that is not a file' do
       expect(controller).to receive(:attachment_is_file?).and_return(false)
       expect(controller).not_to receive(:send_file)
       spree_get :show, secret: authorized_digital_link.secret
-      expect(response.code).to eq('200')
+      expect(response.status).to eq(200)
       expect(response).to render_template(:unauthorized)
     end
 
@@ -26,7 +26,7 @@ describe Spree::DigitalsController do
                                                  :type => digital.attachment.content_type){controller.render :nothing => true,
                                                                          :content_type => digital.attachment.content_type }
       spree_get :show, secret: authorized_digital_link.secret
-      expect(response.code).to eq('200')
+      expect(response.status).to eq(200)
       expect(response.header['Content-Type']).to match digital.attachment.content_type
     end
 
