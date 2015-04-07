@@ -3,7 +3,7 @@ require 'spec_helper'
 describe Spree::Calculator::Shipping::DigitalDelivery do
   subject { Spree::Calculator::Shipping::DigitalDelivery.new }
 
-  it 'has a description for the class' do 
+  it 'has a description for the class' do
     Spree::Calculator::Shipping::DigitalDelivery.should respond_to(:description)
   end
 
@@ -25,10 +25,11 @@ describe Spree::Calculator::Shipping::DigitalDelivery do
     let(:digital_order) {
       order = create(:order)
       variants = 3.times.map { create(:variant, :digitals => [FactoryGirl.create(:digital)]) }
-      package = Spree::Stock::Package.new(create(:stock_location), order)
+      package = Spree::Stock::Package.new(create(:stock_location), [])
       variants.each { |v|
         order.contents.add(v, 1)
-        package.add(order.line_items.where(variant_id: v.id).first, 1)
+        order.create_proposed_shipments
+        package.add(order.inventory_units.where(variant_id: v.id).first, 1)
       }
       package
     }
@@ -37,10 +38,11 @@ describe Spree::Calculator::Shipping::DigitalDelivery do
       order = create(:order)
       variants = 2.times.map { create(:variant, :digitals => [FactoryGirl.create(:digital)]) }
       variants << create(:variant)
-      package = Spree::Stock::Package.new(create(:stock_location), order)
+      package = Spree::Stock::Package.new(create(:stock_location), [])
       variants.each { |v|
         order.contents.add(v, 1)
-        package.add(order.line_items.where(variant_id: v.id).first, 1)
+        order.create_proposed_shipments
+        package.add(order.inventory_units.where(variant_id: v.id).first, 1)
       }
       package
     }
@@ -48,10 +50,11 @@ describe Spree::Calculator::Shipping::DigitalDelivery do
     let(:non_digital_order) {
       order = create(:order)
       variants = 3.times.map { create(:variant) }
-      package = Spree::Stock::Package.new(create(:stock_location), order)
+      package = Spree::Stock::Package.new(create(:stock_location), [])
       variants.each { |v|
         order.contents.add(v, 1)
-        package.add(order.line_items.where(variant_id: v.id).first, 1)
+        order.create_proposed_shipments
+        package.add(order.inventory_units.where(variant_id: v.id).first, 1)
       }
       package
     }
