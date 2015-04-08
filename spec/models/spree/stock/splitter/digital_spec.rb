@@ -3,7 +3,7 @@ require 'spec_helper'
 module Spree
   module Stock
     module Splitter
-      describe Digital do
+      RSpec.describe Digital do
 
         let(:packer) { build(:stock_packer) }
 
@@ -24,7 +24,7 @@ module Spree
           package1.add item5, :on_hand
 
           packages = subject.split([package1])
-          
+
           expect(packages[0].quantity).to eq 3
           expect(packages[1].quantity).to eq 2
         end

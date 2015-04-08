@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe Spree::LineItem do
+RSpec.describe Spree::LineItem do
 
   context "#save" do
     it "should create one link for a single digital Variant" do
@@ -17,7 +17,7 @@ describe Spree::LineItem do
       links = digital_variant.digitals.first.digital_links
       expect(links.to_a.size).to eq(5)
       links.each { |link| expect(link.line_item).to eq(line_item) }
-      
+
       # quantity update
       line_item.quantity = 8
       line_item.save
@@ -27,7 +27,7 @@ describe Spree::LineItem do
     end
 
     it "should create a link for digital variants with multiple digital downloads attached" do
-      
+
     end
   end
 

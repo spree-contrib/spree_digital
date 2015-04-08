@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe Spree::DigitalsController, :type => :controller do
+RSpec.describe Spree::DigitalsController, :type => :controller do
 
   context '#show' do
     let(:digital) { create(:digital) }

@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe Spree::Order do
+RSpec.describe Spree::Order do
   context "contents.add" do
     it "should add digital Variants of quantity 1 to an order" do
       order = create(:order)
@@ -10,7 +10,7 @@ describe Spree::Order do
       expect(order.line_items.second.variant).to eq(variants[1])
       expect(order.line_items.third.variant).to eq(variants[2])
     end
-    
+
     it "should handle quantity higher than 1 when adding one specific digital Variant" do
       order = create(:order)
       digital_variant = create(:variant, :digitals => [create(:digital)])
@@ -20,7 +20,7 @@ describe Spree::Order do
       expect(order.line_items.first.quantity).to eq(5)
     end
   end
-  
+
   context "line_item analysis" do
     it "should understand that all products are digital" do
       order = create(:order)
@@ -31,7 +31,7 @@ describe Spree::Order do
       order.contents.add create(:variant, :digitals => [create(:digital)]), 4
       expect(order.digital?).to be true
     end
-    
+
     it "should understand that not all products are digital" do
       order = create(:order)
       3.times do

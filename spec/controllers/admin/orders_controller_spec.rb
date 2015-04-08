@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe Spree::Admin::OrdersController do
+RSpec.describe Spree::Admin::OrdersController do
   context "with authorization" do
     stub_authorization!
 

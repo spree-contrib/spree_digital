@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe Spree::Variant do
+RSpec.describe Spree::Variant do
 
   context "#destroy" do
     let(:variant) { create(:variant) }
