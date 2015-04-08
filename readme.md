@@ -6,7 +6,7 @@
 
 This is a spree extension to enable downloadable products (ebooks, MP3s, videos, etc).
 
-The master branch is compatible with Spree 1.2.x. 1.0.x - 1.1.x versions are available, check the `Versionfile`.
+The master branch is compatible with Spree 3.0.x versions are available, check the `Versionfile`.
 
 This documentation is not complete and possibly out of date in some cases. There are features that have been implemented that are not documented here, please look at the source for complete documentation.
 
