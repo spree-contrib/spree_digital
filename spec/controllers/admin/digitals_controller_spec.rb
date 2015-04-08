@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe Spree::Admin::DigitalsController do
+RSpec.describe Spree::Admin::DigitalsController do
   stub_authorization!
 
   let!(:product) { create(:product) }
@@ -21,7 +21,7 @@ describe Spree::Admin::DigitalsController do
       end
 
       it "should display list of digitals when they exist" do
-        
+
       end
     end
 
@@ -40,7 +40,7 @@ describe Spree::Admin::DigitalsController do
         expect(response.code).to eq("200")
         expect(response.body).to include('A digital version of this product currently exists')
       end
-      
+
     end
   end
 
@@ -50,8 +50,8 @@ describe Spree::Admin::DigitalsController do
 
       it 'creates a digital associated with the variant and product' do
         expect {
-          spree_post :create, product_id: product.slug, 
-                              digital: { variant_id: variant.id, 
+          spree_post :create, product_id: product.slug,
+                              digital: { variant_id: variant.id,
                                          attachment: upload_image('thinking-cat.jpg') }
           expect(response).to redirect_to(spree.admin_product_digitals_path(product))
         }.to change(Spree::Digital, :count).by(1)

@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe Spree::Calculator::Shipping::DigitalDelivery do
+RSpec.describe Spree::Calculator::Shipping::DigitalDelivery do
   subject { Spree::Calculator::Shipping::DigitalDelivery.new }
 
   it 'has a description for the class' do

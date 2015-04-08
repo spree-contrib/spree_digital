@@ -1,6 +1,6 @@
 module Spree
   class DigitalsController < Spree::StoreController
-    force_ssl(only: :show) if :ssl_configured?
+    force_ssl only: :show, if: :ssl_configured?
     rescue_from ActiveRecord::RecordNotFound, with: :resource_not_found
 
     def show

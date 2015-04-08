@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe Spree::Digital do
+RSpec.describe Spree::Digital do
 
   context 'validation' do
     it { is_expected.to belong_to(:variant) }
@@ -9,7 +9,7 @@ describe Spree::Digital do
   context "#create" do
 
   end
-  
+
   context "#destroy" do
     it "should destroy associated digital_links" do
       digital = create(:digital)
