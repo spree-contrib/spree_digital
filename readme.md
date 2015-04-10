@@ -48,7 +48,7 @@ There are a few assumptions that spree_digital (currently) makes and it's import
 
 ## Quickstart
 
-Add this line to your `Gemfile`:
+Add this line to the `Gemfile` in your Spree project:
 
 ```ruby
 # Depending on your Spree version, you may use another branch
@@ -62,7 +62,7 @@ bundle exec rails g spree_digital:install
 bundle exec rake db:migrate
 ```
 
-Then set any preferences.
+Then set any preferences in the web interface.
 
 ### Shipping Configuration
 
@@ -121,45 +121,18 @@ References:
 * ["X-Accel-Mapping header missing" in nginx error log](http://stackoverflow.com/questions/6237016/message-x-accel-mapping-header-missing-in-nginx-error-log)
 * [Another good, but older, explanation](http://kovyrin.net/2006/11/01/nginx-x-accel-redirect-php-rails/)
 
-## Usage
+### Development
 
-### Table Diagram
+#### Table Diagram
 
 <img src="https://cdn.rawgit.com/halo/spree_digital/master/doc/tables.png">
 
-### Development
-
-Get the spree framework and spree_digital extension for it:
-
-```shell
-git clone git://github.com/spree/spree.git
-git clone git://github.com/halo/spree_digital.git
-```
-
-Go into the spree directory and run the bundle command:
-
-```shell
-cd spree
-bundle install
-```
-
-Go into the spree_digital directory and do the same:
-
-NOTE: At this point you may need to uncomment the stuff in the `Gemfile`  before you can start developing and testing!
-
-```shell
-cd spree_digital
-bundle install
-```
-
-Bring up the test application (you only need to do this whenever you fiddle around with the migrations) and then you can run the tests as you please.
+#### Testing
 
 ```shell
 rake test_app
 rake rspec
 ```
-
-This link may be very helpful to you: [http://github.com/spree/spree](http://github.com/spree/spree)
 
 ### Contributors
 
@@ -167,6 +140,4 @@ See https://github.com/halo/spree_digital/graphs/contributors
 
 ### License
 
-MIT (c) 2011-2015 halo
-
-See [LICENSE](http://github.com/halo/spree_digital/blob/master/LICENSE.md)
+MIT © 2011-2015 halo, see [LICENSE](http://github.com/halo/spree_digital/blob/master/LICENSE.md)
