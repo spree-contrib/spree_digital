@@ -30,7 +30,7 @@ ATTENTION! Each link will only work a SINGLE TIME!
   <% if item.digital? %>
     <%= raw item.variant.name %>:
     <% for link in item.digital_links %>
-      <%= digital_url :host => Spree::Config.get(:site_url), :secret => link.secret %>
+      <%= digital_url :host => @order.store.url, :secret => link.secret %>
     <% end %>
   <% end %>
 <% end %>

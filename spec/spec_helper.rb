@@ -15,6 +15,7 @@ ENV["RAILS_ENV"] = "test"
 require File.expand_path("../dummy/config/environment.rb",  __FILE__)
 
 require 'rspec/rails'
+require 'rspec/active_model/mocks'
 require 'database_cleaner'
 require 'ffaker'
 require 'shoulda-matchers'
@@ -29,11 +30,16 @@ require 'spree/testing_support/authorization_helpers'
 Dir[File.join(File.dirname(__FILE__), "factories/*.rb")].each {|f| require f }
 
 RSpec.configure do |config|
+
+  config.color = true
+  config.disable_monkey_patching!
+  config.raise_errors_for_deprecations!
   config.infer_spec_type_from_file_location!
   config.mock_with :rspec
+
   config.include FactoryGirl::Syntax::Methods
   config.include Spree::TestingSupport::UrlHelpers
-  config.include Spree::TestingSupport::ControllerRequests
+  config.include Spree::TestingSupport::ControllerRequests, :type => :controller
   config.extend Spree::TestingSupport::AuthorizationHelpers::Controller, :type => :controller
   config.include SpreeDigital::TestingSupport::Helpers, :type => :controller
   config.use_transactional_fixtures = false

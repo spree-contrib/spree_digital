@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe Spree::Variant do
+RSpec.describe Spree::Variant do
 
   context "#destroy" do
     let(:variant) { create(:variant) }
@@ -10,25 +10,25 @@ describe Spree::Variant do
       # default is false
       Spree::DigitalConfiguration[:keep_digitals] = false
 
-      Spree::Digital.count.should == 1
-      variant.digitals.present?.should be true
+      expect(Spree::Digital.count).to eq(1)
+      expect(variant.digitals.present?).to be true
       variant.deleted_at = Time.now
-      variant.deleted?.should be true
+      expect(variant.deleted?).to be true
       variant.save!
       expect { digital.reload.present? }.to raise_error
-      Spree::Digital.count.should == 0
+      expect(Spree::Digital.count).to eq(0)
     end
 
     it "should conditionally keep associated digitals" do
       Spree::DigitalConfiguration[:keep_digitals] = true
 
-      Spree::Digital.count.should == 1
-      variant.digitals.present?.should be true
+      expect(Spree::Digital.count).to eq(1)
+      expect(variant.digitals.present?).to be true
       variant.deleted_at = Time.now
       variant.save!
-      variant.deleted?.should be true
+      expect(variant.deleted?).to be true
       expect { digital.reload.present? }.to_not raise_error
-      Spree::Digital.count.should == 1
+      expect(Spree::Digital.count).to eq(1)
     end
   end
 end
