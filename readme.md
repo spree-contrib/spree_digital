@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.org/halo/spree_digital.png?branch=master)](https://travis-ci.org/halo/spree_digital)
+[![Build Status](https://travis-ci.org/spree-contrib/spree_digital.png?branch=2-3-stable)](https://travis-ci.org/spree-contrib/spree_digital)
 
 # Spree Digital
 
