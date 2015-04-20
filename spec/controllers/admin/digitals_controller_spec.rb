@@ -57,6 +57,15 @@ RSpec.describe Spree::Admin::DigitalsController do
         }.to change(Spree::Digital, :count).by(1)
       end
     end
+
+    context 'for an invalid object' do
+      it 'redirects to the index page' do
+        expect {
+          spree_post :create, product_id: product.slug, digital: { variant_id: product.master.id } # fail validation by not passing attachment
+          expect(response).to redirect_to(spree.admin_product_digitals_path(product))
+        }.to change(Spree::Digital, :count).by(0)
+      end
+    end
   end
 
   context '#destroy' do
