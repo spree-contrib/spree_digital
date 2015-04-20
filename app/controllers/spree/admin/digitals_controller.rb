@@ -11,13 +11,8 @@ module Spree
           super
         else
           invoke_callbacks(:create, :fails)
-          respond_with(@object) do |format|
-            format.html do
-              flash.now[:error] = @object.errors.full_messages.join(", ")
-              render action: 'index'
-            end
-            format.js { render layout: false }
-          end
+          flash[:error] = @object.errors.full_messages.join(", ")
+          redirect_to location_after_save
         end
       end
 
