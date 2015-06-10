@@ -9,10 +9,15 @@ module SpreeDigital
       end
 
       def add_stylesheets
-        inject_into_file "vendor/assets/stylesheets/spree/frontend/all.css", " *= require spree/frontend/spree_digital\n",
+        if File.exists?("vendor/assets/stylesheets/spree/frontend/all.css")
+          inject_into_file "vendor/assets/stylesheets/spree/frontend/all.css", " *= require spree/frontend/spree_digital\n",
                          :before => /\*\//, :verbose => true
-        inject_into_file "vendor/assets/stylesheets/spree/backend/all.css", " *= require spree/backend/spree_digital\n",
-                         :before => /\*\//, :verbose => true
+          inject_into_file "vendor/assets/stylesheets/spree/backend/all.css", " *= require spree/backend/spree_digital\n",
+                           :before => /\*\//, :verbose => true
+        else
+          append_file "vendor/assets/stylesheets/spree/frontend/all.css", " @import 'spree/frontend/spree_digital';\n"
+          append_file "vendor/assets/stylesheets/spree/backend/all.css", " @import 'spree/backend/spree_digital';\n"
+        end
       end
 
       def add_migrations
