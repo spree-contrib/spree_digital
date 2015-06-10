@@ -1,5 +1,5 @@
 module Spree
-  class SpreeDigitalConfiguration < Preferences::Configuration
+  class DigitalConfiguration < Preferences::Configuration
     # number of times a customer can download a digital file
     preference :authorized_clicks,  :integer, :default => 3
     
@@ -11,5 +11,8 @@ module Spree
 
     #number of seconds before an s3 link expires
     preference :s3_expiration_seconds,    :integer, :default => 10
+
+    #should links expire (if set to false authorized_clicks and authorized_days values are ignored)
+    preference :expirable_links,    :boolean, :default => true
   end
 end

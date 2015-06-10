@@ -1,11 +1,12 @@
 module SpreeDigital
   class Engine < Rails::Engine
+    isolate_namespace Spree
     engine_name 'spree_digital'
 
     config.autoload_paths += %W(#{config.root}/lib)
 
-    initializer "spree.spree_digital.preferences", :after => "spree.environment" do |app|
-      Spree::DigitalConfiguration = Spree::SpreeDigitalConfiguration.new
+    initializer 'spree_digital.preferences', before: :load_config_initializers do
+      SpreeDigital::Config = Spree::DigitalConfiguration.new
     end
 
     initializer "spree.register.digital_shipping", :after => 'spree.register.calculators' do |app|
