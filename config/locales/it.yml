@@ -3,12 +3,12 @@ it:
     controller:
       controller_name: Digitals
     digitals:
-      broken_file: Attenzione! questo file sembra essere rotto
+      broken_file: "Attenzione! questo file sembra essere rotto"
       current_file: File Corrente
       delete_file: Elimina questo file
-      delete_file_confirmation: Sei sicuro di voler eliminare il file %{filename}?
+      delete_file_confirmation: "Sei sicuro di voler eliminare il file %{filename}?"
       digital_delivery: Consegna Digitale
-      digital_download: Download %{filename} ↓
+      digital_download: "Download %{filename} ↓"
       digital_download_links: Link al Download Digitale
       digital_format:
         mp3: Audio MP3
@@ -17,7 +17,7 @@ it:
         pdf: pdf eBook
       digital_versions: Versioni Digitali
       new_file: Nuovo File
-          unauthorized:
-            explained: This download link has expired.
-            unauthorized: Unauthorized
+      unauthorized:
+        explained: This download link has expired.
+        unauthorized: Unauthorized
       upload: Upload
