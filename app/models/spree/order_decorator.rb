@@ -1,4 +1,6 @@
 Spree::Order.class_eval do
+  register_update_hook :generate_digital_links
+
   # all products are digital
   def digital?
     line_items.all? { |item| item.digital? }
@@ -20,6 +22,10 @@ Spree::Order.class_eval do
     digital_links.each do |digital_link|
       digital_link.reset!
     end
+  end
+
+  def generate_digital_links
+    self.line_items.each{|a|a.create_digital_links} 
   end
 
 end
