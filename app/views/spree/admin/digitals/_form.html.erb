@@ -7,7 +7,7 @@
         <table class="table">
           <thead>
             <tr>
-              <th><%= Spree.t(:file_name, scope: "spree_digital") %></th>
+              <th><%= Spree.t(:file_name, scope: "digitals") %></th>
               <th class="actions"></th>
             </tr>
           </thead>
@@ -34,7 +34,7 @@
 
         <%= hidden_field_tag 'digital[variant_id]', variant.id %>
         <br>
-        <%= button Spree.t(:upload, scope: "spree_digital"), 'add', 'submit', { :class => "btn-success" } %>
+        <%= button Spree.t(:upload, scope: "digitals"), 'add', 'submit', { :class => "btn-success" } %>
       </p>
     </fieldset>
   <% end %>
