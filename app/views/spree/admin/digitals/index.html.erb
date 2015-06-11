@@ -8,10 +8,11 @@
   <% end %>
 
 <% else %>
-  This product has no variants.
+
+  <%= Spree.t(:no_variants, scope: 'digitals') %>
 
  <% if @product.master.digital? %>
-    A digital version of this product currently exists:
+    <%= Spree.t(:digital_already_exists) %>
     <%= render @product.master.digitals %>
   <% end %>
 

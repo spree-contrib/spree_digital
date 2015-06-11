@@ -26,6 +26,8 @@ en:
         explained: This download link has expired.
         unauthorized: Unauthorized
       upload: Upload
+      no_variants: This product has no variants.
+      digital_already_exists: A digital version of this product currently exists.
       authorized_clicks: 
         one: Each link will only work once.
         other: "Each link will work %{count} times. " 
