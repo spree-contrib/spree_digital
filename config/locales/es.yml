@@ -26,3 +26,13 @@ es:
         explained: El enlace para la descarga ha expirado
         unauthorized: No estás autorizado
       upload: Subir
+      authorized_clicks: 
+        one: Cada enlace funcionará solo UNA VEZ.
+        other: "Cada enlace funcionará %{count} veces. " 
+      authorized_days: 
+        one: Cada enlace funcionará solo en las próximas 24 HORAS. 
+        other: "Cada enlace funcionará solo los próximos %{count} días. "   
+    order_mailer: 
+      confirm_email:
+        digital_links: Enlaces de descarga de los productos digitales
+        attention: ¡ATENCIÓN!

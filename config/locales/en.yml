@@ -26,3 +26,14 @@ en:
         explained: This download link has expired.
         unauthorized: Unauthorized
       upload: Upload
+      authorized_clicks: 
+        one: Each link will only work once.
+        other: "Each link will work %{count} times. " 
+      authorized_days: 
+        one: Each link will work within next 24 hours. 
+        other: "Each link will work only within %{count} days. "   
+    order_mailer: 
+      confirm_email:
+        digital_links: Download links for digital products
+        attention: ATTENTION!
+
