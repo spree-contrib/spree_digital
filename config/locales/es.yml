@@ -27,7 +27,7 @@ es:
         unauthorized: No estás autorizado
       upload: Subir
       no_variants: Este producto no tiene variantes.
-      digital_already_exists: Ya existe una versión digital de este producto. A digital version of this product currently exists:
+      digital_already_exists: Ya existe una versión digital de este producto.
       authorized_clicks: 
         one: Cada enlace funcionará solo UNA VEZ.
         other: "Cada enlace funcionará %{count} veces. " 
