@@ -6,6 +6,7 @@
 # Spree Digital
 
 This is a spree extension to enable downloadable products (ebooks, MP3s, videos, etc).
+This [fork](https://github.com/taniarv/spree_digital) adds authorization and authentication capabilities and preference to disable links expiration.
 
 In the [Versionfile](https://github.com/spree-contrib/spree_digital/blob/master/Versionfile) you can see which
 [spree_digital branch](https://github.com/spree-contrib/spree_digital/branches/all?query=stable) supports which
@@ -56,19 +57,21 @@ SpreeDigital::Config.tap do |config|
 end
 ```
 
-* New preference to require user authentication for downloads (based on Devise). It defaults to true (authentication required). To disable required authentication, 
+* New preference to require user authentication for downloads (based on Devise). It defaults to true (authentication required). To disable required authentication: 
+
 ```ruby
 SpreeDigital::Config.tap do |config|
   config.authentication_required = false
 end
 ```
 
-* Added user_id column in digital_links to enable Cancan authorization per user. New preference to require user authorization for downloads. It defaults to true (authorization required). To disable required authorization, 
+* Added user_id column in digital_links to enable Cancan authorization per user. New preference to require user authorization for downloads. It defaults to true (authorization required). To disable required authorization: 
+
 ```ruby
 SpreeDigital::Config.tap do |config|
   config.authorization_required = false
 end
-
+```
 
 ## Quickstart
 
