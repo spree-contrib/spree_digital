@@ -38,36 +38,36 @@ RSpec.describe Spree::DigitalLink do
   end
 
   context "authorization" do
-    it "should increment the counter using #authorize!" do
+    it "should increment the counter using #download!" do
       link = create(:digital_link)
       expect(link.access_counter).to eq(0)
       expect {
-        link.authorize!
+        link.download!
       }.to change(link, :access_counter).by(1)
     end
 
    it "should not be #authorized? when the access_counter is too high" do
      link = create(:digital_link)
      allow(link).to receive_messages(:access_counter => Spree::DigitalConfiguration[:authorized_clicks] - 1)
-     expect(link.authorizable?).to be true
+     expect(link.downloadable?).to be true
      allow(link).to receive_messages(:access_counter => Spree::DigitalConfiguration[:authorized_clicks])
-     expect(link.authorizable?).to be false
+     expect(link.downloadable?).to be false
    end
 
-   it "should not be #authorize! when the created_at date is too far in the past" do
+   it "should not be #download! when the created_at date is too far in the past" do
      link = create(:digital_link)
-     expect(link.authorize!).to be true
+     expect(link.download!).to be true
      allow(link).to receive_messages(:created_at => (Spree::DigitalConfiguration[:authorized_days] * 24 - 1).hours.ago)
-     expect(link.authorize!).to be true
+     expect(link.download!).to be true
      allow(link).to receive_messages(:created_at => (Spree::DigitalConfiguration[:authorized_days] * 24 + 1).hours.ago)
-     expect(link.authorize!).to be false
+     expect(link.download!).to be false
    end
 
    it "should not be #authorized? when both access_counter and created_at are invalid" do
      link = create(:digital_link)
-     expect(link.authorizable?).to be true
+     expect(link.downloadable?).to be true
      allow(link).to receive_messages(:access_counter => Spree::DigitalConfiguration[:authorized_clicks], :created_at => (Spree::DigitalConfiguration[:authorized_days] * 24 + 1).hours.ago)
-     expect(link.authorizable?).to be false
+     expect(link.downloadable?).to be false
    end
 
   end
@@ -75,7 +75,7 @@ RSpec.describe Spree::DigitalLink do
   context '#reset!' do
     it 'should reset the access counter' do
       link = create(:digital_link)
-      link.authorize!
+      link.download!
       expect(link.access_counter).to eq(1)
       link.reset!
       expect(link.access_counter).to eq(0)

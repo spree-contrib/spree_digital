@@ -46,6 +46,30 @@ There are a few assumptions that spree_digital (currently) makes and it's import
 * We use send_file to send the files on download.
   See below for instructions on how to push file downloading off to nginx.
 
+Added in this [version](https://github.com/taniarv/spree_digital):
+
+* New preference to disable digital links expiration. It defaults to true (links expire within 24 hours and 3 clicks). To disable links expiration, add in `config/spree.rb`
+
+```ruby
+SpreeDigital::Config.tap do |config|
+  config.expirable_links = false
+end
+```
+
+* New preference to require user authentication for downloads (based on Devise). It defaults to true (authentication required). To disable required authentication, 
+```ruby
+SpreeDigital::Config.tap do |config|
+  config.authentication_required = false
+end
+```
+
+* Added user_id column in digital_links to enable Cancan authorization per user. New preference to require user authorization for downloads. It defaults to true (authorization required). To disable required authorization, 
+```ruby
+SpreeDigital::Config.tap do |config|
+  config.authorization_required = false
+end
+
+
 ## Quickstart
 
 Add this line to the `Gemfile` in your Spree project:

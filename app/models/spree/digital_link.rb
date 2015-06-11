@@ -1,17 +1,18 @@
 module Spree
   class DigitalLink < ActiveRecord::Base
-    
     belongs_to :digital
     validates :digital, :presence => true
 
     belongs_to :line_item
+
+    belongs_to :user
     
     validates_length_of :secret, :is => 30
     
     before_validation :set_defaults, :on => :create
     
     # Can this link stil be used? It is valid if it's less than 24 hours old and was not accessed more than 3 times
-    def authorizable?
+    def downloadable?
       !(expired? || access_limit_exceeded?)
     end
 
@@ -25,8 +26,8 @@ module Spree
 
     # This method should be called when a download is initiated.
     # It returns +true+ or +false+ depending on whether the authorization is granted.
-    def authorize!
-      authorizable? && increment!(:access_counter) ? true : false
+    def download!
+      downloadable? && increment!(:access_counter) ? true : false
     end
 
     def reset!

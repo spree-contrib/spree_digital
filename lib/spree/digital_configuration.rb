@@ -14,5 +14,11 @@ module Spree
 
     #should links expire (if set to false authorized_clicks and authorized_days values are ignored)
     preference :expirable_links,    :boolean, :default => true
+
+    #should require authentication for links downloading
+    preference :authentication_required,    :boolean, :default => true
+
+    #should require authorization (cancancan) for links downloading
+    preference :authorization_required,    :boolean, :default => true
   end
 end

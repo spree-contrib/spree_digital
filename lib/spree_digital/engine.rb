@@ -9,6 +9,10 @@ module SpreeDigital
       SpreeDigital::Config = Spree::DigitalConfiguration.new
     end
 
+    initializer 'spree_digital.ability', :after => 'spree.register.ability' do
+      Spree::Ability.register_ability(Spree::DigitalAbility)
+    end
+
     initializer "spree.register.digital_shipping", :after => 'spree.register.calculators' do |app|
       app.config.spree.calculators.shipping_methods << Spree::Calculator::Shipping::DigitalDelivery
     end

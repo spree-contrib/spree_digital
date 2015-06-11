@@ -24,7 +24,7 @@ Spree::LineItem.class_eval do
   def create_digital_links_for_variant(variant)
     variant.digitals.each do |digital|
       self.quantity.times do
-        digital_links.create!(:digital => digital)
+        digital_links.create!(:digital => digital, :user_id => self.order.user_id)
       end      
     end
   end
