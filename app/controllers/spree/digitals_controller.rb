@@ -43,7 +43,7 @@ module Spree
       end
 
       def attachment
-        @attachment ||= digital_link.digital.try(:attachment) if digital_link.present?
+        @attachment ||= digital_link.try(:attachment) if digital_link.present?
       end
 
       def resource_not_found

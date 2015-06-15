@@ -6,7 +6,8 @@
 # Spree Digital
 
 This is a spree extension to enable downloadable products (ebooks, MP3s, videos, etc).
-This [fork](https://github.com/taniarv/spree_digital) adds authorization and authentication capabilities and preference to disable links expiration.
+
+This [fork](https://github.com/taniarv/spree_digital) adds authorization and authentication capabilities, preference to disable links expiration and per user attachments.
 
 In the [Versionfile](https://github.com/spree-contrib/spree_digital/blob/master/Versionfile) you can see which
 [spree_digital branch](https://github.com/spree-contrib/spree_digital/branches/all?query=stable) supports which
@@ -70,6 +71,14 @@ end
 ```ruby
 SpreeDigital::Config.tap do |config|
   config.authorization_required = false
+end
+```
+
+* New preference per_user_attachment to perform a unique attachment copy for users. It defaults to true. To disable per user attachment: 
+
+```ruby
+SpreeDigital::Config.tap do |config|
+  config.per_user_attachment = false
 end
 ```
 

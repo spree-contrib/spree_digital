@@ -20,5 +20,8 @@ module Spree
 
     #should require authorization (cancancan) for links downloading
     preference :authorization_required,    :boolean, :default => true
+
+    #creates an individual download asset per user
+    preference :per_user_attachment,    :boolean, :default => true
   end
 end
