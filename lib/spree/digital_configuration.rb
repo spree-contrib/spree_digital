@@ -31,5 +31,6 @@ module Spree
     def per_user_attachment_process=(value)
       @per_user_attachment_process = value
     end
+    
   end
 end
