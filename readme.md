@@ -82,6 +82,18 @@ SpreeDigital::Config.tap do |config|
 end
 ```
 
+Additionally you can provide a proc to perform some processing before creating each user copy (for example, stamping, watermark, and so on)
+It accepts three parameters: input_file, output_file and the digital link self object
+
+```ruby
+SpreeDigital::Config.tap do |config|
+  config.per_user_attachment_process = Proc.new do |input_file, output_file, digital_link|
+    # pdf processing
+  end
+end
+```
+
+
 ## Quickstart
 
 Add this line to the `Gemfile` in your Spree project:

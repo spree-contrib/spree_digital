@@ -65,8 +65,14 @@ module Spree
     def copy_digital
       if SpreeDigital::Config[:per_user_attachment]
         begin
-          FileUtils.cp(self.original_attachment.path, File.join(self.attachment_dir, self.attachment_file_name))
-          self.attachment = File.open(File.join(self.attachment_dir, self.attachment_file_name))
+          new_copy = File.join(self.attachment_dir, self.attachment_file_name)
+          if SpreeDigital::Config.per_user_attachment_process.present?
+            puts "Executing Spree::Digital per_user_attachment_process..."
+            SpreeDigital::Config.per_user_attachment_process.call(self.original_attachment.path, new_copy, self)
+          else
+            FileUtils.cp(self.original_attachment.path, new_copy)
+          end
+          self.attachment = File.open(new_copy)
         rescue => e
           logger.error "There was a problem copying file #{self.attachment_file_name} #{e}"
           return false

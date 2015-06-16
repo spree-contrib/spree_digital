@@ -23,5 +23,13 @@ module Spree
 
     #creates an individual download asset per user
     preference :per_user_attachment,    :boolean, :default => true
+
+    #defines the proc to execute 
+    def per_user_attachment_process
+      @per_user_attachment_process
+    end
+    def per_user_attachment_process=(value)
+      @per_user_attachment_process = value
+    end
   end
 end
