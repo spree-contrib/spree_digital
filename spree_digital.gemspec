@@ -4,9 +4,8 @@ Gem::Specification.new do |s|
   s.version      = '1.1.3'
   s.summary      = ''
   s.description  = 'Digital download functionality for spree'
-  s.authors      = ['funkensturm', 'Michael Bianco']
-  s.contributors = ['Tania Rubio<taniarubiov@gmail.com>']
-  s.email        = ['info@cliffsidedev.com']
+  s.authors      = ['funkensturm', 'Michael Bianco', 'Tania Rubio']
+  s.email        = ['info@cliffsidedev.com', 'taniarubiov@gmail.com']
   s.homepage     = 'http://www.funkensturm.com'
   s.files        = `git ls-files`.split("\n")
   s.test_files   = `git ls-files -- {test,spec,features}/*`.split("\n")
