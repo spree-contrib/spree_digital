@@ -1,10 +1,11 @@
 Gem::Specification.new do |s|
   s.platform     = Gem::Platform::RUBY
   s.name         = 'spree_digital'
-  s.version      = '1.1.2'
+  s.version      = '1.1.3'
   s.summary      = ''
   s.description  = 'Digital download functionality for spree'
   s.authors      = ['funkensturm', 'Michael Bianco']
+  s.contributors = ['Tania Rubio<taniarubiov@gmail.com>']
   s.email        = ['info@cliffsidedev.com']
   s.homepage     = 'http://www.funkensturm.com'
   s.files        = `git ls-files`.split("\n")
