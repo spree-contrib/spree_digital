@@ -4,7 +4,7 @@ en:
       controller_name: Digitals
     digitals:
       broken_file: Warning! this file is broken
-      copy_for: "Copy for %{name}"
+      copy_for: "Copy for %{name} <%{email}>"
       current_file: Current File
       delete_file: Delete this file
       delete_file_confirmation: Are you sure you want to delete the file %{filename}?

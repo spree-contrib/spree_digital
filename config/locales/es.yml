@@ -4,7 +4,7 @@ es:
       controller_name: Digitals
     digitals:
       broken_file: ¡Atención! Este archivo está corrupto
-      copy_for: "Copia para %{name}"
+      copy_for: "Este ejemplar pertenece a %{name} <%{email}>"
       current_file: Archivo actual
       delete_file: Borrar este archivo
       delete_file_confirmation: "¿Está seguro de que quiere borrar este fichero %{filename}?"
