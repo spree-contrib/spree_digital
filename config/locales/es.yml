@@ -4,6 +4,7 @@ es:
       controller_name: Digitals
     digitals:
       broken_file: ¡Atención! Este archivo está corrupto
+      click_here: "Pincha aquí para descargarlo"
       click_to_download: "Para descargarlo, pincha en el siguiente enlace: "
       copy_for: "Este ejemplar pertenece a %{name} <%{email}>"
       current_file: Archivo actual
@@ -13,6 +14,7 @@ es:
       digital_delivery: Entrega digital
       digital_download: "Descarga %{filename} ↓"
       digital_download_links: Enlaces para la descaga digital
+      digital_download_links_instructions: "A continuación dispones de los enlaces para acceder a tus compras digitales: "
       digital_format:
         mp3: Audio MP3
         mobi: Kindle eBook

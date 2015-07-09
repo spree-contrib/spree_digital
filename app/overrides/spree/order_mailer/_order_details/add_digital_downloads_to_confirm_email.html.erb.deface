@@ -1,0 +1,41 @@
+<!-- insert_after "table[data-hook='order_mailer_confirm_email_totals']" -->
+<% if @order.some_digital? %>
+  <table width='600' align='center' cellspacing='0' cellpadding='16' border='0'>
+    <tr>
+      <td>
+        <font size='5' face='arial, sans-serif' color='#31abe0'>
+          <%= Spree.t('digital_download_links', scope: 'digitals') %>:
+        </font><br />
+        <font size="4" face="arial, sans-serif">
+          <%= Spree.t('digital_download_links_instructions', scope: 'digitals') %>
+        </font>
+      </td>
+    </tr>
+    <% if SpreeDigital::Config[:expirable_links] %>
+      <tr>
+        <td>
+          <font size="4" face="arial, sans-serif">
+            <%= Spree.t('order_mailer.confirm_email.attention') %>
+            <%= Spree.t('spree.digitals.authorized_clicks', count: SpreeDigital::Config[:authorized_clicks]) %>
+            <%= Spree.t('spree.digitals.authorized_days', count: SpreeDigital::Config[:authorized_days]) %>
+          </font>
+        </td>
+      </tr>
+    <% end %>            
+    <% for item in @order.line_items %>
+      <% if item.digital? %>
+        <tr>
+          <td>
+            <font size="4" face="arial, sans-serif">
+            <strong><%= raw item.variant.name %>:</strong><br />
+            <% for link in item.digital_links %>
+              <%= link_to digital_url(:host => @order.store.url, :secret => link.secret), digital_url(:host => @order.store.url, :secret => link.secret), style: "color: #31abe0;" %>
+            <% end %>
+            </font>
+          </td>
+        </tr>
+      <% end %>
+    <% end %>
+  </table>
+<% end %>
+<!-- enabled -->

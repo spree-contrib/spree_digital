@@ -1,0 +1,15 @@
+<!-- insert_after "tr[data-hook='order_line_item_details']" -->
+  <% if item.digital? %>
+    <tr>
+      <td>&nbsp;</td>
+      <td>
+        <font size="4" face="arial, sans-serif">
+        <% for link in item.digital_links %>
+          <%= link_to Spree.t('click_here', scope: 'digitals'), digital_url(:host => @order.store.url, :secret => link.secret), style: "color: #31abe0;" %>
+        <% end %>
+        </font>
+      </td>
+      <td>&nbsp;</td>
+    </tr>
+  <% end %>
+<!-- enabled -->      
