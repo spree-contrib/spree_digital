@@ -1,11 +1,16 @@
 <!-- insert_bottom "td[data-hook='order_item_description']" -->
 <% if @order.state == 'complete' and item.variant.digital? %>
-  <div data-hook='download_links'>
-    <ul>
+  <div class='download-links' data-hook='download_links'>
+    <%= Spree.t("digitals.click_to_download") %>
+    <ul class="download-links-list">
       <% item.digital_links.each do |digital_link| %>
       <% format = File.extname(digital_link.attachment_alias.path).downcase %>
         <li>
-          <%= link_to Spree.t(:digital_download, scope: 'digitals', filename: raw(digital_link.attachment_file_name)), digital_url(secret: digital_link.secret), class: "#{format}" %>
+          <%= link_to digital_url(secret: digital_link.secret), class: "#{format}" do %>
+            <span class="glyphicon glyphicon-download"></span>
+            <%= digital_link.digital.attachment_file_name %>
+            <span class='file-size'><%= " (#{number_to_human_size(digital_link.attachment_file_size)})" %></span>
+          <% end %>
         </li>
       <% end %>
     </ul>

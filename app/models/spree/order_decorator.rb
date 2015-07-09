@@ -25,7 +25,9 @@ Spree::Order.class_eval do
   end
 
   def generate_digital_links
-    self.line_items.each{|a|a.create_digital_links} 
+    if self.complete?
+      self.line_items.each{|a|a.create_digital_links} 
+    end
   end
 
 end

@@ -4,6 +4,7 @@ es:
       controller_name: Digitals
     digitals:
       broken_file: ¡Atención! Este archivo está corrupto
+      click_to_download: "Para descargarlo, pincha en el siguiente enlace: "
       copy_for: "Este ejemplar pertenece a %{name} <%{email}>"
       current_file: Archivo actual
       delete_file: Borrar este archivo
