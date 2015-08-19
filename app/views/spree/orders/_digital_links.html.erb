@@ -1,0 +1,15 @@
+<% size = (digital_links.size > 3 ? 4 : digital_links.size) %>
+<% group_size, col_size = [size, 12/size] %>
+
+<% digital_links.in_groups_of(group_size, false).each do |dls| %>
+  <div class="row">
+    <% dls.each do |digital| %>
+      <div class='digital-link text-center <%= "col-sm-#{col_size}" %>'>
+        <div class='digital-link-image'>
+          <%= image_or_noimage_tag(digital.line_item.product.images.first , {size: :small}) %>
+        </div>
+        <%= link_to t(:download), spree.digital_url(secret: digital.secret), class: 'btn btn-primary digital-link-download' %>
+      </div>
+    <% end %>
+  </div>
+<% end %>  

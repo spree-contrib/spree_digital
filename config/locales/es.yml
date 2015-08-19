@@ -15,6 +15,7 @@ es:
       digital_download: "Descarga %{filename} ↓"
       digital_download_links: Enlaces para la descaga digital
       digital_download_links_instructions: "A continuación dispones de los enlaces para acceder a tus compras digitales: "
+      digital_download_links_warning: "(Haz click en el enlace para descargar. En caso de que no funcione, copia y pega en la barra de direcciones del navegador)"
       digital_format:
         mp3: Audio MP3
         mobi: Kindle eBook
