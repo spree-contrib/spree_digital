@@ -2,7 +2,7 @@ module Spree
   class DigitalsController < Spree::StoreController
     #force_ssl only: :show, if: :ssl_configured?
     rescue_from ActiveRecord::RecordNotFound, with: :resource_not_found
-    before_action :authenticate_user!, if: Proc.new { SpreeDigital::Config[:authentication_required] }
+    skip_before_filter :require_no_authentication, if: Proc.new { SpreeDigital::Config[:authentication_required] }
 
     def show
       if attachment.present? && attachment_is_file?
@@ -22,11 +22,6 @@ module Spree
 
       render :unauthorized
     end
-
-    def spree_current_user
-      current_user
-    end
-    helper_method :spree_current_user
 
     private
 
