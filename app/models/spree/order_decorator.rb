@@ -10,6 +10,10 @@ Spree::Order.class_eval do
     line_items.any? { |item| item.digital? }
   end
 
+  def some_not_digital?
+    line_items.any? { |item| !item.digital? }
+  end
+
   def digital_line_items
     line_items.select(&:digital?)
   end
