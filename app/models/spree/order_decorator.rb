@@ -14,6 +14,9 @@ Spree::Order.class_eval do
     line_items.any? { |item| !item.digital? }
   end
 
+  alias :has_digital_line_items? :some_digital?
+  alias :has_paper_line_items? :some_not_digital?
+  
   def digital_line_items
     line_items.select(&:digital?)
   end
