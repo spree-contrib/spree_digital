@@ -24,6 +24,7 @@ es:
         zip: fichero ZIP
       digital_versions: Versiones digitales
       downloads_reset: Reset de descargas digitales
+      download: Descargar
       files: Ficheros
       new_file: Nuevo Archivo
       reset_downloads: Resetear descargas digitales

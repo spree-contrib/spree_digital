@@ -1,4 +1,5 @@
-<!-- insert_after "table[data-hook='order_mailer_confirm_email_totals']" -->
+<!-- insert_after "table[data-hook='order_mailer_confirm_email_totals']" 
+  disabled-->
 <% if @order.some_digital? %>
   <table width='600' align='center' cellspacing='0' cellpadding='16' border='0'>
     <tr>
@@ -62,4 +63,4 @@
     </tr>
   </table>
 <% end %>
-<!-- enabled -->
+<!-- disabled -->
