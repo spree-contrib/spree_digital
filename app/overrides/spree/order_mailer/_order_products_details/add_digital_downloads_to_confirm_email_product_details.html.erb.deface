@@ -13,6 +13,8 @@
     <%= Spree.t('digital_download_links_warning', scope: 'digitals') %>
     <%= link_to digital_url(:host => @order.store.url, :secret => link.secret), digital_url(:host => @order.store.url, :secret => link.secret), style: "color: #27aae2" %>
     </td></tr>
+  <% else %>
+    <tr><td colspan="5">&nbsp;</td></tr>
   <% end %>
 <!-- enabled -->      
 
