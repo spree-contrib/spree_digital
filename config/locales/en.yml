@@ -13,7 +13,7 @@ en:
       digital_download: Download %{filename} ↓
       digital_download_links: Digital Download Links
       digital_download_links_instructions: "Available links for downloading your digital products"
-      digital_download_links_warning: "(Click in the above link to download. In case not working, copy and paste the link in the browser)"
+      digital_download_links_warning: "In case not working, copy and paste the link in the browser: "
       digital_format:
         mp3: Audio MP3
         mobi: Kindle eBook
