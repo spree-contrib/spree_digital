@@ -4,7 +4,7 @@ Spree::LineItem.class_eval do
   after_save :create_digital_links, :if => :digital?
   
   def digital?
-    variant.digital?
+    variant.digital? || variant.product.master.digital?
   end
   
   private
@@ -16,9 +16,7 @@ Spree::LineItem.class_eval do
 
     #include master variant digitals
     master = variant.product.master
-    if(master.digital?)
-      create_digital_links_for_variant(master)
-    end
+    create_digital_links_for_variant(master) if master.digital?
     create_digital_links_for_variant(variant) unless variant.is_master
   end
 

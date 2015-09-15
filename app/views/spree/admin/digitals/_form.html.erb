@@ -4,14 +4,24 @@
       <legend><%= Spree::Variant.model_name.human %> "<%= variant.is_master ? "Master" : variant.options_text %>"</legend>
       <strong><%= Spree.t(:files, scope: 'digitals') %>:</strong>
       <% if variant.digital? %>
-        <ul>
+        <table class="table">
+          <thead>
+            <tr>
+              <th><%= Spree.t(:file_name, scope: "spree_digital") %></th>
+              <th class="actions"></th>
+            </tr>
+          </thead>
+          <tbody>
           <% variant.digitals.each do |digital| %>
-            <li>
-              <%= render digital %>&nbsp;&nbsp;
-              <%= link_to Spree.t(:delete_file, scope: 'digitals'), admin_product_digital_url(@product, digital), data: {confirm: Spree.t(:delete_file_confirmation, scope: 'digitals', filename: digital.attachment_file_name)}, method: :delete %>
-            </li>
+            <tr>
+              <td><%= render digital %></td>
+              <td class="actions text-right">
+                <%= link_to_with_icon 'delete', Spree.t(:delete_file, scope: 'digitals'), admin_product_digital_url(@product, digital), data: {confirm: Spree.t(:delete_file_confirmation, scope: 'digitals', filename: digital.attachment_file_name)}, method: :delete, class: 'btn btn-danger btn-sm delete-resource' %>
+              </td>
+            </tr>
           <% end %>
-        </ul>
+          </tbody>
+        </table>
       <% else %>
         <%= Spree.t(:none) %>
       <% end %>
@@ -22,8 +32,8 @@
         <% end %>
 
         <%= hidden_field_tag 'digital[variant_id]', variant.id %>
-
-        <%= button Spree.t(:upload, scope: "spree_digital") %>
+        <br>
+        <%= button Spree.t(:upload, scope: "spree_digital"), 'add', 'submit', { :class => "btn-success" } %>
       </p>
     </fieldset>
   <% end %>
