@@ -5,6 +5,7 @@ module Spree
     after_save :delete_digital_links_attachments, if: :attachment_changed?
 
     has_attached_file :attachment, path: ":rails_root/private/digitals/:id/:basename.:extension"
+    before_post_process :strip_strange_characters_from_attachments
     do_not_validate_attachment_file_type :attachment
     validates_attachment_presence :attachment
 
