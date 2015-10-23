@@ -1,16 +1,19 @@
 es:
   spree:
     controller:
-      controller_name: Digitals
+      controller_name: Versiones Digitales
     digitals:
+      error_in_attachment: "Se ha producido un error en la descarga. Por favor, pongase en contacto con el administrador de la web para solucionarlo."
+      only_digital_variants: "Mostrando solo variantes con opción 'Digital: Sí'."
       broken_file: ¡Atención! Este archivo está corrupto
       click_here: "Pincha aquí para descargarlo"
       click_to_download: "Para descargarlo, pincha en el siguiente enlace: "
       copy_for: "Este ejemplar pertenece a %{name} <%{email}>"
       current_file: Archivo actual
-      delete_file: Borrar este archivo
-      delete_file_confirmation: "¿Está seguro de que quiere borrar este fichero %{filename}?"
-      digitals: Digitales
+      update_file: Actualizar fichero
+      delete_file: Eliminar fichero
+      delete_file_confirmation: "¿Está seguro de que desea eliminar el fichero? Se eliminarán todas las copias descargadas por los usuarios. Esta acción es irreversible. "
+      title: Versiones Digitales
       digital_delivery: Entrega digital
       digital_download: "Descarga %{filename} ↓"
       digital_download_links: Enlaces para la descaga digital
@@ -26,7 +29,8 @@ es:
       downloads_reset: Reset de descargas digitales
       download: Descargar
       files: Ficheros
-      new_file: Nuevo Archivo
+      available_files: Ficheros disponibles
+      new_file: Nuevo fichero
       reset_downloads: Resetear descargas digitales
       unauthorized:
         explained: El enlace para la descarga ha expirado

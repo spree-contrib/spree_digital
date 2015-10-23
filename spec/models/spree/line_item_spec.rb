@@ -44,7 +44,3 @@ RSpec.describe Spree::LineItem do
     end
   end
 end
-
-
-
-

@@ -1,21 +1,28 @@
+<%= content_for :title do %>
+  <%= Spree.t(:title, scope: 'digitals') %>
+<% end %>
+
 <%= render :partial => 'spree/admin/shared/sub_menu/product' %>
 <%= render :partial => 'spree/admin/shared/product_tabs', :locals => {:current => "Digital Versions"} %>
 
-<% if @product.has_variants? %>
+<div class="alert alert-warning">
+  <span class="glyphicon glyphicon-warning-sign"></span>
+  <strong><%= Spree.t(:only_digital_variants, scope: 'digitals') %></strong>
+</div>
 
-  <% for variant in @product.variants_including_master do %>
+<% if @product.has_digital_variants? %>
+
+  <% for variant in @product.digital_variants do %>
     <%= render 'form', :variant => variant %>
   <% end %>
 
 <% else %>
-
   <%= Spree.t(:no_variants, scope: 'digitals') %>
 
- <% if @product.master.digital? %>
+ <% if @product.master.has_digital_option? %>
     <%= Spree.t(:digital_already_exists) %>
     <%= render @product.master.digitals %>
   <% end %>
 
   <%= render 'form', :variant => @product.master %>
-
 <% end %>

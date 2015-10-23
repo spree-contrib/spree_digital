@@ -3,12 +3,12 @@
 
 <% digital_links.in_groups_of(group_size, false).each do |dls| %>
   <div class="row">
-    <% dls.each do |digital| %>
+    <% dls.each do |digital_link| %>
       <div class='digital-link text-center <%= "col-sm-#{col_size}" %>'>
         <div class='digital-link-image'>
-          <%= image_or_noimage_tag(digital.line_item.product.images.first , {size: :small}) %>
+          <%= image_or_noimage_tag(digital_link.variant.product.images.first , {size: :small}) %>
         </div>
-        <%= link_to t(:download), spree.digital_url(secret: digital.secret), class: 'btn btn-primary digital-link-download' %>
+        <%= link_to t(:download), spree.digital_url(secret: digital_link.secret), class: 'btn btn-primary digital-link-download' %>
       </div>
     <% end %>
   </div>

@@ -5,27 +5,27 @@ module Spree
     skip_before_filter :require_no_authentication, if: Proc.new { SpreeDigital::Config[:authentication_required] }
 
     def show
-      if attachment.present? && attachment_is_file?
-        # don't authorize the link unless the file exists
-        # the logger error will help track down customer issues easier
-        if authorize_download! && digital_link.downloadable? 
-          if Paperclip::Attachment.default_options[:storage] == :s3
-            redirect_to attachment.expiring_url(Spree::DigitalConfiguration[:s3_expiration_seconds]) and return
+      if attachment.present? 
+        if attachment_file_present?
+          authorize_and_send_file!
+        else
+          if digital_link.regenerate_attachment_file = true and digital_link.save
+            Rails.logger.info "Digital link #{attachment.path} regenerated"
+            authorize_and_send_file!
           else
-            send_file attachment.path, :filename => attachment.original_filename, :type => attachment.content_type and return
+            Rails.logger.error "Error generating file: #{attachment.path} #{digital_link.inspect}"
+            redirect_to :back, error: Spree.t('error_in_attachment', scope: 'digitals') and return
           end
         end
       else
-        flash[:error] = 'Se ha producido un error intentando descargar el fichero. Por favor, intentálo de nuevo.'
         Rails.logger.error "Missing Digital Item: #{attachment.path}"
+        redirect_to :back, error: Spree.t('error_in_attachment', scope: 'digitals') and return
       end
-
-      render :unauthorized
     end
 
     private
 
-      def attachment_is_file?
+      def attachment_file_present?
         if Paperclip::Attachment.default_options[:storage] == :s3
           attachment.exists?
         else
@@ -51,6 +51,18 @@ module Spree
 
       def authorize_download!
         !SpreeDigital::Config[:authentication_required] || !SpreeDigital::Config[:authorization_required] || authorize!(:download, digital_link)
+      end
+
+      def authorize_and_send_file!
+        if authorize_download! && digital_link.downloadable? 
+          if Paperclip::Attachment.default_options[:storage] == :s3
+            redirect_to attachment.expiring_url(Spree::DigitalConfiguration[:s3_expiration_seconds]) and return
+          else
+            send_file attachment.path, :filename => attachment.original_filename, :type => attachment.content_type and return
+          end
+        else
+          render :unauthorized
+        end
       end
   end
 end

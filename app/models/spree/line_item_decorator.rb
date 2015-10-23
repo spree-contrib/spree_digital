@@ -1,5 +1,4 @@
 Spree::LineItem.class_eval do
-  
   has_many :digital_links, :dependent => :destroy
   # after_save :create_digital_links, :if => :digital?
   
