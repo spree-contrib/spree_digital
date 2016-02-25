@@ -63,7 +63,8 @@ module Spree
     end
 
     def attachment_file_name
-      super || (SpreeDigital::Config[:per_user_attachment] ? [self.secret, self.original_attachment.original_filename].join('_') : self.original_attachment.original_filename)
+      file_name, file_ext = self.original_attachment.original_filename.split('.')
+      super || (SpreeDigital::Config[:per_user_attachment] ? [[file_name, self.secret].join('_'), file_ext].join('.') : self.original_attachment.original_filename)
     end
 
     def attachment_dir
