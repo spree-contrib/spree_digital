@@ -6,7 +6,9 @@
     <% dls.each do |digital_link| %>
       <div class='digital-link text-center <%= "col-sm-#{col_size}" %>'>
         <div class='digital-link-image'>
-          <%= image_or_noimage_tag(digital_link.variant.product.images.first , {size: :small}) %>
+          <%= link_to spree.product_url(digital_link.variant.try(:product)) do %>
+            <%= image_or_noimage_tag(digital_link.variant.product.images.first , {size: :small}) %>
+          <% end %>
         </div>
         <%= link_to t(:download), spree.digital_url(secret: digital_link.secret), class: 'btn btn-primary digital-link-download' %>
       </div>
