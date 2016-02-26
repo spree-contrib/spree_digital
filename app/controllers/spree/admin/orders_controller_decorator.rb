@@ -3,6 +3,6 @@ Spree::Admin::OrdersController.class_eval do
     load_order
     @order.reset_digital_links!
     flash[:notice] = Spree.t(:downloads_reset, scope: 'digitals')
-    redirect_to spree.admin_order_path(@order)
+    redirect_to spree.edit_admin_order_url(@order)
   end
 end
