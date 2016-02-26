@@ -1,8 +1,8 @@
 <!-- insert_bottom "[data-hook='admin_order_tabs']" -->
 <% if can?(:update, @order) && @order.digital? %>
-  <li>
-  <%= link_to_with_icon 'cloud', Spree.t(:reset_downloads, scope: 'digitals'), reset_digitals_admin_order_url(@order) %>
-  </li>
+    <li<%== ' class="active"' if current == :show_digitals %> data-hook='admin_order_tabs_digitals'>
+      <%= link_to_with_icon 'cloud', Spree.t(:digitals, scope: 'digitals'), show_digitals_admin_order_url(@order) %>
+    </li>
 <% end %>
 
 <!-- enabled -->

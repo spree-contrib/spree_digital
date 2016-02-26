@@ -1,0 +1,55 @@
+<%= render partial: 'spree/admin/shared/order_tabs', locals: { current: :show_digitals } %>
+
+<% content_for :page_actions do %>
+      <%= button_link_to Spree.t(:reset_downloads, scope: 'digitals'), reset_digitals_admin_order_url(@order), class: "btn-danger", icon: 'recycle' %>
+<% end %>
+
+<% content_for :page_title do %>
+    / <%= Spree.t(:digitals, scope: 'digitals') %>
+<% end %>
+
+<div class="panel panel-default" data-hook="admin_order_downloads">
+  <div class="panel-heading">
+    <h1 class="panel-title">
+      <%= Spree.t(:digital_download_links) %>
+    </h1>
+  </div>
+  <table class="table table-bordered line-items" data-hook="downloads">
+    <thead>
+      <th><%= Spree.t(:name) %></th>
+      <th>URL</th>
+      <th class="text-center"><%= Spree.t(:created_at) %></th>
+      <th class="text-center"><%= Spree.t(:access_counter, scope: 'digitals') %></th>
+      <th class="text-center"><%= Spree.t(:authorized, scope: 'digitals') %></th>
+    </thead>
+    <tbody>
+    <% @order.line_items.each do |item| %>
+        <% item.digital_links.each do |digital_link| %>
+            <tr class="line-item" id="line-item-<%= item.id %>">
+              <td class="line-item-name">
+                <%= raw(digital_link.digital.attachment_file_name) %>
+              </td>
+              <td class="line-item-name">
+                <%= digital_url(secret: digital_link.secret) %>
+              </td>
+              <td class="line-item-name text-center">
+                <%= digital_link.created_at %>
+              </td>
+              <td class="line-item-name text-center">
+                <%= digital_link.access_counter %>
+              </td>
+              <td class="line-item-name text-center">
+                <% if digital_link.authorizable? %>
+                    <span><%= Spree.t(:say_yes) %></span>
+                <% else %>
+                    <span><%= Spree.t(:say_no) %></span>
+                <% end %>
+              </td>
+            </tr>
+        <% end %>
+    <% end %>
+    </tbody>
+  </table>
+</div>
+
+<%= render partial: 'spree/admin/shared/order_summary' %>
