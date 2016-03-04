@@ -25,7 +25,7 @@ Gem::Specification.new do |s|
   s.add_development_dependency 'factory_girl_rails', '~> 4.5.0'
   s.add_development_dependency 'rspec-rails', '~> 3.0'
   s.add_development_dependency 'rspec-activemodel-mocks', '1.0.0'
-  s.add_development_dependency 'sass-rails'
+  s.add_development_dependency 'sass-rails', '~> 5.0.4'
   s.add_development_dependency 'sqlite3'
   s.add_development_dependency 'ffaker'
   s.add_development_dependency 'database_cleaner', '1.0.1'
