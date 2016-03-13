@@ -1,0 +1,20 @@
+<!-- insert_after "tr[data-hook='order_line_item_details']" -->
+  <% if line_item.digital? %>
+    <tr>
+      <td>
+        <font size="4" face="arial, sans-serif">
+        <% for link in line_item.digital_links %>
+          <%= link_to Spree.t('download', scope: 'digitals'), digital_url(:host => @order.store.url, :secret => link.secret), style: "color: #fff;background-color: #27aae2;border-color: #1c9cd3;padding: 5px 10px;text-decoration:none;" %>
+        <% end %>
+        </font>
+      </td>
+    </tr>
+    <tr><td colspan="5">
+    <%= Spree.t('digital_download_links_warning', scope: 'digitals') %>
+    <%= link_to digital_url(:host => @order.store.url, :secret => link.secret), digital_url(:host => @order.store.url, :secret => link.secret), style: "color: #27aae2" %>
+    </td></tr>
+  <% else %>
+    <tr><td colspan="5">&nbsp;</td></tr>
+  <% end %>
+<!-- enabled -->      
+

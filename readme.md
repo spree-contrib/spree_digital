@@ -7,6 +7,8 @@
 
 This is a spree extension to enable downloadable products (ebooks, MP3s, videos, etc).
 
+This [fork](https://github.com/taniarv/spree_digital) adds authorization and authentication capabilities, preference to disable links expiration and per user attachments.
+
 In the [Versionfile](https://github.com/spree-contrib/spree_digital/blob/master/Versionfile) you can see which
 [spree_digital branch](https://github.com/spree-contrib/spree_digital/branches/all?query=stable) supports which
 [Spree version](https://github.com/spree/spree/branches/all?query=stable).
@@ -45,6 +47,52 @@ There are a few assumptions that spree_digital (currently) makes and it's import
 * You must add a `views/spree/digitals/unauthorized.html.erb` file to customize an error message to the user if they exceed the download / days limit
 * We use send_file to send the files on download.
   See below for instructions on how to push file downloading off to nginx.
+
+Added in this [version](https://github.com/taniarv/spree_digital):
+
+* New preference to disable digital links expiration. It defaults to true (links expire within 24 hours and 3 clicks). To disable links expiration, add in `config/spree.rb`
+
+```ruby
+SpreeDigital::Config.tap do |config|
+  config.expirable_links = false
+end
+```
+
+* New preference to require user authentication for downloads (based on Devise). It defaults to true (authentication required). To disable required authentication: 
+
+```ruby
+SpreeDigital::Config.tap do |config|
+  config.authentication_required = false
+end
+```
+
+* Added user_id column in digital_links to enable Cancan authorization per user. New preference to require user authorization for downloads. It defaults to true (authorization required). To disable required authorization: 
+
+```ruby
+SpreeDigital::Config.tap do |config|
+  config.authorization_required = false
+end
+```
+
+* New preference per_user_attachment to perform a unique attachment copy for users. It defaults to true. To disable per user attachment: 
+
+```ruby
+SpreeDigital::Config.tap do |config|
+  config.per_user_attachment = false
+end
+```
+
+Additionally you can provide a proc to perform some processing before creating each user copy (for example, stamping, watermark, and so on)
+It accepts three parameters: input_file, output_file and the digital link self object
+
+```ruby
+SpreeDigital::Config.tap do |config|
+  config.per_user_attachment_process = Proc.new do |input_file, output_file, digital_link|
+    # pdf processing
+  end
+end
+```
+
 
 ## Quickstart
 

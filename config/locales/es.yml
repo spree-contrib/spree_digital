@@ -1,24 +1,50 @@
 es:
-  broken_file: ¡Atención! Este archivo está corrupto
-  current_file: Archivo actual
-  delete_file: Borrar este archivo
-  delete_file_confirmation: ¿Está seguro de que quiere borrar este fichero %{filename}?
-  digital_delivery: Entrega digital
-  digital_download: Descarga %{filename} ↓
-  digital_download_links: Enlaces para la descaga digital
-  digital_format:
-    mp3: Audio MP3
-    mobi: Kindle eBook
-    epub: ePub eBook
-    pdf: pdf eBook
-  digital_versions: Versiones digitales
-  downloads_reset: Reset de descargas digitales
-  new_file: Nuevo Archivo
-  reset_downloads: Resetear descargas digitales
   spree:
+    controller:
+      controller_name: Versiones Digitales
     digitals:
+      error_in_attachment: "Se ha producido un error en la descarga. Por favor, pongase en contacto con el administrador de la web para solucionarlo."
+      only_digital_variants: "Mostrando solo variantes con opción 'Digital: Sí'."
+      broken_file: ¡Atención! Este archivo está corrupto
+      click_here: "Pincha aquí para descargarlo"
+      click_to_download: "Para descargarlo, pincha en el siguiente enlace: "
+      copy_for: "Este ejemplar pertenece a %{name} <%{email}>"
+      current_file: Archivo actual
+      update_file: Actualizar fichero
+      delete_file: Eliminar fichero
+      delete_file_confirmation: "¿Está seguro de que desea eliminar el fichero? Se eliminarán todas las copias descargadas por los usuarios. Esta acción es irreversible. "
+      title: Versiones Digitales
+      digital_delivery: Entrega digital
+      digital_download: "Descarga %{filename} ↓"
+      digital_download_links: Enlaces para la descaga digital
+      digital_download_links_instructions: "A continuación dispones de los enlaces para acceder a tus compras digitales: "
+      digital_download_links_warning: "En caso de que no funcione, copia y pega en la barra de direcciones del navegador: "
+      digital_format:
+        mp3: Audio MP3
+        mobi: Kindle eBook
+        epub: ePub eBook
+        pdf: pdf eBook
+        zip: fichero ZIP
+      digital_versions: Versiones digitales
+      downloads_reset: Reset de descargas digitales
+      download: Descargar
+      files: Ficheros
+      available_files: Ficheros disponibles
+      new_file: Nuevo fichero
+      reset_downloads: Resetear descargas digitales
       unauthorized:
         explained: El enlace para la descarga ha expirado
         unauthorized: No estás autorizado
-  spree_digital:
-    upload: Subir
+      upload: Subir
+      no_variants: Este producto no tiene variantes.
+      digital_already_exists: Ya existe una versión digital de este producto.
+      authorized_clicks: 
+        one: Cada enlace funcionará solo UNA VEZ.
+        other: "Cada enlace funcionará %{count} veces. " 
+      authorized_days: 
+        one: Cada enlace funcionará solo en las próximas 24 HORAS. 
+        other: "Cada enlace funcionará solo los próximos %{count} días. "   
+    order_mailer: 
+      confirm_email:
+        digital_links: Enlaces de descarga de los productos digitales
+        attention: ¡ATENCIÓN!

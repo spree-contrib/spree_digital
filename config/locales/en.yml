@@ -4,6 +4,7 @@ en:
       controller_name: Digitals
     digitals:
       broken_file: Warning! this file is broken
+      copy_for: "Copy for %{name} <%{email}>"
       current_file: Current File
       delete_file: Delete this file
       delete_file_confirmation: Are you sure you want to delete the file %{filename}?
@@ -11,6 +12,8 @@ en:
       digital_delivery: Digital Delivery
       digital_download: Download %{filename} ↓
       digital_download_links: Digital Download Links
+      digital_download_links_instructions: "Available links for downloading your digital products"
+      digital_download_links_warning: "In case not working, copy and paste the link in the browser: "
       digital_format:
         mp3: Audio MP3
         mobi: Kindle eBook
@@ -19,6 +22,7 @@ en:
         zip: ZIP file
       digital_versions: Digital Versions
       downloads_reset: Digital Downloads Reset
+      download: Download
       files: Files
       new_file: New File
       reset_downloads: Reset Digital Downloads
@@ -26,3 +30,16 @@ en:
         explained: This download link has expired.
         unauthorized: Unauthorized
       upload: Upload
+      no_variants: This product has no variants.
+      digital_already_exists: A digital version of this product currently exists.
+      authorized_clicks: 
+        one: Each link will only work once.
+        other: "Each link will work %{count} times. " 
+      authorized_days: 
+        one: Each link will work within next 24 hours. 
+        other: "Each link will work only within %{count} days. "   
+    order_mailer: 
+      confirm_email:
+        digital_links: Download links for digital products
+        attention: ATTENTION!
+

@@ -12,7 +12,7 @@ RSpec.describe Spree::DigitalsController, :type => :controller do
     end
 
     it 'returns a 200 and calls send_file for link that is not a file' do
-      expect(controller).to receive(:attachment_is_file?).and_return(false)
+      expect(controller).to receive(:attachment_file_present?).and_return(false)
       expect(controller).not_to receive(:send_file)
       spree_get :show, secret: authorized_digital_link.secret
       expect(response.status).to eq(200)
@@ -20,7 +20,7 @@ RSpec.describe Spree::DigitalsController, :type => :controller do
     end
 
     it 'returns a 200 and calls send_file for an authorized link that is a file' do
-      expect(controller).to receive(:attachment_is_file?).and_return(true)
+      expect(controller).to receive(:attachment_file_present?).and_return(true)
       expect(controller).to receive(:send_file).with(digital.attachment.path,
                                                  :filename => digital.attachment.original_filename,
                                                  :type => digital.attachment.content_type){controller.render :nothing => true,
@@ -34,7 +34,7 @@ RSpec.describe Spree::DigitalsController, :type => :controller do
       skip 'TODO: needs a way to test without having a bucket'
       Paperclip::Attachment.default_options[:storage] = :s3
       expect(controller).to receive(:redirect_to)
-      expect(controller).to receive(:attachment_is_file?).and_return(true)
+      expect(controller).to receive(:attachment_file_present?).and_return(true)
       expect(controller).not_to receive(:send_file)
       spree_get :show, secret: authorized_digital_link.secret
     end
