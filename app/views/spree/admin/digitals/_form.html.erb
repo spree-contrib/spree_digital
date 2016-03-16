@@ -8,7 +8,11 @@
           <% variant.digitals.each do |digital| %>
             <li>
               <%= render digital %>&nbsp;&nbsp;
-              <%= link_to Spree.t(:delete_file, scope: 'digitals'), admin_product_digital_url(@product, digital), data: {confirm: Spree.t(:delete_file_confirmation, scope: 'digitals', filename: digital.attachment_file_name)}, method: :delete %>
+              <%= link_to Spree.t(:delete_file, scope: 'digitals'),
+                          admin_product_digital_url(@product, digital),
+                          data: {confirm: Spree.t(:delete_file_confirmation, scope: 'digitals', filename: digital.attachment_file_name)},
+                          method: :delete,
+                          class: 'fa fa-trash' %>
             </li>
           <% end %>
         </ul>
