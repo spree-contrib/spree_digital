@@ -46,21 +46,29 @@ There are a few assumptions that spree_digital (currently) makes and it's import
 * We use send_file to send the files on download.
   See below for instructions on how to push file downloading off to nginx.
 
-## Quickstart
+## Installation
 
-Add this line to the `Gemfile` in your Spree project:
+1. Add this extension to your Gemfile with this line:
+  ```ruby
+  gem 'spree_digital', github: 'spree-contrib/spree_digital', branch: 'X-X-stable'
+  ```
 
-```ruby
-# Depending on your Spree version, you may use another branch
-gem 'spree_digital', github: 'halo/spree_digital', branch: '3-0-stable'
-```
+  The `branch` option is important: it must match the version of Spree you're using.
+  For example, use `3-0-stable` if you're using Spree `3-0-stable` or any `3.0.x` version.
 
-The following terminal commands will copy the migration files to the corresponding directory in your Rails application and apply the migrations to your database.
+2. Install the gem using Bundler:
+  ```ruby
+  bundle install
+  ```
 
-```shell
-bundle exec rails g spree_digital:install
-bundle exec rake db:migrate
-```
+3. Copy & run migrations
+  ```ruby
+  bundle exec rails g spree_digital:install
+  ```
+
+4. Restart your server
+
+  If your server was running, restart it so that it can find the assets properly.
 
 Then set any preferences in the web interface.
 
