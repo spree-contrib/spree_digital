@@ -20,6 +20,13 @@ require 'database_cleaner'
 require 'ffaker'
 require 'shoulda-matchers'
 
+Shoulda::Matchers.configure do |config|
+  config.integrate do |with|
+    with.test_framework :rspec
+    with.library :rails
+  end
+end
+
 Dir[File.join(File.dirname(__FILE__), "support/**/*.rb")].each {|f| require f }
 
 require 'spree/testing_support/factories'

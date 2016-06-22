@@ -7,17 +7,17 @@ RSpec.describe Spree::Calculator::Shipping::DigitalDelivery do
     expect(Spree::Calculator::Shipping::DigitalDelivery).to respond_to(:description)
   end
 
-  context '#compute' do
+  context '#compute_package' do
     it 'should ignore the passed in object' do
       expect {
-        subject.compute(double)
+        subject.compute_package(double)
       }.not_to raise_error
     end
 
     it 'should always return the preferred_amount' do
       amount_double = double
       expect(subject).to receive(:preferred_amount).and_return(amount_double)
-      expect(subject.compute(double)).to eq(amount_double)
+      expect(subject.compute_package(double)).to eq(amount_double)
     end
   end
 
