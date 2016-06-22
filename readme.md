@@ -1,15 +1,16 @@
-[![Compatibility](https://img.shields.io/badge/spree%20compatibility-3.0-pink.svg)](https://github.com/spree-contrib/spree_digital/blob/3-0-stable/Versionfile)
-[![Build Status](https://travis-ci.org/spree-contrib/spree_digital.png?branch=3-0-stable)](https://travis-ci.org/spree-contrib/spree_digital)
-[![License](https://img.shields.io/badge/license-MIT-blue.svg)](http://github.com/spree-contrib/spree_digital/blob/3-0-stable/LICENSE.md)
+[![Compatibility](https://img.shields.io/badge/spree%20compatibility-3.0-pink.svg)](https://github.com/spree-contrib/spree_digital/blob/master/Versionfile)
+[![Build Status](https://travis-ci.org/spree-contrib/spree_digital.png?branch=master)](https://travis-ci.org/spree-contrib/spree_digital)
+[![License](https://img.shields.io/badge/license-MIT-blue.svg)](http://github.com/spree-contrib/spree_digital/blob/master/LICENSE.md)
 [![Gitter](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/spree-contrib/spree_digital)
 
 # Spree Digital
 
 This is a spree extension to enable downloadable products (ebooks, MP3s, videos, etc).
 
-In the [Versionfile](https://github.com/spree-contrib/spree_digital/blob/3-0-stable/Versionfile) you can see which
+In the [Versionfile](https://github.com/spree-contrib/spree_digital/blob/master/Versionfile) you can see which
 [spree_digital branch](https://github.com/spree-contrib/spree_digital/branches/all?query=stable) supports which
 [Spree version](https://github.com/spree/spree/branches/all?query=stable).
+The master branch is not considered stable and corresponds to the [spree master branch](https://github.com/spree/spree).
 
 This documentation is not complete and possibly out of date in some cases.
 There are features that have been implemented that are not documented here, please look at the source for complete documentation.

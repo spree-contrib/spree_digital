@@ -6,7 +6,8 @@ Spree::Core::Engine.routes.draw do
 
     resources :orders do
       member do
-        get :reset_digitals  
+        get :reset_digitals
+        get :show_digitals
       end
     end
   end

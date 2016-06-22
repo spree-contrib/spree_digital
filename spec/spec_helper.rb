@@ -36,6 +36,13 @@ require 'spree/testing_support/authorization_helpers'
 
 Dir[File.join(File.dirname(__FILE__), "factories/*.rb")].each {|f| require f }
 
+Shoulda::Matchers.configure do |config|
+  config.integrate do |with|
+    with.test_framework :rspec
+    with.library :rails
+  end
+end
+
 RSpec.configure do |config|
 
   config.color = true

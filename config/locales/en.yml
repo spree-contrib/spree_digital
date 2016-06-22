@@ -3,6 +3,8 @@ en:
     controller:
       controller_name: Digitals
     digitals:
+      access_counter: Access counter
+      authorized: Authorized
       broken_file: Warning! this file is broken
       current_file: Current File
       delete_file: Delete this file
