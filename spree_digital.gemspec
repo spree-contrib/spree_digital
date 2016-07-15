@@ -13,7 +13,7 @@ Gem::Specification.new do |s|
   s.requirements << 'none'
   s.required_ruby_version = '>= 2.1.0'
 
-  spree_version = '~> 3.2.0.alpha'
+  spree_version = '>= 3.1.0', '< 4.0'
   s.add_dependency 'spree_api', spree_version
   s.add_dependency 'spree_backend', spree_version
   s.add_dependency 'spree_core', spree_version
