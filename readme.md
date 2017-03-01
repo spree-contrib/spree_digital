@@ -1,7 +1,5 @@
-[![Compatibility](https://img.shields.io/badge/spree%20compatibility-3.0-pink.svg)](https://github.com/spree-contrib/spree_digital/blob/master/Versionfile)
 [![Build Status](https://travis-ci.org/spree-contrib/spree_digital.png?branch=master)](https://travis-ci.org/spree-contrib/spree_digital)
 [![License](https://img.shields.io/badge/license-MIT-blue.svg)](http://github.com/spree-contrib/spree_digital/blob/master/LICENSE.md)
-[![Gitter](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/spree-contrib/spree_digital)
 
 # Spree Digital
 
@@ -49,6 +47,15 @@ There are a few assumptions that spree_digital (currently) makes and it's import
 ## Installation
 
 1. Add this extension to your Gemfile with this line:
+
+  #### Spree >= 3.1
+
+  ```ruby
+  gem 'spree_digital', github: 'spree-contrib/spree_digital'
+  ```
+
+  #### Spree 3.0 and Spree 2.x
+
   ```ruby
   gem 'spree_digital', github: 'spree-contrib/spree_digital', branch: 'X-X-stable'
   ```
