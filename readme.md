@@ -49,6 +49,15 @@ There are a few assumptions that spree_digital (currently) makes and it's import
 ## Installation
 
 1. Add this extension to your Gemfile with this line:
+
+  #### Spree >= 3.1
+
+  ```ruby
+  gem 'spree_digital', github: 'spree-contrib/spree_digital'
+  ```
+
+  #### Spree 3.0 and Spree 2.x
+
   ```ruby
   gem 'spree_digital', github: 'spree-contrib/spree_digital', branch: 'X-X-stable'
   ```
