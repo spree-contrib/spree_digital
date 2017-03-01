@@ -1,13 +1,6 @@
 source 'https://rubygems.org'
 
-gem 'spree', github: 'spree/spree', branch: 'master'
+spree_version = 'master'
+gem 'spree', github: 'spree/spree', branch: spree_version
 
 gemspec
-
-group :test do
-  if RUBY_PLATFORM.downcase.include? "darwin"
-    gem 'guard-rspec'
-    gem 'rb-fsevent'
-    gem 'growl'
-  end
-end
