@@ -1,7 +1,5 @@
-[![Compatibility](https://img.shields.io/badge/spree%20compatibility-3.0-pink.svg)](https://github.com/spree-contrib/spree_digital/blob/master/Versionfile)
 [![Build Status](https://travis-ci.org/spree-contrib/spree_digital.png?branch=master)](https://travis-ci.org/spree-contrib/spree_digital)
 [![License](https://img.shields.io/badge/license-MIT-blue.svg)](http://github.com/spree-contrib/spree_digital/blob/master/LICENSE.md)
-[![Gitter](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/spree-contrib/spree_digital)
 
 # Spree Digital
 
