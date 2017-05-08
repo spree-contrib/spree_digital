@@ -7,6 +7,6 @@ Spree::Product.class_eval do
   end
 
   def digital_variants
-    self.variants_including_master.select{|a| a.has_digital_option?}
+    self.variants_including_master.select{|a| a.has_true_digital_option?}
   end
 end

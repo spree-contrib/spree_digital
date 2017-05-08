@@ -19,7 +19,7 @@
 <% else %>
   <%= Spree.t(:no_variants, scope: 'digitals') %>
 
- <% if @product.master.has_digital_option? %>
+ <% if @product.master.has_true_digital_option? %>
     <%= Spree.t(:digital_already_exists) %>
     <%= render @product.master.digitals %>
   <% end %>
