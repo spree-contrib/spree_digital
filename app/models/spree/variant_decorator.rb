@@ -4,12 +4,12 @@ Spree::Variant.class_eval do
   
   # has digital option_type
   def has_digital_option?
-    self.option_values.detect{|a|a.option_type.name.eql?('digital')}.present?
+    self.option_values.select{|a|a.option_type.name.eql?('digital')}.present?
   end
 
   # has digital option_type as true
   def has_true_digital_option?
-    self.option_values.detect{|a|a.option_type.name.eql?('digital') && a.name.eql?('true')}.present?
+    self.option_values.select{|a|a.option_type.name.eql?('digital') && a.name.eql?('true')}.present?
   end
 
   # if it is a digital variant should have digital attachment
