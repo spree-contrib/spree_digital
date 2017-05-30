@@ -22,6 +22,7 @@ en:
       files: Files
       new_file: New File
       reset_downloads: Reset Digital Downloads
+      resource_url: Resource URL
       unauthorized:
         explained: This download link has expired.
         unauthorized: Unauthorized

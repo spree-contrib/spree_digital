@@ -28,8 +28,11 @@
       <% end %>
       <p class="form-buttons">
         <%= f.field_container :file do %>
-          <%= f.label :file, Spree.t(:new_file, scope: 'digitals') %> <span class="required">*</span><br/>
+          <%= f.label :file, Spree.t(:new_file, scope: 'digitals') %> <br/>
           <%= f.file_field :attachment %>
+
+          <%= f.label :resource_url, Spree.t(:resource_url, scope: 'digitals') %> <br/>
+          <%= f.text_field :resource_url %>
         <% end %>
 
         <%= hidden_field_tag 'digital[variant_id]', variant.id %>
