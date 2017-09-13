@@ -22,9 +22,9 @@ RSpec.describe Spree::DigitalsController, :type => :controller do
     it 'returns a 200 and calls send_file for an authorized link that is a file' do
       expect(controller).to receive(:attachment_is_file?).and_return(true)
       expect(controller).to receive(:send_file).with(digital.attachment.path,
-                                                 :filename => digital.attachment.original_filename,
-                                                 :type => digital.attachment.content_type){controller.render :nothing => true,
-                                                                         :content_type => digital.attachment.content_type }
+                                                 filename: digital.attachment.original_filename,
+                                                 type: digital.attachment.content_type, status: :ok){controller.head :ok,
+                                                                         content_type: digital.attachment.content_type, status: :ok }
       spree_get :show, secret: authorized_digital_link.secret
       expect(response.status).to eq(200)
       expect(response.header['Content-Type']).to match digital.attachment.content_type

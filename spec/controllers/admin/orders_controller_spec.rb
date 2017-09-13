@@ -17,7 +17,7 @@ RSpec.describe Spree::Admin::OrdersController do
     let(:order) { mock_model Spree::Order, complete?: true, total: 100, number: 'R123456789' }
 
     before do
-      expect(Spree::Order).to receive_message_chain(:includes, :friendly, :find).and_return order
+      allow(Spree::Order).to receive_message_chain(:includes, find_by!: order)
     end
 
     context '#reset_digitals' do
