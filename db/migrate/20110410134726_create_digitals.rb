@@ -1,5 +1,5 @@
-class CreateDigitals < ActiveRecord::Migration
-  
+class CreateDigitals < SpreeExtension::Migration[4.2]
+
   def self.up
     create_table :digitals do |t|
       t.integer :variant_id
@@ -26,5 +26,5 @@ class CreateDigitals < ActiveRecord::Migration
     drop_table :digitals
     drop_table :digital_links
   end
-  
+
 end

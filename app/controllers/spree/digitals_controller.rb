@@ -1,7 +1,6 @@
 module Spree
   class DigitalsController < Spree::StoreController
-    force_ssl only: :show, if: :ssl_configured?
-    rescue_from ActiveRecord::RecordNotFound, with: :resource_not_found
+    rescue_from ActiveRecord::RecordNotFound, with: :render_404
 
     def show
       if attachment.present?
@@ -12,7 +11,7 @@ module Spree
             if Paperclip::Attachment.default_options[:storage] == :s3
               redirect_to attachment.expiring_url(Spree::DigitalConfiguration[:s3_expiration_seconds]) and return
             else
-              send_file attachment.path, :filename => attachment.original_filename, :type => attachment.content_type and return
+              send_file attachment.path, filename: attachment.original_filename, type: attachment.content_type, status: :ok and return
             end
           end
         else
@@ -39,14 +38,6 @@ module Spree
 
       def attachment
         @attachment ||= digital_link.digital.try(:attachment) if digital_link.present?
-      end
-
-      def resource_not_found
-        head status: 404
-      end
-
-      def ssl_configured?
-        Rails.env.production?
       end
   end
 end

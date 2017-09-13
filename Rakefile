@@ -8,7 +8,7 @@ RSpec::Core::RakeTask.new
 
 task :default => [:spec]
 
-desc "Regenerates a rails 3 app for testing"
+desc "Regenerates a rails app for testing"
 task :test_app do
   ENV['LIB_NAME'] = 'spree_digital'
   Rake::Task['common:test_app'].invoke

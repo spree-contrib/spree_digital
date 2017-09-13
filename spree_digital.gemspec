@@ -1,7 +1,7 @@
 Gem::Specification.new do |s|
   s.platform     = Gem::Platform::RUBY
   s.name         = 'spree_digital'
-  s.version      = '3.2.0.alpha'
+  s.version      = '3.3.0.beta'
   s.summary      = ''
   s.description  = 'Digital download functionality for spree'
   s.authors      = ['funkensturm', 'Michael Bianco']
@@ -17,7 +17,8 @@ Gem::Specification.new do |s|
   s.add_dependency 'spree_api', spree_version
   s.add_dependency 'spree_backend', spree_version
   s.add_dependency 'spree_core', spree_version
-  s.add_dependency 'spree_frontend'
+  s.add_dependency 'spree_frontend', spree_version
+  s.add_dependency 'spree_extension'
 
   # test suite
   s.add_development_dependency 'shoulda-matchers'

@@ -17,7 +17,13 @@ RSpec.describe Spree::Admin::OrdersController do
     let(:order) { mock_model Spree::Order, complete?: true, total: 100, number: 'R123456789' }
 
     before do
-      expect(Spree::Order).to receive_message_chain(:includes, :friendly, :find).and_return order
+      # Spree 3.3 moved away from FriendlyId in Admin Panel
+      # https://github.com/spree/spree/pull/8072
+      if Spree.version.to_f < 3.3
+        expect(Spree::Order).to receive_message_chain(:includes, :friendly, :find).and_return order
+      else
+        allow(Spree::Order).to receive_message_chain(:includes, find_by!: order)
+      end
     end
 
     context '#reset_digitals' do
