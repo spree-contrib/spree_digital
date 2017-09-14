@@ -5,14 +5,6 @@
 
 This is a spree extension to enable downloadable products (ebooks, MP3s, videos, etc).
 
-In the [Versionfile](https://github.com/spree-contrib/spree_digital/blob/master/Versionfile) you can see which
-[spree_digital branch](https://github.com/spree-contrib/spree_digital/branches/all?query=stable) supports which
-[Spree version](https://github.com/spree/spree/branches/all?query=stable).
-The master branch is not considered stable and corresponds to the [spree master branch](https://github.com/spree/spree).
-
-This documentation is not complete and possibly out of date in some cases.
-There are features that have been implemented that are not documented here, please look at the source for complete documentation.
-
 The idea is simple.
 You attach a file to a Product (or a Variant of this Product) and when people buy it, they will receive a link via email where they can download it once.
 There are a few assumptions that spree_digital (currently) makes and it's important to be aware of them.
