@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.org/spree-contrib/spree_digital.png?branch=master)](https://travis-ci.org/spree-contrib/spree_digital)
+[![Build Status](https://travis-ci.org/spree-contrib/spree_digital.svg?branch=master)](https://travis-ci.org/spree-contrib/spree_digital)
 [![License](https://img.shields.io/badge/license-MIT-blue.svg)](http://github.com/spree-contrib/spree_digital/blob/master/LICENSE.md)
 
 # Spree Digital
