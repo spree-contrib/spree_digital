@@ -1,6 +1,6 @@
 Spree::Product.class_eval do
   has_many :digitals, :through => :variants_including_master
-  scope :digital, -> { joins(:digitals).order(:updated_at).uniq}
+  scope :digital, -> { joins(:digitals).reorder("spree_digitals.updated_at DESC")}
 
   def has_paper_or_digital_variants?
     self.variants_including_master.any?{|a| a.has_digital_option?}
