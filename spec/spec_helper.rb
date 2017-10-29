@@ -44,7 +44,7 @@ RSpec.configure do |config|
   config.infer_spec_type_from_file_location!
   config.mock_with :rspec
 
-  config.include FactoryGirl::Syntax::Methods
+  config.include FactoryBot::Syntax::Methods
   config.include Spree::TestingSupport::UrlHelpers
   config.include Spree::TestingSupport::ControllerRequests, :type => :controller
   config.extend Spree::TestingSupport::AuthorizationHelpers::Controller, :type => :controller
