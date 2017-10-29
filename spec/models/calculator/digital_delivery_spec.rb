@@ -24,7 +24,7 @@ RSpec.describe Spree::Calculator::Shipping::DigitalDelivery do
   context '#available?' do
     let(:digital_order) {
       order = create(:order)
-      variants = 3.times.map { create(:variant, :digitals => [FactoryGirl.create(:digital)]) }
+      variants = 3.times.map { create(:variant, :digitals => [FactoryBot.create(:digital)]) }
       package = Spree::Stock::Package.new(create(:stock_location), [])
       variants.each { |v|
         order.contents.add(v, 1)
@@ -36,7 +36,7 @@ RSpec.describe Spree::Calculator::Shipping::DigitalDelivery do
 
     let(:mixed_order) {
       order = create(:order)
-      variants = 2.times.map { create(:variant, :digitals => [FactoryGirl.create(:digital)]) }
+      variants = 2.times.map { create(:variant, :digitals => [FactoryBot.create(:digital)]) }
       variants << create(:variant)
       package = Spree::Stock::Package.new(create(:stock_location), [])
       variants.each { |v|
