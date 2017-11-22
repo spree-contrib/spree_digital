@@ -14,7 +14,11 @@
           <tbody>
           <% variant.digitals.each do |digital| %>
             <tr>
-              <td><%= render digital %></td>
+              <td>
+		<%= link_to admin_product_digital_path(@product, digital) do %>
+		  <%= render digital %>
+		<% end %>
+	      </td>
               <td class="actions text-right">
                 <%#= link_to_with_icon 'delete', Spree.t(:delete_file, scope: 'digitals'), admin_product_digital_url(@product, digital), data: {confirm: Spree.t(:delete_file_confirmation, scope: 'digitals', filename: digital.attachment_file_name)}, method: :delete %>
                 <%= link_to_with_icon 'delete', Spree.t(:delete_file, scope: 'digitals'), admin_product_digital_url(@product, digital), data: {confirm: Spree.t(:delete_file_confirmation, scope: 'digitals', filename: digital.attachment_file_name)}, method: :delete, class: 'btn btn-danger btn-sm delete-resource' %>
