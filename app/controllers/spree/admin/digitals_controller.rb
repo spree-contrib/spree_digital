@@ -1,6 +1,8 @@
 module Spree
   module Admin
     class DigitalsController < ResourceController
+      include Downloadable
+      
       belongs_to "spree/product", :find_by => :slug
       
       def create
@@ -16,6 +18,10 @@ module Spree
         end
       end
 
+      def show
+        send_file attachment.path, filename: attachment.original_filename, type: attachment.content_type, status: :ok and return
+      end
+
       protected
         def location_after_save
           spree.admin_product_digitals_path(@product)
@@ -28,6 +34,16 @@ module Spree
       def permitted_digital_attributes
         [:variant_id, :attachment]
       end
+      
+      private
+
+        def attachment
+          @attachment = Digital.find(params[:id]).attachment
+        end
+
+        def authorized?
+          true
+        end
     end
   end
 end
