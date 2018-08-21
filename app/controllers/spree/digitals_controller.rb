@@ -58,6 +58,7 @@ module Spree
           if Paperclip::Attachment.default_options[:storage] == :s3
             redirect_to attachment.expiring_url(Spree::DigitalConfiguration[:s3_expiration_seconds]) and return
           else
+	    response.headers['Content-Length'] = attachment.size.to_s
             send_file attachment.path, :filename => attachment.original_filename, :type => attachment.content_type and return
           end
         else
