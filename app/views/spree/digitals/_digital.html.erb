@@ -1,5 +1,6 @@
 <% if digital.attachment_file_name.present? %>
-  <%= digital.attachment_file_name %> (<%= number_to_human_size(digital.attachment_file_size) %>)
+  <strong><%= digital.attachment_file_name %></strong>
+  (<%= number_to_human_size(digital.attachment_file_size) %>)
 <% else %>
   <%= Spree.t(:broken_file, scope: 'digitals') %>
 <% end %>
