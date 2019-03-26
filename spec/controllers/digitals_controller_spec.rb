@@ -6,9 +6,8 @@ RSpec.describe Spree::DigitalsController, :type => :controller do
     let(:digital) { create(:digital) }
     let(:authorized_digital_link) { create(:digital_link, digital: digital) }
 
-    it 'returns a 404 for a non-existent secret' do
-      spree_get :show, secret: 'NotReal00000000000000000000000'
-      expect(response.status).to eq(404)
+    it 'raise_exception ActiveRecord::RecordNotFound for a non-existent secret' do
+      expect { spree_get :show, secret: 'NotReal00000000000000000000000' }.to raise_exception(ActiveRecord::RecordNotFound)
     end
 
     it 'returns a 200 and calls send_file for link that is not a file' do

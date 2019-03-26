@@ -1,7 +1,5 @@
 module Spree
   class DigitalsController < Spree::StoreController
-    rescue_from ActiveRecord::RecordNotFound, with: :render_404
-
     def show
       if attachment.present?
         # don't authorize the link unless the file exists
@@ -24,20 +22,20 @@ module Spree
 
     private
 
-      def attachment_is_file?
-        if Paperclip::Attachment.default_options[:storage] == :s3
-          attachment.exists?
-        else
-          File.file?(attachment.path)
-        end
+    def attachment_is_file?
+      if Paperclip::Attachment.default_options[:storage] == :s3
+        attachment.exists?
+      else
+        File.file?(attachment.path)
       end
+    end
 
-      def digital_link
-        @link ||= DigitalLink.find_by!(secret: params[:secret])
-      end
+    def digital_link
+      @link ||= DigitalLink.find_by!(secret: params[:secret])
+    end
 
-      def attachment
-        @attachment ||= digital_link.digital.try(:attachment) if digital_link.present?
-      end
+    def attachment
+      @attachment ||= digital_link.digital.try(:attachment) if digital_link.present?
+    end
   end
 end
