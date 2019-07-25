@@ -68,6 +68,19 @@ RSpec.describe Spree::Admin::DigitalsController do
     end
   end
 
+  context '#show' do
+    let(:digital) { create(:digital) }
+    let!(:variant) { create(:variant, product: product, digitals: [digital]) }
+
+    it 'calls send_file' do
+      expect(controller).to receive(:send_file).with(digital.attachment.path,
+                                                 filename: digital.attachment.original_filename,
+                                                 type: digital.attachment.content_type, status: :ok){controller.head :ok,
+                                                                         content_type: digital.attachment.content_type, status: :ok }
+      spree_get :show, product_id: product.slug, id: digital.id
+    end
+  end
+
   context '#destroy' do
     let(:digital) { create(:digital) }
     let!(:variant) { create(:variant, product: product, digitals: [digital]) }
