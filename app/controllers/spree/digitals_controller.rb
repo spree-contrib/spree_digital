@@ -1,7 +1,5 @@
 module Spree
   class DigitalsController < Spree::StoreController
-    rescue_from ActiveRecord::RecordNotFound, with: :render_404
-
     def show
       if attachment.present?
         # don't authorize the link unless the file exists
