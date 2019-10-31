@@ -27,7 +27,7 @@ RSpec.describe Spree::Calculator::Shipping::DigitalDelivery do
       variants = 3.times.map { create(:variant, :digitals => [FactoryBot.create(:digital)]) }
       package = Spree::Stock::Package.new(create(:stock_location), [])
       variants.each { |v|
-        order.contents.add(v, 1)
+        add_line_item_to_order(order, v, 1)
         order.create_proposed_shipments
         package.add(order.inventory_units.where(variant_id: v.id).first, 1)
       }
@@ -40,7 +40,7 @@ RSpec.describe Spree::Calculator::Shipping::DigitalDelivery do
       variants << create(:variant)
       package = Spree::Stock::Package.new(create(:stock_location), [])
       variants.each { |v|
-        order.contents.add(v, 1)
+        add_line_item_to_order(order, v, 1)
         order.create_proposed_shipments
         package.add(order.inventory_units.where(variant_id: v.id).first, 1)
       }
@@ -52,7 +52,7 @@ RSpec.describe Spree::Calculator::Shipping::DigitalDelivery do
       variants = 3.times.map { create(:variant) }
       package = Spree::Stock::Package.new(create(:stock_location), [])
       variants.each { |v|
-        order.contents.add(v, 1)
+        add_line_item_to_order(order, v, 1)
         order.create_proposed_shipments
         package.add(order.inventory_units.where(variant_id: v.id).first, 1)
       }
@@ -69,6 +69,14 @@ RSpec.describe Spree::Calculator::Shipping::DigitalDelivery do
 
     it 'should return false for an exclusively non-digital order' do
       expect(subject.available?(non_digital_order)).to be false
+    end
+  end
+
+  def add_line_item_to_order(order, variant, quantity)
+    if Spree.version.to_f < 3.7
+      order.contents.add(variant, quantity)
+    else
+      Spree::Cart::AddItem.call(order: order, variant: variant, quantity: quantity)
     end
   end
 end
