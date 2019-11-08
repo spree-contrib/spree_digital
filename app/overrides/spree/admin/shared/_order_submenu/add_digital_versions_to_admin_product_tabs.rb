@@ -1,5 +1,5 @@
 Deface::Override.new(
-  virtual_path: 'spree/admin/shared/_order_submenu',
+  virtual_path: 'spree/admin/shared/_order_tabs',
   name: 'add_digital_versions_to_admin_product_tabs',
   insert_bottom: '[data-hook="admin_order_tabs"]',
   text: <<-HTML

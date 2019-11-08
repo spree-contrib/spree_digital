@@ -7,9 +7,8 @@ Deface::Override.new(
             <div data-hook='download_links'>
               <ul>
                 <% item.digital_links.each do |digital_link| %>
-                <% format = File.extname(digital_link.digital.attachment.path).downcase %>
                   <li>
-                    <%= link_to Spree.t(:digital_download, scope: 'digitals', filename: raw(digital_link.digital.attachment_file_name)), digital_url(secret: digital_link.secret), class: "#{format}" %>
+                    <%= link_to Spree.t('digitals.digital_download', filename: raw(digital_link.digital.attachment_file_name)), digital_url(secret: digital_link.secret) %>
                   </li>
                 <% end %>
               </ul>
