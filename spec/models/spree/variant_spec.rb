@@ -9,13 +9,12 @@ RSpec.describe Spree::Variant do
     it "should destroy associated digitals by default" do
       # default is false
       Spree::DigitalConfiguration[:keep_digitals] = false
-
       expect(Spree::Digital.count).to eq(1)
       expect(variant.digitals.present?).to be true
       variant.deleted_at = Time.now
       expect(variant.deleted?).to be true
       variant.save!
-      expect { digital.reload.present? }.to raise_error
+      expect { digital.reload.present? }.to raise_error(ActiveRecord::RecordNotFound)
       expect(Spree::Digital.count).to eq(0)
     end
 
