@@ -6,6 +6,7 @@ module Spree
       def create
         invoke_callbacks(:create, :before)
         @object.attributes = permitted_resource_params
+        @object.attributes = add_additional_paramas
 
         if @object.valid?
           super
@@ -26,7 +27,15 @@ module Spree
       end
 
       def permitted_digital_attributes
-        [:variant_id, :attachment]
+        [:variant_id, :attachment, :attachment_file_name, :attachment_content_type, :attachment_file_size]
+      end
+
+      def add_additional_paramas
+        hash = {}
+        hash[:attachment_file_name] = params[:digital][:attachment].original_filename
+        hash[:attachment_file_size] = rand(1..10)
+        hash[:attachment_content_type] = params[:digital][:attachment].content_type
+        hash
       end
     end
   end
