@@ -20,7 +20,7 @@ en:
       digital_versions: Digital Versions
       downloads_reset: Digital Downloads Reset
       files: Files
-      new_file: New File
+      add_new_file: Add New File
       reset_downloads: Reset Digital Downloads
       unauthorized:
         explained: This download link has expired.

@@ -1,8 +1,7 @@
 <div>
   <%= form_for(:digital, :url => admin_product_digitals_path(@product), :method => :create, :multipart => true ) do |f| %>
     <fieldset>
-      <legend><%= Spree::Variant.model_name.human %> "<%= variant.is_master ? "Master" : variant.options_text %>"</legend>
-      <strong><%= Spree.t(:files, scope: 'digitals') %>:</strong>
+      <legend class='h4 pl-0 <%= variant.digital? ? "mb-0" : "mb-3" %>'><%= Spree::Variant.model_name.human %> "<%= variant.is_master ? "Master" : variant.options_text %>"</legend>
       <% if variant.digital? %>
         <table class="table">
           <thead>
@@ -16,26 +15,20 @@
             <tr>
               <td><%= render digital %></td>
               <td class="actions text-right">
-                <%#= link_to_with_icon 'delete', Spree.t(:delete_file, scope: 'digitals'), admin_product_digital_url(@product, digital), data: {confirm: Spree.t(:delete_file_confirmation, scope: 'digitals', filename: digital.attachment_file_name)}, method: :delete %>
                 <%= link_to_with_icon 'delete', Spree.t(:delete_file, scope: 'digitals'), admin_product_digital_url(@product, digital), data: {confirm: Spree.t(:delete_file_confirmation, scope: 'digitals', filename: digital.attachment_file_name)}, method: :delete, class: 'btn btn-danger btn-sm delete-resource' %>
               </td>
             </tr>
           <% end %>
           </tbody>
         </table>
-      <% else %>
-        <%= Spree.t(:none) %>
       <% end %>
-      <p class="form-buttons">
-        <%= f.field_container :file do %>
-          <%= f.label :file, Spree.t(:new_file, scope: 'digitals') %> <span class="required">*</span><br/>
-          <%= f.file_field :attachment %>
-        <% end %>
 
+      <div class="form-group">
+        <%= f.label :file, Spree.t(:add_new_file, scope: 'digitals') %> <span class="required">*</span><br/>
+        <%= f.file_field :attachment %>
         <%= hidden_field_tag 'digital[variant_id]', variant.id %>
-        <br>
-        <%= button Spree.t(:upload, scope: "spree_digital"), 'add', 'submit', { :class => "btn-success" } %>
-      </p>
+        <%= button Spree.t(:upload, scope: "spree_digital"), 'add', 'submit', { :class => "btn btn-primary" } %>
+      </div>
     </fieldset>
   <% end %>
 </div>
