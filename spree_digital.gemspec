@@ -20,7 +20,6 @@ Gem::Specification.new do |s|
   s.add_dependency 'spree_frontend', spree_version
   s.add_runtime_dependency 'spree_extension'
   s.add_dependency 'deface', '~> 1.0'
-  s.add_dependency 'paperclip'
 
   # test suite
   s.add_development_dependency 'shoulda-matchers'
