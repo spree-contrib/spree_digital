@@ -25,7 +25,7 @@ RSpec.describe Spree::Admin::OrdersController do
       it 'should reset digitals for an order' do
         expect(order).to receive(:reset_digital_links!)
         get :reset_digitals, params: { id: order.number }
-        expect(response).to redirect_to(spree.admin_order_path(order))
+        expect(response).to redirect_to(spree.edit_admin_order_path(order))
       end
     end
   end

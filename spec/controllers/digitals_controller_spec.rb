@@ -13,15 +13,15 @@ RSpec.describe Spree::DigitalsController, :type => :controller do
     end
 
     it 'returns a 200 and returns unauthorized when digital link is invalid' do
-      expect(controller).not_to receive(:send_data)
+      expect(controller).not_to receive(:send_file)
       get :show, params: { secret: expired_digital_link.secret }
       expect(response.status).to eq(200)
       expect(response).to render_template(:unauthorized)
     end
 
-    it 'returns a 200 and calls send_data for an authorized link that is a data' do
-      expect(controller).to receive(:send_data).with(
-        digital.attachment.record.attachment_file_name,
+    it 'returns a 200 and calls send_file for an authorized link that is a file' do
+      expect(controller).to receive(:send_file).with(
+        ActiveStorage::Blob.service.path_for(digital.attachment.key),
         filename: digital.attachment.record.attachment_file_name,
         type: digital.attachment.record.attachment_content_type,
         status: :ok
