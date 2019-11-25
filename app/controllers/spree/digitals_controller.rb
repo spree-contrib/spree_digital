@@ -6,8 +6,8 @@ module Spree
           if Rails.application.config.active_storage.service == :amazon
             redirect_to attachment.expiring_url(Spree::DigitalConfiguration[:s3_expiration_seconds]) and return
           else
-            send_data(
-              attachment.record.attachment_file_name,
+            send_file(
+              ActiveStorage::Blob.service.path_for(attachment.key),
               filename: attachment.record.attachment_file_name,
               type: attachment.record.attachment_content_type,
               status: :ok
