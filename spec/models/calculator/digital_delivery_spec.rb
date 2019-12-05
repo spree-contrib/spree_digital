@@ -73,10 +73,6 @@ RSpec.describe Spree::Calculator::Shipping::DigitalDelivery do
   end
 
   def add_line_item_to_order(order, variant, quantity)
-    if Spree.version.to_f < 3.7
-      order.contents.add(variant, quantity)
-    else
-      Spree::Cart::AddItem.call(order: order, variant: variant, quantity: quantity)
-    end
+    Spree::Cart::AddItem.call(order: order, variant: variant, quantity: quantity)
   end
 end

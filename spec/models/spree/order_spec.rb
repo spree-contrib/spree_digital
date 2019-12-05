@@ -1,12 +1,7 @@
 require 'spec_helper'
 
 RSpec.describe Spree::Order do
-  if Spree.version.to_f < 3.7
-    context_description = "contents.add"
-  else
-    context_description = "Spree::Cart::AddItem.call"
-  end
-  context "#{context_description}" do
+  context "Spree::Cart::AddItem.call" do
     it "should add digital Variants of quantity 1 to an order" do
       order = create(:order)
       variants = 3.times.map { create(:variant, :digitals => [create(:digital)]) }
@@ -182,10 +177,6 @@ RSpec.describe Spree::Order do
   end
 
   def add_line_item_to_order(order, variant, quantity)
-    if Spree.version.to_f < 3.7
-      order.contents.add(variant, quantity)
-    else
-      Spree::Cart::AddItem.call(order: order, variant: variant, quantity: quantity)
-    end
+    Spree::Cart::AddItem.call(order: order, variant: variant, quantity: quantity)
   end
 end
