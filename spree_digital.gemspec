@@ -41,6 +41,5 @@ Gem::Specification.new do |s|
   s.add_development_dependency 'mysql2'
   s.add_development_dependency 'mini_magick'
   s.add_development_dependency 'selenium-webdriver'
-  s.add_development_dependency 'webdrivers'
   s.add_development_dependency 'puma'
 end
