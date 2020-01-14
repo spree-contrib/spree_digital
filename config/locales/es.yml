@@ -13,12 +13,14 @@ es:
     pdf: pdf eBook
   digital_versions: Versiones digitales
   downloads_reset: Reset de descargas digitales
-  new_file: Nuevo Archivo
+  add_new_file: Añadir Nuevo Archivo
   reset_downloads: Resetear descargas digitales
   spree:
     digitals:
       unauthorized:
         explained: El enlace para la descarga ha expirado
         unauthorized: No estás autorizado
+    product:
+      has_no_variants: Este producto no tiene variantes.
   spree_digital:
     upload: Subir

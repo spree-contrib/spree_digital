@@ -1,36 +1,27 @@
 module Spree
   class DigitalsController < Spree::StoreController
-    rescue_from ActiveRecord::RecordNotFound, with: :render_404
-
     def show
       if attachment.present?
-        # don't authorize the link unless the file exists
-        # the logger error will help track down customer issues easier
-        if attachment_is_file?
-          if digital_link.authorize!
-            if Paperclip::Attachment.default_options[:storage] == :s3
-              redirect_to attachment.expiring_url(Spree::DigitalConfiguration[:s3_expiration_seconds]) and return
-            else
-              send_file attachment.path, filename: attachment.original_filename, type: attachment.content_type, status: :ok and return
-            end
+        if digital_link.authorize!
+          if Rails.application.config.active_storage.service == :amazon
+            redirect_to attachment.expiring_url(Spree::DigitalConfiguration[:s3_expiration_seconds]) and return
+          else
+            send_file(
+              ActiveStorage::Blob.service.path_for(attachment.key),
+              filename: attachment.record.attachment_file_name,
+              type: attachment.record.attachment_content_type,
+              status: :ok
+            ) and return
           end
-        else
-          Rails.logger.error "Missing Digital Item: #{attachment.path}"
         end
+      else
+        Rails.logger.error "Missing Digital Item: attachment"
       end
 
       render :unauthorized
     end
 
     private
-
-      def attachment_is_file?
-        if Paperclip::Attachment.default_options[:storage] == :s3
-          attachment.exists?
-        else
-          File.file?(attachment.path)
-        end
-      end
 
       def digital_link
         @link ||= DigitalLink.find_by!(secret: params[:secret])

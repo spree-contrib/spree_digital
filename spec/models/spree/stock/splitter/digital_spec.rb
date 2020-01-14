@@ -4,7 +4,6 @@ module Spree
   module Stock
     module Splitter
       RSpec.describe Digital do
-
         let(:packer) { build(:stock_packer) }
 
         let(:item1) { create(:inventory_unit, variant: create(:digital).variant) }

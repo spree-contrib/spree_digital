@@ -2,10 +2,11 @@ module Spree
   module Admin
     class DigitalsController < ResourceController
       belongs_to "spree/product", :find_by => :slug
-      
+
       def create
         invoke_callbacks(:create, :before)
         @object.attributes = permitted_resource_params
+        @object.attributes = add_additional_paramas if params[:digital][:attachment]
 
         if @object.valid?
           super
@@ -26,7 +27,14 @@ module Spree
       end
 
       def permitted_digital_attributes
-        [:variant_id, :attachment]
+        [:variant_id, :attachment, :attachment_file_name, :attachment_content_type]
+      end
+
+      def add_additional_paramas
+        hash = {}
+        hash[:attachment_file_name] = params[:digital][:attachment].original_filename
+        hash[:attachment_content_type] = params[:digital][:attachment].content_type
+        hash
       end
     end
   end

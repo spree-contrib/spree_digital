@@ -5,10 +5,12 @@ ja:
   delete_file_confirmation: 本当に「%{filename}」を削除しても宜しいですか?
   digital_shipping: ダウンロードリンクを<strong>%{email}</strong>に送ります
   digital_versions: デジタル版
-  new_file: 新しいファイル
+  add_new_file: 新しいファイルを追加
   spree:
     digitals:
       unauthorized:
         explained: This download link has expired.
         unauthorized: Unauthorized
+    product:
+      has_no_variants: この製品にはバリアントがありません。
   upload: アップロード
