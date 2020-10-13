@@ -4,7 +4,7 @@ module Spree
   class DigitalLink < ActiveRecord::Base
     belongs_to :digital
     validates :digital, :presence => true
-    delegate :variant, to: :digital
+    # delegate :variant, to: :digital
     
     belongs_to :line_item
     belongs_to :user
@@ -73,6 +73,11 @@ module Spree
 
     def attachment_alias
       SpreeDigital::Config[:per_user_attachment] ? self.attachment : self.original_attachment
+    end
+
+    # include deleted ones
+    def variant
+      self.digital.try(:variant) || Spree::Variant.unscoped.find(self.digital.try(:variant_id))
     end
 
     private
