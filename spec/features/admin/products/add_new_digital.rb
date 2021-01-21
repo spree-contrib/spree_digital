@@ -17,7 +17,7 @@ RSpec.feature 'Add New Digital', :js do
         visit spree.admin_product_digitals_path(product)
 
         expect(page).to have_content('Variant "Master"')
-        expect(page).to have_content(Spree.t('product.has_no_variants'))
+        expect(page).to have_content(Spree.t('product_has_no_variants'))
         expect(page).to have_content(Spree.t(:add_new_file, scope: 'digitals'), count: 1)
       end
     end
@@ -30,7 +30,7 @@ RSpec.feature 'Add New Digital', :js do
         expect(page).to have_content(digital.attachment_file_name)
         expect(page).to have_link('Delete this file')
         expect(page).to have_content('Variant "Master"')
-        expect(page).to have_content(Spree.t('product.has_no_variants'))
+        expect(page).to have_content(Spree.t('product_has_no_variants'))
         expect(page).to have_content(Spree.t(:add_new_file, scope: 'digitals'), count: 1)
       end
     end

@@ -18,7 +18,6 @@ it:
       unauthorized:
         explained: This download link has expired.
         unauthorized: Unauthorized
-    product:
-      has_no_variants: Questo prodotto non ha varianti.
+    product_has_no_variants: Questo prodotto non ha varianti.
   spree_digital:
     upload: Upload

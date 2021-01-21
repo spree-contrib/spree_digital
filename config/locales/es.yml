@@ -20,7 +20,6 @@ es:
       unauthorized:
         explained: El enlace para la descarga ha expirado
         unauthorized: No estás autorizado
-    product:
-      has_no_variants: Este producto no tiene variantes.
+    product_has_no_variants: Este producto no tiene variantes.
   spree_digital:
     upload: Subir
