@@ -1,6 +1,6 @@
 The MIT License
 
-Copyright (c) 2011-2017 halo.
+Copyright (c) 2011-2021 halo & [other contributors](https://github.com/spree-contrib/spree_digital/graphs/contributors)
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
