@@ -1,9 +1,9 @@
 Deface::Override.new(
   virtual_path: 'spree/shared/_order_details',
   name: 'add_digital_downloads_to_invoice',
-  insert_bottom: 'td[data-hook="order_item_description"]',
+  insert_bottom: '[data-hook="order_item_description"]',
   text: <<-HTML
-          <% if @order.state == 'complete' and item.variant.digital? %>
+          <% if @order.state == 'complete' && @order.paid? && item.variant.digital? %>
             <div data-hook='download_links'>
               <ul>
                 <% item.digital_links.each do |digital_link| %>
