@@ -15,13 +15,13 @@ RSpec.feature 'Delete Digital', :js do
       visit spree.admin_product_digitals_path(product)
 
       expect(page).to have_content('Variant "Master"')
-      expect(page).to have_content(Spree.t('product.has_no_variants'))
+      expect(page).to have_content(Spree.t('product_has_no_variants'))
       expect(page).to have_content(digital.attachment_file_name)
 
       click_link('Delete this file')page.driver.browser.switch_to.alert.accept
 
       expect(page).to have_content('Digital has been successfully removed!'))
-      expect(page).to have_content(Spree.t('product.has_no_variants'))
+      expect(page).to have_content(Spree.t('product_has_no_variants'))
     end
   end
 
@@ -46,7 +46,7 @@ RSpec.feature 'Delete Digital', :js do
       page.driver.browser.switch_to.alert.accept
 
       expect(page).to have_content('Digital has been successfully removed!'))
-      expect(page).to have_content(Spree.t('product.has_no_variants'), count: 2)
+      expect(page).to have_content(Spree.t('product_has_no_variants'), count: 2)
     end
   end
 end

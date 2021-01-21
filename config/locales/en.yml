@@ -26,8 +26,7 @@ en:
         explained: This download link has expired.
         unauthorized: Unauthorized
       upload: Upload
-    product:
-      has_no_variants: This product has no variants.
+    product_has_no_variants: This product has no variants.
   activerecord:
     errors:
       messages:

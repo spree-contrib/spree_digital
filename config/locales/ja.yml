@@ -11,6 +11,5 @@ ja:
       unauthorized:
         explained: This download link has expired.
         unauthorized: Unauthorized
-    product:
-      has_no_variants: この製品にはバリアントがありません。
+    product_has_no_variants: この製品にはバリアントがありません。
   upload: アップロード
