@@ -3,6 +3,7 @@ Spree::LineItem.class_eval do
   # after_save :create_digital_links, :if => :digital?
 
   scope :digital, -> { joins(:variant).merge(Spree::Variant.digital) }
+  scope :digital_for_reports, -> { joins(:digital_links) }
   
   def digital?
     variant.digital?
