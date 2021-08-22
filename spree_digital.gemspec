@@ -1,7 +1,7 @@
 Gem::Specification.new do |s|
   s.platform     = Gem::Platform::RUBY
   s.name         = 'spree_digital'
-  s.version      = '4.1.0'
+  s.version      = '4.2.0.rc1'
   s.summary      = ''
   s.description  = 'Digital download functionality for spree'
   s.authors      = ['funkensturm', 'Michael Bianco']
@@ -11,13 +11,12 @@ Gem::Specification.new do |s|
   s.test_files   = `git ls-files -- {test,spec,features}/*`.split("\n")
   s.require_path = 'lib'
   s.requirements << 'none'
-  s.required_ruby_version = '>= 2.1.0'
+  s.required_ruby_version = '>= 2.5.0'
 
-  spree_version =  '>= 3.1.0', '< 5.0'
-  s.add_dependency 'spree_api', spree_version
+  spree_version =  '>= 4.3.0.rc1'
+  s.add_dependency 'spree', spree_version
   s.add_dependency 'spree_backend', spree_version
-  s.add_dependency 'spree_core', spree_version
-  s.add_dependency 'spree_frontend', spree_version
+
   s.add_runtime_dependency 'spree_extension'
   s.add_dependency 'deface', '~> 1.0'
 
