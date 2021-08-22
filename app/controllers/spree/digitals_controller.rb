@@ -1,5 +1,5 @@
 module Spree
-  class DigitalsController < Spree::StoreController
+  class DigitalsController < ApplicationController
     def show
       if attachment.present?
         if digital_link.authorize!
