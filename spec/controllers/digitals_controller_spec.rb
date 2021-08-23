@@ -1,15 +1,15 @@
 require 'spec_helper'
 
-RSpec.describe Spree::DigitalsController, :type => :controller do
+RSpec.describe Spree::DigitalsController, type: :controller do
   context '#show' do
     let(:digital) { create(:digital) }
     let(:authorized_digital_link) { create(:digital_link, digital: digital) }
     let(:expired_digital_link)    { create(:digital_link, created_at: 3.days.ago) }
 
     it 'returns a 404 for a non-existent secret' do
-      expect {
+      expect do
         get :show, params: { secret: 'NotReal00000000000000000000000' }
-      }.to raise_error(ActiveRecord::RecordNotFound)
+      end.to raise_error(ActiveRecord::RecordNotFound)
     end
 
     it 'returns a 200 and returns unauthorized when digital link is invalid' do
@@ -25,10 +25,10 @@ RSpec.describe Spree::DigitalsController, :type => :controller do
         filename: digital.attachment.record.attachment_file_name,
         type: digital.attachment.record.attachment_content_type,
         status: :ok
-      ){
+      ) {
         controller.head :ok,
-        content_type: digital.attachment.record.attachment_content_type,
-        status: :ok
+                        content_type: digital.attachment.record.attachment_content_type,
+                        status: :ok
       }
       get :show, params: { secret: authorized_digital_link.secret }
       expect(response.status).to eq(200)

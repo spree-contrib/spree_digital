@@ -21,8 +21,8 @@ Gem::Specification.new do |s|
   s.add_dependency 'deface', '~> 1.0'
 
   # test suite
-  s.add_development_dependency 'spree_dev_tools'
-  s.add_development_dependency 'shoulda-matchers'
-  s.add_development_dependency 'rspec-activemodel-mocks'
   s.add_development_dependency 'rb-fsevent'
+  s.add_development_dependency 'rspec-activemodel-mocks'
+  s.add_development_dependency 'shoulda-matchers'
+  s.add_development_dependency 'spree_dev_tools'
 end

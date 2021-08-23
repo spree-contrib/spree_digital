@@ -51,7 +51,7 @@ RSpec.feature 'Add New Digital', :js do
 
         expect(page).to have_content('Variant "Master"')
         expect(page).to have_content('Variant "Size: S"')
-        expect(page).to have_content(Spree.t(:add_new_file, scope: 'digitals'), count: 2)    
+        expect(page).to have_content(Spree.t(:add_new_file, scope: 'digitals'), count: 2)
       end
     end
 

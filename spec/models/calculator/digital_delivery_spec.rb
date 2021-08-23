@@ -9,9 +9,9 @@ RSpec.describe Spree::Calculator::Shipping::DigitalDelivery do
 
   context '#compute_package' do
     it 'should ignore the passed in object' do
-      expect {
+      expect do
         subject.compute_package(double)
-      }.not_to raise_error
+      end.not_to raise_error
     end
 
     it 'should always return the preferred_amount' do
@@ -22,42 +22,42 @@ RSpec.describe Spree::Calculator::Shipping::DigitalDelivery do
   end
 
   context '#available?' do
-    let(:digital_order) {
+    let(:digital_order) do
       order = create(:order)
-      variants = 3.times.map { create(:variant, :digitals => [FactoryBot.create(:digital)]) }
+      variants = 3.times.map { create(:variant, digitals: [FactoryBot.create(:digital)]) }
       package = Spree::Stock::Package.new(create(:stock_location), [])
-      variants.each { |v|
+      variants.each do |v|
         add_line_item_to_order(order, v, 1)
         order.create_proposed_shipments
         package.add(order.inventory_units.where(variant_id: v.id).first, 1)
-      }
+      end
       package
-    }
+    end
 
-    let(:mixed_order) {
+    let(:mixed_order) do
       order = create(:order)
-      variants = 2.times.map { create(:variant, :digitals => [FactoryBot.create(:digital)]) }
+      variants = 2.times.map { create(:variant, digitals: [FactoryBot.create(:digital)]) }
       variants << create(:variant)
       package = Spree::Stock::Package.new(create(:stock_location), [])
-      variants.each { |v|
+      variants.each do |v|
         add_line_item_to_order(order, v, 1)
         order.create_proposed_shipments
         package.add(order.inventory_units.where(variant_id: v.id).first, 1)
-      }
+      end
       package
-    }
+    end
 
-    let(:non_digital_order) {
+    let(:non_digital_order) do
       order = create(:order)
       variants = 3.times.map { create(:variant) }
       package = Spree::Stock::Package.new(create(:stock_location), [])
-      variants.each { |v|
+      variants.each do |v|
         add_line_item_to_order(order, v, 1)
         order.create_proposed_shipments
         package.add(order.inventory_units.where(variant_id: v.id).first, 1)
-      }
+      end
       package
-    }
+    end
 
     it 'should return true for a digital order' do
       expect(subject.available?(digital_order)).to be true

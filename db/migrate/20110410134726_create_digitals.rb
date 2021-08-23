@@ -1,5 +1,4 @@
 class CreateDigitals < SpreeExtension::Migration[4.2]
-
   def self.up
     create_table :digitals do |t|
       t.integer :variant_id
@@ -10,7 +9,7 @@ class CreateDigitals < SpreeExtension::Migration[4.2]
     end
     add_index :digitals, :variant_id
 
-    create_table :digital_links, :force => true do |t|
+    create_table :digital_links, force: true do |t|
       t.integer :digital_id
       t.integer :line_item_id
       t.string  :secret
@@ -26,5 +25,4 @@ class CreateDigitals < SpreeExtension::Migration[4.2]
     drop_table :digitals
     drop_table :digital_links
   end
-
 end

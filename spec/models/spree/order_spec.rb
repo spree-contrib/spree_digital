@@ -1,10 +1,10 @@
 require 'spec_helper'
 
 RSpec.describe Spree::Order do
-  context "Spree::Cart::AddItem.call" do
-    it "should add digital Variants of quantity 1 to an order" do
+  context 'Spree::Cart::AddItem.call' do
+    it 'should add digital Variants of quantity 1 to an order' do
       order = create(:order)
-      variants = 3.times.map { create(:variant, :digitals => [create(:digital)]) }
+      variants = 3.times.map { create(:variant, digitals: [create(:digital)]) }
       variants.each do |v|
         add_line_item_to_order(order, v, 1)
       end
@@ -13,9 +13,9 @@ RSpec.describe Spree::Order do
       expect(order.line_items.third.variant).to eq(variants[2])
     end
 
-    it "should handle quantity higher than 1 when adding one specific digital Variant" do
+    it 'should handle quantity higher than 1 when adding one specific digital Variant' do
       order = create(:order)
-      digital_variant = create(:variant, :digitals => [create(:digital)])
+      digital_variant = create(:variant, digitals: [create(:digital)])
       add_line_item_to_order(order, digital_variant, 3)
       expect(order.line_items.first.quantity).to eq(3)
       add_line_item_to_order(order, digital_variant, 2)
@@ -23,51 +23,51 @@ RSpec.describe Spree::Order do
     end
   end
 
-  context "line_item analysis" do
-    it "should understand that all products are digital" do
+  context 'line_item analysis' do
+    it 'should understand that all products are digital' do
       order = create(:order)
       3.times do
-        add_line_item_to_order(order, create(:variant, :digitals => [create(:digital)]), 1)
+        add_line_item_to_order(order, create(:variant, digitals: [create(:digital)]), 1)
       end
       expect(order.digital?).to be true
-      add_line_item_to_order(order, create(:variant, :digitals => [create(:digital)]), 4)
+      add_line_item_to_order(order, create(:variant, digitals: [create(:digital)]), 4)
       expect(order.digital?).to be true
     end
 
-    it "should understand that not all products are digital" do
+    it 'should understand that not all products are digital' do
       order = create(:order)
       3.times do
-        add_line_item_to_order(order, create(:variant, :digitals => [create(:digital)]), 1)
+        add_line_item_to_order(order, create(:variant, digitals: [create(:digital)]), 1)
       end
       add_line_item_to_order(order, create(:variant), 1) # this is the analog product
       expect(order.digital?).to be false
-      add_line_item_to_order(order, create(:variant, :digitals => [create(:digital)]), 4)
+      add_line_item_to_order(order, create(:variant, digitals: [create(:digital)]), 4)
       expect(order.digital?).to be false
     end
   end
 
   context '#digital?/#some_digital?' do
-    let(:digital_order) {
+    let(:digital_order) do
       order = create(:order)
-      variants = 3.times.map { create(:variant, :digitals => [create(:digital)]) }
+      variants = 3.times.map { create(:variant, digitals: [create(:digital)]) }
       variants.each { |v| add_line_item_to_order(order, v, 1) }
       order
-    }
+    end
 
-    let(:mixed_order) {
+    let(:mixed_order) do
       order = create(:order)
-      variants = 2.times.map { create(:variant, :digitals => [create(:digital)]) }
+      variants = 2.times.map { create(:variant, digitals: [create(:digital)]) }
       variants << create(:variant)
       variants.each { |v| add_line_item_to_order(order, v, 1) }
       order
-    }
+    end
 
-    let(:non_digital_order) {
+    let(:non_digital_order) do
       order = create(:order)
       variants = 3.times.map { create(:variant) }
       variants.each { |v| add_line_item_to_order(order, v, 1) }
       order
-    }
+    end
 
     it 'should return true/true for a digital order' do
       expect(digital_order).to be_digital
@@ -87,28 +87,28 @@ RSpec.describe Spree::Order do
 
   context '#digital_line_items' do
     let(:digital_order_digitals) { 3.times.map { create(:digital) } }
-    let(:digital_order) {
+    let(:digital_order) do
       order = create(:order)
-      variants = digital_order_digitals.map { |d| create(:variant, :digitals => [d]) }
+      variants = digital_order_digitals.map { |d| create(:variant, digitals: [d]) }
       variants.each { |v| add_line_item_to_order(order, v, 1) }
       order
-    }
+    end
 
     let(:mixed_order_digitals) { 2.times.map { create(:digital) } }
-    let(:mixed_order) {
+    let(:mixed_order) do
       order = create(:order)
-      variants = mixed_order_digitals.map { |d| create(:variant, :digitals => [d]) }
+      variants = mixed_order_digitals.map { |d| create(:variant, digitals: [d]) }
       variants << create(:variant)
       variants.each { |v| add_line_item_to_order(order, v, 1) }
       order
-    }
+    end
 
-    let(:non_digital_order) {
+    let(:non_digital_order) do
       order = create(:order)
       variants = 3.times.map { create(:variant) }
       variants.each { |v| add_line_item_to_order(order, v, 1) }
       order
-    }
+    end
 
     it 'should return true/true for a digital order' do
       digital_order_digital_line_items = digital_order.digital_line_items
@@ -142,13 +142,13 @@ RSpec.describe Spree::Order do
 
   context '#digital_links' do
     let(:mixed_order_digitals) { 2.times.map { create(:digital) } }
-    let(:mixed_order) {
+    let(:mixed_order) do
       order = create(:order)
-      variants = mixed_order_digitals.map { |d| create(:variant, :digitals => [d]) }
+      variants = mixed_order_digitals.map { |d| create(:variant, digitals: [d]) }
       variants << create(:variant)
       variants.each { |v| add_line_item_to_order(order, v, 1) }
       order
-    }
+    end
 
     it 'correctly loads the links' do
       mixed_order_digital_links = mixed_order.digital_links
