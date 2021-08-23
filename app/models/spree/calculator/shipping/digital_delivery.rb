@@ -12,7 +12,7 @@ module Spree
       end
 
       def compute_package(_package = nil)
-        self.preferred_amount
+        preferred_amount
       end
 
       def available?(package)

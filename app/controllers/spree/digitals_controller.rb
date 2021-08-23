@@ -15,7 +15,7 @@ module Spree
           end
         end
       else
-        Rails.logger.error "Missing Digital Item: attachment"
+        Rails.logger.error 'Missing Digital Item: attachment'
       end
 
       render :unauthorized
@@ -23,12 +23,12 @@ module Spree
 
     private
 
-      def digital_link
-        @link ||= DigitalLink.find_by!(secret: params[:secret])
-      end
+    def digital_link
+      @link ||= DigitalLink.find_by!(secret: params[:secret])
+    end
 
-      def attachment
-        @attachment ||= digital_link.digital.try(:attachment) if digital_link.present?
-      end
+    def attachment
+      @attachment ||= digital_link.digital.try(:attachment) if digital_link.present?
+    end
   end
 end

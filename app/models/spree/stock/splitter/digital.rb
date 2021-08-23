@@ -11,6 +11,7 @@ module Spree
         end
 
         private
+
         def split_by_digital(package)
           digitals = Hash.new { |hash, key| hash[key] = [] }
           package.contents.each do |item|

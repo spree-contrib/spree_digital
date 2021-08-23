@@ -8,5 +8,5 @@ Deface::Override.new(
               <%= link_to_with_icon 'icon-cloud', Spree.t(:reset_downloads, scope: 'digitals'), reset_digitals_admin_order_url(@order) %>
             </li>
           <% end %>
-        HTML
+  HTML
 )

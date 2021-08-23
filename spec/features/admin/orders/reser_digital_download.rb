@@ -8,7 +8,7 @@ RSpec.feature 'Reset Digital Download', :js do
   let(:variant)   { line_item.variant }
 
   context 'link is present for an order' do
-    let!(:digital)  { create(:digital, variant: variant) }
+    let!(:digital) { create(:digital, variant: variant) }
 
     scenario 'when all variants have digitals' do
       visit spree.edit_admin_order_path(order)
@@ -26,5 +26,3 @@ RSpec.feature 'Reset Digital Download', :js do
     end
   end
 end
-
-

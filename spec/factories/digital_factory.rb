@@ -1,5 +1,5 @@
 FactoryBot.define do
-  factory :digital, :class => Spree::Digital do |f|
+  factory :digital, class: Spree::Digital do |f|
     f.variant { |p| p.association(:variant) }
 
     attachment_content_type { 'application/octet-stream' }

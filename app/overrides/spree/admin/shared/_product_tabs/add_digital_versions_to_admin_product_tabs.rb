@@ -6,5 +6,5 @@ Deface::Override.new(
           <li class="<%= 'active' if current == 'Digital Versions' %>">
             <%= link_to_with_icon 'cloud', Spree.t(:digital_versions, scope: 'digitals'), admin_product_digitals_path(@product), class: 'nav-link' %>
           </li>
-        HTML
+  HTML
 )

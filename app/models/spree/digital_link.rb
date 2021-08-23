@@ -15,11 +15,11 @@ module Spree
     end
 
     def expired?
-      self.created_at <= Spree::DigitalConfiguration[:authorized_days].day.ago
+      created_at <= Spree::DigitalConfiguration[:authorized_days].day.ago
     end
 
     def access_limit_exceeded?
-      self.access_counter >= Spree::DigitalConfiguration[:authorized_clicks]
+      access_counter >= Spree::DigitalConfiguration[:authorized_clicks]
     end
 
     # This method should be called when a download is initiated.

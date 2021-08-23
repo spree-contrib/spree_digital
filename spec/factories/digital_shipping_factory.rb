@@ -8,7 +8,7 @@ FactoryBot.define do
   end
 
   factory :digital_shipping_method, parent: :shipping_method do
-    name       { "Digital Delivery" }
+    name       { 'Digital Delivery' }
     calculator { FactoryBot.build :digital_shipping_calculator }
   end
 end
