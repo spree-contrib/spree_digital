@@ -1,7 +1,7 @@
 module Spree
   module ProductDecorator
     def self.prepended(base)
-      base.has_many :digitals, :through => :variants_including_master
+      base.has_many :digitals, through: :variants_including_master
     end
   end
 end

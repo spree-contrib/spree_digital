@@ -5,13 +5,13 @@ module Spree
   module Calculator::Shipping
     class DigitalDelivery < ShippingCalculator
       preference :amount, :decimal, default: 0
-      preference :currency, :string, default: ->{ Spree::Config[:currency] }
+      preference :currency, :string, default: -> { Spree::Config[:currency] }
 
       def self.description
         Spree.t(:digital_delivery, scope: 'digital')
       end
 
-      def compute_package(package=nil)
+      def compute_package(_package = nil)
         self.preferred_amount
       end
 
