@@ -1,7 +1,7 @@
 Gem::Specification.new do |s|
   s.platform     = Gem::Platform::RUBY
   s.name         = 'spree_digital'
-  s.version      = '1.2.2'
+  s.version      = '4.0.0.1'
   s.summary      = ''
   s.description  = 'Digital download functionality for spree'
   s.authors      = ['funkensturm', 'Michael Bianco', 'Tania Rubio']
@@ -14,8 +14,8 @@ Gem::Specification.new do |s|
   s.required_ruby_version = '>= 2.1.0'
 
   s.add_dependency 'spree_api'
-  s.add_dependency 'spree_backend', '~> 3.0.0'
-  s.add_dependency 'spree_core', '~> 3.0.0'
+  s.add_dependency 'spree_backend', '~> 4'
+  s.add_dependency 'spree_core', '~> 4'
   s.add_dependency 'spree_frontend'
 
   # test suite

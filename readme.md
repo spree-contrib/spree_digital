@@ -5,6 +5,8 @@
 
 # Spree Digital
 
+NOW support for spree_core-4.X and spree_backend-4.X
+
 This is a spree extension to enable downloadable products (ebooks, MP3s, videos, etc).
 
 This [fork](https://github.com/taniarv/spree_digital) adds authorization and authentication capabilities, preference to disable links expiration and per user attachments.
